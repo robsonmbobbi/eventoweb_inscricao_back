@@ -64,18 +64,19 @@ builder.Services.AddSingleton<ISessionFactory>(_ =>
     return configuration.BuildSessionFactory();
 });
 
-builder.Services.AddScoped<IContexto>((provider) => {
+builder.Services.AddScoped<ContextoNH>((provider) => {
     var factory = provider.GetService<ISessionFactory>() ?? 
                   throw new ArgumentNullException(nameof(ISessionFactory));
     
     return new ContextoNH(factory.OpenSession());
 });
 
-builder.Services.AddScoped<IInscricoes, InscricoesNH>();
-builder.Services.AddScoped<IPessoas, PessoasNH>();
-builder.Services.AddScoped<IEventos, EventosNH>();
-builder.Services.AddScoped<IPrecosInscricao, PrecosInscricaoNH>();
-builder.Services.AddScoped<IPersistencia<Pedido>, PersistenciaNH<Pedido>>();
+builder.Services.AddScoped<IContexto>(p => p.GetRequiredService<ContextoNH>());
+builder.Services.AddScoped<IInscricoes>(p => p.GetRequiredService<ContextoNH>().Inscricoes);
+builder.Services.AddScoped<IPessoas>(p => p.GetRequiredService<ContextoNH>().Pessoas);
+builder.Services.AddScoped<IEventos>(p => p.GetRequiredService<ContextoNH>().Eventos);
+builder.Services.AddScoped<IPrecosInscricao>(p => p.GetRequiredService<ContextoNH>().PrecosInscricao);
+builder.Services.AddScoped<IPersistencia<Pedido>>(p => p.GetRequiredService<ContextoNH>().Pedidos);
 builder.Services.AddScoped<AppEventoListagem>();
 builder.Services.AddScoped<AppInscricaoInclusaoOnLine>();
 builder.Services.AddScoped<AppInscricaoAtualizacao>();
@@ -92,6 +93,8 @@ using (var scope = app.Services.CreateScope())
     var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
     runner.MigrateUp();
 }
+
+app.Services.GetService<ISessionFactory>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

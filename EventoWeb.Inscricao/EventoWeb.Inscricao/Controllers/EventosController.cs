@@ -8,7 +8,7 @@ namespace EventoWeb.Inscricao.Controllers;
 [Route("api/[controller]")]
 public class EventosController(AppEventoListagem appListagem) : ControllerBase
 {
-    [HttpGet]
+    [HttpGet("listar")]
     public IList<DTOEvento> Listar()
     {
         return appListagem.Listar(EnumFiltroListagemEventos.EmPeriodoInscricao);

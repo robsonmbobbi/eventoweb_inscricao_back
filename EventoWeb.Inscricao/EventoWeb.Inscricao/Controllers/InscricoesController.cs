@@ -10,21 +10,21 @@ public class InscricoesController(
     AppInscricaoAtualizacao appAtualizacao,
     AppInscricaoObtencao appObtencao) : ControllerBase
 {
-    [HttpPost]
+    [HttpPost("incluir")]
     public DTOInscricao Incluir([FromBody] DTOInscricao dto)
     {
         appInclusao.DtoInscricao = dto;
         return appInclusao.Incluir();
     }
 
-    [HttpPut("{id:int}")]
-    public void Atualizar(int id, [FromBody] DTOInscricao dto)
+    [HttpPut("atualizar")]
+    public void Atualizar([FromBody] DTOInscricao dto)
     {
         appAtualizacao.DtoInscricao = dto;
         appAtualizacao.Atualizar();
     }
 
-    [HttpGet("{id:int}")]
+    [HttpGet("obter/{id:int}")]
     public DTOInscricao? Obter(int id)
     {
         return appObtencao.Obter(id);

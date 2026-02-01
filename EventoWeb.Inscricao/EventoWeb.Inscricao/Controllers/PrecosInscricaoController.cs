@@ -8,7 +8,7 @@ namespace EventoWeb.Inscricao.Controllers;
 public class PrecosInscricaoController(
     AppPrecoInscricaoObtencaoIdade appObtencaoIdade) : ControllerBase
 {
-    [HttpGet("{idEvento:int}/{dataNascimento:datetime:yyyy-MM-dd}")]
+    [HttpGet("evento/{idEvento:int}/obter/nascimento/{dataNascimento:datetime}")]
     public DTOPrecoInscricao? ObterPorIdade(int idEvento, DateTime dataNascimento)
     {
         return appObtencaoIdade.Obter(idEvento, dataNascimento);

@@ -7,7 +7,7 @@ namespace EventoWeb.Inscricao.Controllers;
 [Route("api/[controller]")]
 public class PedidosController(AppPedidoInclusao appInclusao) : ControllerBase
 {
-    [HttpPost]
+    [HttpPost("incluir")]
     public void Incluir([FromBody] DTOPedido dto)
     {
         appInclusao.Incluir(dto);
