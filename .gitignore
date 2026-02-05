@@ -5,3 +5,6 @@
 /.idea/
 /EventoWeb.Inscricao.Testes/obj/
 EventoWeb.Inscricao.Testes/bin/
+/EventoWeb.Inscricao/.vs/EventoWeb.Inscricao
+/EventoWeb.Inscricao/EventoWeb.Inscricao/bin/Debug/net9.0
+*.user
