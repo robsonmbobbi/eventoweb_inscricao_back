@@ -8,8 +8,8 @@ namespace EventoWeb.Inscricao.Controllers;
 public class PedidosController(AppPedidoInclusao appInclusao) : ControllerBase
 {
     [HttpPost("incluir")]
-    public void Incluir([FromBody] DTOPedido dto)
+    public DTOResultadoPedido Incluir([FromBody] DTOPedido dto)
     {
-        appInclusao.Incluir(dto);
+        return appInclusao.Incluir(dto);
     }
 }

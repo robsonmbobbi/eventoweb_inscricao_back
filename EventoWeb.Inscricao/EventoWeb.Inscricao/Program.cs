@@ -3,9 +3,12 @@ using EventoWeb.Comum.Aplicacao.Inscricoes;
 using EventoWeb.Comum.Aplicacao.Pedidos;
 using EventoWeb.Comum.Aplicacao.Precos;
 using EventoWeb.Comum.Negocio.Entidades;
+using EventoWeb.Comum.Negocio.Entidades.Financeiro;
+using EventoWeb.Comum.Negocio.Entidades.IntegracaoFinanceira;
 using EventoWeb.Comum.Negocio.Repositorios;
-using EventoWeb.Comum.Persistencia.MigracoesBD;
+using EventoWeb.Comum.Negocio.Servicos;
 using EventoWeb.Comum.Persistencia.Mapeamentos;
+using EventoWeb.Comum.Persistencia.MigracoesBD;
 using EventoWeb.Comum.Persistencia.Repositorios;
 using EventoWeb.Inscricao;
 using EventoWeb.Inscricao.Logging;
@@ -64,6 +67,15 @@ builder.Services.AddSingleton<ISessionFactory>(_ =>
     return configuration.BuildSessionFactory();
 });
 
+builder.Services.AddSingleton<IDictionary<EnumIntegracaoExterna, IIntegracaoExterna>, Dictionary<EnumIntegracaoExterna, IIntegracaoExterna>>(provider =>
+{
+    var dict = new Dictionary<EnumIntegracaoExterna, IIntegracaoExterna>();
+
+    // incluir as integrações externas aqui, por exemplo:
+
+    return dict;
+});
+
 builder.Services.AddScoped<ContextoNH>((provider) => {
     var factory = provider.GetService<ISessionFactory>() ?? 
                   throw new ArgumentNullException(nameof(ISessionFactory));
@@ -77,6 +89,9 @@ builder.Services.AddScoped<IPessoas>(p => p.GetRequiredService<ContextoNH>().Pes
 builder.Services.AddScoped<IEventos>(p => p.GetRequiredService<ContextoNH>().Eventos);
 builder.Services.AddScoped<IPrecosInscricao>(p => p.GetRequiredService<ContextoNH>().PrecosInscricao);
 builder.Services.AddScoped<IPersistencia<Pedido>>(p => p.GetRequiredService<ContextoNH>().Pedidos);
+builder.Services.AddScoped<IPersistencia<FormaPagamento>>(p => p.GetRequiredService<ContextoNH>().FormasPagamento);
+builder.Services.AddScoped<IIntegracaoFinanceiraPorFormasPagamentos>(p => p.GetRequiredService<ContextoNH>().IntegracoesFinanceirasPorFormasPagamento);
+builder.Services.AddScoped<IPersistencia<RegistroIntegracaoFinanceira>>(p => p.GetRequiredService<ContextoNH>().RegistrosIntegracoesFinanceiras);
 builder.Services.AddScoped<AppEventoListagem>();
 builder.Services.AddScoped<AppInscricaoInclusaoOnLine>();
 builder.Services.AddScoped<AppInscricaoAtualizacao>();
