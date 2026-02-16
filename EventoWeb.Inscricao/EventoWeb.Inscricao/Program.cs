@@ -23,6 +23,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
+//builder.Services.AddLettuceEncrypt();
 
 var databaseSection = builder.Configuration.GetSection("Database");
 var connectionString = databaseSection.GetValue<string>("ConnectionString")
@@ -92,6 +93,8 @@ builder.Services.AddScoped<IPersistencia<Pedido>>(p => p.GetRequiredService<Cont
 builder.Services.AddScoped<IPersistencia<FormaPagamento>>(p => p.GetRequiredService<ContextoNH>().FormasPagamento);
 builder.Services.AddScoped<IIntegracaoFinanceiraPorFormasPagamentos>(p => p.GetRequiredService<ContextoNH>().IntegracoesFinanceirasPorFormasPagamento);
 builder.Services.AddScoped<IPersistencia<RegistroIntegracaoFinanceira>>(p => p.GetRequiredService<ContextoNH>().RegistrosIntegracoesFinanceiras);
+builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().ModelosMensagemNotificacao);
+builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().MensagensNotificacao);
 builder.Services.AddScoped<AppEventoListagem>();
 builder.Services.AddScoped<AppInscricaoInclusaoOnLine>();
 builder.Services.AddScoped<AppInscricaoAtualizacao>();

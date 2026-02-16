@@ -751,3 +751,80 @@
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 11:18:33.451 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 11:18:33.470 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-16 11:18:34.147 [Information] LettuceEncrypt.Internal.AcmeClient - Using certificate authority https://acme-v02.api.letsencrypt.org/directory
+2026-02-16 11:18:34.228 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-16 11:18:34.233 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-16 11:18:34.237 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-16 11:18:34.381 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-16 11:18:34.861 [Information] LettuceEncrypt.Internal.AcmeCertificateFactory - Creating new account for rumomedicinaufsj@gmail.com
+2026-02-16 11:18:35.494 [Information] LettuceEncrypt.Internal.AcmeStates.ServerStartupState - Using account 0
+2026-02-16 11:18:35.496 [Information] LettuceEncrypt.Internal.AcmeStates.ServerStartupState - Creating certificate for 5cremg.amedivinopolis.com.br
+2026-02-16 11:18:36.251 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-16 11:18:36.254 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-16 11:18:36.279 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-16 11:18:36.315 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-16 11:18:36.319 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-16 11:18:39.232 [Error] LettuceEncrypt.Internal.AcmeCertificateFactory - Failed to validate ownership of domainName '5cremg.amedivinopolis.com.br'. Reason: urn:ietf:params:acme:error:dns: DNS problem: NXDOMAIN looking up A for 5cremg.amedivinopolis.com.br - check that a DNS record exists for this domain; DNS problem: NXDOMAIN looking up AAAA for 5cremg.amedivinopolis.com.br - check that a DNS record exists for this domain, Code = BadRequest
+2026-02-16 11:18:39.584 [Error] LettuceEncrypt.Internal.AcmeStates.ServerStartupState - Failed to automatically create a certificate for 5cremg.amedivinopolis.com.br System.InvalidOperationException: Failed to validate ownership of domainName '5cremg.amedivinopolis.com.br'
+   at LettuceEncrypt.Internal.AcmeCertificateFactory.ValidateDomainOwnershipAsync(IAuthorizationContext authorizationContext, CancellationToken cancellationToken)
+   at LettuceEncrypt.Internal.AcmeCertificateFactory.CreateCertificateAsync(CancellationToken cancellationToken)
+   at LettuceEncrypt.Internal.AcmeStates.BeginCertificateCreationState.MoveNextAsync(CancellationToken cancellationToken)
+2026-02-16 11:18:39.589 [Error] LettuceEncrypt.Internal.AcmeCertificateLoader - ACME state machine encountered unhandled error System.InvalidOperationException: Failed to validate ownership of domainName '5cremg.amedivinopolis.com.br'
+   at LettuceEncrypt.Internal.AcmeCertificateFactory.ValidateDomainOwnershipAsync(IAuthorizationContext authorizationContext, CancellationToken cancellationToken)
+   at LettuceEncrypt.Internal.AcmeCertificateFactory.CreateCertificateAsync(CancellationToken cancellationToken)
+   at LettuceEncrypt.Internal.AcmeStates.BeginCertificateCreationState.MoveNextAsync(CancellationToken cancellationToken)
+   at LettuceEncrypt.Internal.AcmeCertificateLoader.ExecuteAsync(CancellationToken stoppingToken)
+2026-02-16 11:18:55.354 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-02-16 11:19:05.986 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 11:19:06.004 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-16 11:19:06.608 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-16 11:19:06.612 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-16 11:19:06.615 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-16 11:19:06.753 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-16 11:19:06.758 [Information] LettuceEncrypt.Internal.AcmeClient - Using certificate authority https://acme-v02.api.letsencrypt.org/directory
+2026-02-16 11:19:08.133 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-16 11:19:08.171 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-16 11:19:08.205 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-16 11:19:08.233 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-16 11:19:08.237 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-16 11:19:09.642 [Information] LettuceEncrypt.Internal.AcmeCertificateFactory - Using existing account for (null)
+2026-02-16 11:19:09.817 [Information] LettuceEncrypt.Internal.AcmeStates.ServerStartupState - Using account 0
+2026-02-16 11:19:09.819 [Information] LettuceEncrypt.Internal.AcmeStates.ServerStartupState - Creating certificate for amedivinopolis.com.br
+2026-02-16 11:19:13.602 [Error] LettuceEncrypt.Internal.AcmeCertificateFactory - Failed to validate ownership of domainName 'amedivinopolis.com.br'. Reason: urn:ietf:params:acme:error:unauthorized: Cannot negotiate ALPN protocol "acme-tls/1" for tls-alpn-01 challenge, Code = Forbidden
+2026-02-16 11:19:13.948 [Error] LettuceEncrypt.Internal.AcmeStates.ServerStartupState - Failed to automatically create a certificate for amedivinopolis.com.br System.InvalidOperationException: Failed to validate ownership of domainName 'amedivinopolis.com.br'
+   at LettuceEncrypt.Internal.AcmeCertificateFactory.ValidateDomainOwnershipAsync(IAuthorizationContext authorizationContext, CancellationToken cancellationToken)
+   at LettuceEncrypt.Internal.AcmeCertificateFactory.CreateCertificateAsync(CancellationToken cancellationToken)
+   at LettuceEncrypt.Internal.AcmeStates.BeginCertificateCreationState.MoveNextAsync(CancellationToken cancellationToken)
+2026-02-16 11:19:13.953 [Error] LettuceEncrypt.Internal.AcmeCertificateLoader - ACME state machine encountered unhandled error System.InvalidOperationException: Failed to validate ownership of domainName 'amedivinopolis.com.br'
+   at LettuceEncrypt.Internal.AcmeCertificateFactory.ValidateDomainOwnershipAsync(IAuthorizationContext authorizationContext, CancellationToken cancellationToken)
+   at LettuceEncrypt.Internal.AcmeCertificateFactory.CreateCertificateAsync(CancellationToken cancellationToken)
+   at LettuceEncrypt.Internal.AcmeStates.BeginCertificateCreationState.MoveNextAsync(CancellationToken cancellationToken)
+   at LettuceEncrypt.Internal.AcmeCertificateLoader.ExecuteAsync(CancellationToken stoppingToken)
+2026-02-16 11:21:23.199 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 11:21:23.235 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-16 11:21:23.773 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-16 11:21:23.778 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-16 11:21:23.780 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-16 11:21:23.842 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-16 11:21:23.867 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-16 11:21:23.921 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-16 11:21:23.923 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-16 11:21:23.950 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-16 11:21:23.952 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-16 11:21:23.954 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-16 11:21:40.229 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-02-16 11:21:46.979 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 11:21:47.011 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-16 11:21:47.576 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-16 11:21:47.580 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-16 11:21:47.582 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-16 11:21:47.646 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-16 11:21:47.672 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-16 11:21:47.710 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-16 11:21:47.712 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-16 11:21:47.786 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-16 11:21:47.789 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-16 11:21:47.791 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-16 11:22:11.479 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
