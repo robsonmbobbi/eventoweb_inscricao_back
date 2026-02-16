@@ -7,6 +7,7 @@ using EventoWeb.Comum.Negocio.Entidades.Financeiro;
 using EventoWeb.Comum.Negocio.Entidades.IntegracaoFinanceira;
 using EventoWeb.Comum.Negocio.Repositorios;
 using EventoWeb.Comum.Negocio.Servicos;
+using EventoWeb.Comum.Persistencia.Integracoes.Asaas;
 using EventoWeb.Comum.Persistencia.Mapeamentos;
 using EventoWeb.Comum.Persistencia.MigracoesBD;
 using EventoWeb.Comum.Persistencia.Repositorios;
@@ -70,10 +71,11 @@ builder.Services.AddSingleton<ISessionFactory>(_ =>
 
 builder.Services.AddSingleton<IDictionary<EnumIntegracaoExterna, IIntegracaoExterna>, Dictionary<EnumIntegracaoExterna, IIntegracaoExterna>>(provider =>
 {
-    var dict = new Dictionary<EnumIntegracaoExterna, IIntegracaoExterna>();
-
-    // incluir as integrações externas aqui, por exemplo:
-
+    var dict = new Dictionary<EnumIntegracaoExterna, IIntegracaoExterna>() 
+    { 
+        { EnumIntegracaoExterna.Asaas, new IntegracaoFinanceiraAsaas() } 
+    };
+    
     return dict;
 });
 

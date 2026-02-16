@@ -828,3 +828,1037 @@
 2026-02-16 11:21:47.789 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
 2026-02-16 11:21:47.791 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
 2026-02-16 11:22:11.479 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-02-16 15:19:42.437 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 15:19:42.488 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-16 15:19:43.200 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-16 15:19:43.211 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-16 15:19:43.214 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-16 15:19:43.311 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-16 15:19:43.342 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-16 15:19:43.372 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-16 15:19:43.375 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-16 15:19:43.410 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-16 15:19:43.412 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-16 15:19:43.414 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-16 15:49:46.320 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 15:49:46.338 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-16 15:49:46.369 [Information] FluentMigrator.Runner.MigrationRunner - VersionMigration migrating
+2026-02-16 15:49:46.373 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 15:49:46.386 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable VersionInfo
+2026-02-16 15:49:46.394 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `VersionInfo` (`Version` BIGINT NOT NULL) ENGINE = INNODB;
+2026-02-16 15:49:46.418 [Information] FluentMigrator.Runner.MigrationRunner - => 0,021291s
+2026-02-16 15:49:46.420 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Committing Transaction
+2026-02-16 15:49:46.424 [Information] FluentMigrator.Runner.MigrationRunner - VersionMigration migrated
+2026-02-16 15:49:46.426 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0352106s
+2026-02-16 15:49:46.430 [Information] FluentMigrator.Runner.MigrationRunner - VersionUniqueMigration migrating
+2026-02-16 15:49:46.432 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 15:49:46.439 [Information] FluentMigrator.Runner.MigrationRunner - CreateIndex VersionInfo (Version)
+2026-02-16 15:49:46.441 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE UNIQUE INDEX `UC_Version` ON `VersionInfo` (`Version` ASC);
+2026-02-16 15:49:46.477 [Information] FluentMigrator.Runner.MigrationRunner - => 0,034312s
+2026-02-16 15:49:46.479 [Information] FluentMigrator.Runner.MigrationRunner - AlterTable VersionInfo
+2026-02-16 15:49:46.504 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0004213s
+2026-02-16 15:49:46.507 [Information] FluentMigrator.Runner.MigrationRunner - CreateColumn VersionInfo AppliedOn DateTime
+2026-02-16 15:49:46.509 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `VersionInfo` ADD COLUMN `AppliedOn` DATETIME;
+2026-02-16 15:49:46.528 [Information] FluentMigrator.Runner.MigrationRunner - => 0,019621s
+2026-02-16 15:49:46.530 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Committing Transaction
+2026-02-16 15:49:46.532 [Information] FluentMigrator.Runner.MigrationRunner - VersionUniqueMigration migrated
+2026-02-16 15:49:46.534 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0231573s
+2026-02-16 15:49:46.538 [Information] FluentMigrator.Runner.MigrationRunner - VersionDescriptionMigration migrating
+2026-02-16 15:49:46.540 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 15:49:46.542 [Information] FluentMigrator.Runner.MigrationRunner - AlterTable VersionInfo
+2026-02-16 15:49:46.545 [Information] FluentMigrator.Runner.MigrationRunner - => 5,26E-05s
+2026-02-16 15:49:46.546 [Information] FluentMigrator.Runner.MigrationRunner - CreateColumn VersionInfo Description String
+2026-02-16 15:49:46.549 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `VersionInfo` ADD COLUMN `Description` NVARCHAR(1024);
+2026-02-16 15:49:46.567 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0183523s
+2026-02-16 15:49:46.571 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Committing Transaction
+2026-02-16 15:49:46.576 [Information] FluentMigrator.Runner.MigrationRunner - VersionDescriptionMigration migrated
+2026-02-16 15:49:46.578 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0268782s
+2026-02-16 15:49:46.613 [Information] FluentMigrator.Runner.MigrationRunner - 1: Migracao01 migrating
+2026-02-16 15:49:46.618 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 15:49:46.635 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable arquivos_binarios
+2026-02-16 15:49:46.639 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `arquivos_binarios` (`id` INTEGER NOT NULL AUTO_INCREMENT, `arquivo` LONGBLOB NOT NULL, `tipo_arquivo` SMALLINT NOT NULL, CONSTRAINT `PK_arquivos_binarios` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:46.653 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0158729s
+2026-02-16 15:49:46.655 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable eventos
+2026-02-16 15:49:46.658 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `eventos` (`id` INTEGER NOT NULL AUTO_INCREMENT, `nome` NVARCHAR(200) NOT NULL, `data_inicio_insc` DATETIME NOT NULL, `data_fim_insc` DATETIME NOT NULL, `data_inicio_evento` DATETIME NOT NULL, `data_fim_evento` DATETIME NOT NULL, `data_registro` DATETIME NOT NULL, `id_arquivo_logotipo` INTEGER, `idade_minima_insc_adulto` INTEGER NOT NULL, `regulamento` LONGTEXT CHARACTER SET utf8, CONSTRAINT `PK_eventos` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:46.680 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0221208s
+2026-02-16 15:49:46.708 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_evento_arqbin eventos(id_arquivo_logotipo) arquivos_binarios(id)
+2026-02-16 15:49:46.712 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `eventos` ADD CONSTRAINT `fk_evento_arqbin` FOREIGN KEY (`id_arquivo_logotipo`) REFERENCES `arquivos_binarios` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:46.764 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0530158s
+2026-02-16 15:49:46.788 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable pessoas
+2026-02-16 15:49:46.795 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `pessoas` (`id` INTEGER NOT NULL AUTO_INCREMENT, `cpf` NVARCHAR(11), `nome` NVARCHAR(200) NOT NULL, `celular` NVARCHAR(15) NOT NULL, `email` NVARCHAR(100) NOT NULL, `alergia_alimentos` NVARCHAR(100), `data_nascimento` DATE, `eh_diabetico` TINYINT(1) NOT NULL, `eh_vegetariano` TINYINT(1) NOT NULL, `sexo` SMALLINT, `usa_adocante_diar` TINYINT(1), CONSTRAINT `PK_pessoas` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:46.831 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0383353s
+2026-02-16 15:49:46.834 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable inscricoes
+2026-02-16 15:49:46.839 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `inscricoes` (`id` INTEGER NOT NULL AUTO_INCREMENT, `tipo_inscricao` NVARCHAR(30) NOT NULL, `confirmado` TINYINT(1) NOT NULL, `data_recebimento` DATE NOT NULL, `dormira` TINYINT(1) NOT NULL, `id_evento` INTEGER NOT NULL, `nome_cracha` NVARCHAR(150), `id_pessoa` INTEGER NOT NULL, `situacao` SMALLINT NOT NULL, `observacoes` LONGTEXT CHARACTER SET utf8, `id_insc_responsavel_1` INTEGER, `id_insc_responsavel_2` INTEGER, `tipo` SMALLINT, `instituicoes_espiritas_freq` NVARCHAR(300), CONSTRAINT `PK_inscricoes` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:46.853 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0163828s
+2026-02-16 15:49:46.856 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_insc_evento inscricoes(id_evento) eventos(id)
+2026-02-16 15:49:46.858 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `inscricoes` ADD CONSTRAINT `fk_insc_evento` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:46.891 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0331303s
+2026-02-16 15:49:46.893 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_insc_pessoa inscricoes(id_pessoa) pessoas(id)
+2026-02-16 15:49:46.896 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `inscricoes` ADD CONSTRAINT `fk_insc_pessoa` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoas` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:46.929 [Information] FluentMigrator.Runner.MigrationRunner - => 0,033565s
+2026-02-16 15:49:46.931 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_insc_inf_1 inscricoes(id_insc_responsavel_1) inscricoes(id)
+2026-02-16 15:49:46.933 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `inscricoes` ADD CONSTRAINT `fk_insc_inf_1` FOREIGN KEY (`id_insc_responsavel_1`) REFERENCES `inscricoes` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:46.967 [Information] FluentMigrator.Runner.MigrationRunner - => 0,033585s
+2026-02-16 15:49:46.989 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_insc_inf_2 inscricoes(id_insc_responsavel_2) inscricoes(id)
+2026-02-16 15:49:46.994 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `inscricoes` ADD CONSTRAINT `fk_insc_inf_2` FOREIGN KEY (`id_insc_responsavel_2`) REFERENCES `inscricoes` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:47.047 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0552166s
+2026-02-16 15:49:47.049 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable formas_pagamento
+2026-02-16 15:49:47.052 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `formas_pagamento` (`id` INTEGER NOT NULL AUTO_INCREMENT, `nome` NVARCHAR(200) NOT NULL, `nr_parcelas_minima` INTEGER NOT NULL, `nr_parcelas_maxima` INTEGER NOT NULL, CONSTRAINT `PK_formas_pagamento` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:47.067 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0163172s
+2026-02-16 15:49:47.098 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable contas_bancarias
+2026-02-16 15:49:47.104 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `contas_bancarias` (`id` INTEGER NOT NULL AUTO_INCREMENT, `nome` NVARCHAR(250) NOT NULL, CONSTRAINT `PK_contas_bancarias` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:47.123 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0211622s
+2026-02-16 15:49:47.125 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable transacoes
+2026-02-16 15:49:47.129 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `transacoes` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_conta_bancaria` INTEGER NOT NULL, `data_hora` DATETIME NOT NULL, `descricao` NVARCHAR(200), `tipo` SMALLINT NOT NULL, `valor` DECIMAL(18,2) NOT NULL, CONSTRAINT `PK_transacoes` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:47.148 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0208292s
+2026-02-16 15:49:47.150 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_trans_cb transacoes(id_conta_bancaria) contas_bancarias(id)
+2026-02-16 15:49:47.152 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `transacoes` ADD CONSTRAINT `fk_trans_cb` FOREIGN KEY (`id_conta_bancaria`) REFERENCES `contas_bancarias` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:47.180 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0279689s
+2026-02-16 15:49:47.182 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable contas
+2026-02-16 15:49:47.183 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `contas` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_pessoa` INTEGER NOT NULL, `valor` DECIMAL(18,2) NOT NULL, `liquidado` TINYINT(1) NOT NULL, `data_criado` DATETIME NOT NULL, `descricao` NVARCHAR(200), `data_vencimento` DATETIME NOT NULL, `tipo` SMALLINT NOT NULL, `valor_total_transacoes` DECIMAL(18,2) NOT NULL, `valor_total_desconto` DECIMAL(18,2) NOT NULL, `valor_total_juros` DECIMAL(18,2) NOT NULL, `valor_total_multa` DECIMAL(18,2) NOT NULL, CONSTRAINT `PK_contas` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:47.197 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0141533s
+2026-02-16 15:49:47.199 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_ct_pe contas(id_pessoa) pessoas(id)
+2026-02-16 15:49:47.200 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `contas` ADD CONSTRAINT `fk_ct_pe` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoas` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:47.238 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0372556s
+2026-02-16 15:49:47.267 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable transacoes_conta
+2026-02-16 15:49:47.273 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `transacoes_conta` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_conta` INTEGER NOT NULL, `id_transacao` INTEGER NOT NULL, `data` DATETIME NOT NULL, `valor_transacao` DECIMAL(18,2) NOT NULL, `valor_multa` DECIMAL(18,2) NOT NULL, `valor_juros` DECIMAL(18,2) NOT NULL, `valor_desconto` DECIMAL(18,2) NOT NULL, CONSTRAINT `PK_transacoes_conta` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:47.298 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0265651s
+2026-02-16 15:49:47.302 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_tc_ct transacoes_conta(id_conta) contas(id)
+2026-02-16 15:49:47.305 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `transacoes_conta` ADD CONSTRAINT `fk_tc_ct` FOREIGN KEY (`id_conta`) REFERENCES `contas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2026-02-16 15:49:47.360 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0542487s
+2026-02-16 15:49:47.364 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_tc_tr transacoes_conta(id_transacao) transacoes(id)
+2026-02-16 15:49:47.369 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `transacoes_conta` ADD CONSTRAINT `fk_tc_tr` FOREIGN KEY (`id_transacao`) REFERENCES `transacoes` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:47.413 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0453985s
+2026-02-16 15:49:47.415 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable pedidos
+2026-02-16 15:49:47.417 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `pedidos` (`id` INTEGER NOT NULL AUTO_INCREMENT, `valor` DECIMAL(18,2) NOT NULL, `tipo` SMALLINT NOT NULL, `id_forma_pagamento` INTEGER, `id_conta` INTEGER NOT NULL, `id_pessoa_pagadora` INTEGER NOT NULL, CONSTRAINT `PK_pedidos` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:47.432 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0149024s
+2026-02-16 15:49:47.434 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_pedido_forma_pag pedidos(id_forma_pagamento) formas_pagamento(id)
+2026-02-16 15:49:47.436 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `pedidos` ADD CONSTRAINT `fk_pedido_forma_pag` FOREIGN KEY (`id_forma_pagamento`) REFERENCES `formas_pagamento` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:47.484 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0475092s
+2026-02-16 15:49:47.487 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_pedido_conta pedidos(id_conta) contas(id)
+2026-02-16 15:49:47.490 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `pedidos` ADD CONSTRAINT `fk_pedido_conta` FOREIGN KEY (`id_conta`) REFERENCES `contas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2026-02-16 15:49:47.536 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0466422s
+2026-02-16 15:49:47.538 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_pedido_pessoa_pag pedidos(id_pessoa_pagadora) pessoas(id)
+2026-02-16 15:49:47.540 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `pedidos` ADD CONSTRAINT `fk_pedido_pessoa_pag` FOREIGN KEY (`id_pessoa_pagadora`) REFERENCES `pessoas` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:47.580 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0390694s
+2026-02-16 15:49:47.612 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable pedidos_inscricoes
+2026-02-16 15:49:47.618 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `pedidos_inscricoes` (`id_pedido` INTEGER NOT NULL, `id_inscricao` INTEGER NOT NULL) ENGINE = INNODB;
+2026-02-16 15:49:47.637 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0211901s
+2026-02-16 15:49:47.639 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_pedinsc_pedido pedidos_inscricoes(id_pedido) pedidos(id)
+2026-02-16 15:49:47.643 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `pedidos_inscricoes` ADD CONSTRAINT `fk_pedinsc_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:47.687 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0443076s
+2026-02-16 15:49:47.689 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_pedinsc_insc pedidos_inscricoes(id_inscricao) inscricoes(id)
+2026-02-16 15:49:47.691 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `pedidos_inscricoes` ADD CONSTRAINT `fk_pedinsc_insc` FOREIGN KEY (`id_inscricao`) REFERENCES `inscricoes` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:47.723 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0323974s
+2026-02-16 15:49:47.725 [Information] FluentMigrator.Runner.MigrationRunner - CreateConstraint pk_pedidos_inscricoes
+2026-02-16 15:49:47.728 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `pedidos_inscricoes` ADD CONSTRAINT `pk_pedidos_inscricoes` PRIMARY KEY (`id_pedido`, `id_inscricao`);
+2026-02-16 15:49:47.744 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0175295s
+2026-02-16 15:49:47.746 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable integradores_financeiros
+2026-02-16 15:49:47.748 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `integradores_financeiros` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_conta_bancaria` INTEGER NOT NULL, `token_acesso` NVARCHAR(1000) NOT NULL, `integracao_externa` SMALLINT NOT NULL, CONSTRAINT `PK_integradores_financeiros` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:47.761 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0122397s
+2026-02-16 15:49:47.763 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_if_cb integradores_financeiros(id_conta_bancaria) contas_bancarias(id)
+2026-02-16 15:49:47.767 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `integradores_financeiros` ADD CONSTRAINT `fk_if_cb` FOREIGN KEY (`id_conta_bancaria`) REFERENCES `contas_bancarias` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:47.842 [Information] FluentMigrator.Runner.MigrationRunner - => 0,046386s
+2026-02-16 15:49:47.848 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable registros_integracao_financeira
+2026-02-16 15:49:47.855 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `registros_integracao_financeira` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_integrador_financeiro` INTEGER NOT NULL, `id_conta` INTEGER NOT NULL, `valor` DECIMAL(18,2) NOT NULL, `data_registro` DATETIME NOT NULL, `tipo` SMALLINT NOT NULL, `situacao` SMALLINT NOT NULL, `numero_parcelas` INTEGER, `data_concluido_abortado` DATETIME, `id_no_integrador` NVARCHAR(1000), `id_transacao` INTEGER, CONSTRAINT `PK_registros_integracao_financeira` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:47.885 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0320428s
+2026-02-16 15:49:47.918 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_rif_if registros_integracao_financeira(id_integrador_financeiro) integradores_financeiros(id)
+2026-02-16 15:49:47.920 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `registros_integracao_financeira` ADD CONSTRAINT `fk_rif_if` FOREIGN KEY (`id_integrador_financeiro`) REFERENCES `integradores_financeiros` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:47.954 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0332348s
+2026-02-16 15:49:47.956 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_rif_cb registros_integracao_financeira(id_conta) contas_bancarias(id)
+2026-02-16 15:49:47.958 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `registros_integracao_financeira` ADD CONSTRAINT `fk_rif_cb` FOREIGN KEY (`id_conta`) REFERENCES `contas_bancarias` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:47.996 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0381972s
+2026-02-16 15:49:47.997 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_rif_tra registros_integracao_financeira(id_transacao) transacoes(id)
+2026-02-16 15:49:47.999 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `registros_integracao_financeira` ADD CONSTRAINT `fk_rif_tra` FOREIGN KEY (`id_transacao`) REFERENCES `transacoes` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:48.039 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0393532s
+2026-02-16 15:49:48.041 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable registro_integracao_financeira_logs
+2026-02-16 15:49:48.042 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `registro_integracao_financeira_logs` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_registro_integracao` INTEGER NOT NULL, `tipo` SMALLINT NOT NULL, `data` DATETIME NOT NULL, `mensagem` NVARCHAR(500), `dados` NVARCHAR(4000), CONSTRAINT `PK_registro_integracao_financeira_logs` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:48.056 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0137979s
+2026-02-16 15:49:48.058 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_rifl_rif registro_integracao_financeira_logs(id_registro_integracao) registros_integracao_financeira(id)
+2026-02-16 15:49:48.060 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `registro_integracao_financeira_logs` ADD CONSTRAINT `fk_rifl_rif` FOREIGN KEY (`id_registro_integracao`) REFERENCES `registros_integracao_financeira` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2026-02-16 15:49:48.098 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0375637s
+2026-02-16 15:49:48.101 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable integracao_financeira_formas_pags
+2026-02-16 15:49:48.104 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `integracao_financeira_formas_pags` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_integrador_financeiro` INTEGER NOT NULL, `id_forma_pagamento` INTEGER NOT NULL, `tipo_integracao` SMALLINT NOT NULL, CONSTRAINT `PK_integracao_financeira_formas_pags` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:48.123 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0200052s
+2026-02-16 15:49:48.150 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_iffp_if integracao_financeira_formas_pags(id_integrador_financeiro) integradores_financeiros(id)
+2026-02-16 15:49:48.155 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `integracao_financeira_formas_pags` ADD CONSTRAINT `fk_iffp_if` FOREIGN KEY (`id_integrador_financeiro`) REFERENCES `integradores_financeiros` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2026-02-16 15:49:48.194 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0401369s
+2026-02-16 15:49:48.196 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_iffp_fp integracao_financeira_formas_pags(id_forma_pagamento) formas_pagamento(id)
+2026-02-16 15:49:48.235 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `integracao_financeira_formas_pags` ADD CONSTRAINT `fk_iffp_fp` FOREIGN KEY (`id_forma_pagamento`) REFERENCES `formas_pagamento` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:48.279 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0451288s
+2026-02-16 15:49:48.304 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable precos_inscricao
+2026-02-16 15:49:48.307 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `precos_inscricao` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_evento` INTEGER NOT NULL, `idade_max` INTEGER NOT NULL, CONSTRAINT `PK_precos_inscricao` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:48.325 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0194631s
+2026-02-16 15:49:48.328 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_preco_evento precos_inscricao(id_evento) eventos(id)
+2026-02-16 15:49:48.331 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `precos_inscricao` ADD CONSTRAINT `fk_preco_evento` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:48.371 [Information] FluentMigrator.Runner.MigrationRunner - => 0,040989s
+2026-02-16 15:49:48.373 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable preco_inscricao_valores
+2026-02-16 15:49:48.375 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `preco_inscricao_valores` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_preco_inscricao` INTEGER NOT NULL, `id_forma_pagamento` INTEGER NOT NULL, `valor` DECIMAL(18,2) NOT NULL, CONSTRAINT `PK_preco_inscricao_valores` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:48.390 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0152158s
+2026-02-16 15:49:48.392 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_piv_pi preco_inscricao_valores(id_preco_inscricao) precos_inscricao(id)
+2026-02-16 15:49:48.394 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `preco_inscricao_valores` ADD CONSTRAINT `fk_piv_pi` FOREIGN KEY (`id_preco_inscricao`) REFERENCES `precos_inscricao` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2026-02-16 15:49:48.423 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0287076s
+2026-02-16 15:49:48.425 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_piv_forma preco_inscricao_valores(id_forma_pagamento) formas_pagamento(id)
+2026-02-16 15:49:48.427 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `preco_inscricao_valores` ADD CONSTRAINT `fk_piv_forma` FOREIGN KEY (`id_forma_pagamento`) REFERENCES `formas_pagamento` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:48.471 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0441597s
+2026-02-16 15:49:48.473 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable modelos_mensagem_notificacao
+2026-02-16 15:49:48.476 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `modelos_mensagem_notificacao` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_evento` INTEGER NOT NULL, `meio` SMALLINT NOT NULL, `tipo` SMALLINT NOT NULL, `nome` NVARCHAR(600) NOT NULL, `assunto` NVARCHAR(600), `mensagem` LONGTEXT CHARACTER SET utf8 NOT NULL, `ativo` TINYINT(1) NOT NULL, CONSTRAINT `PK_modelos_mensagem_notificacao` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:48.495 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0190503s
+2026-02-16 15:49:48.496 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_mmn_ev modelos_mensagem_notificacao(id_evento) eventos(id)
+2026-02-16 15:49:48.498 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `modelos_mensagem_notificacao` ADD CONSTRAINT `fk_mmn_ev` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2026-02-16 15:49:48.566 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0355525s
+2026-02-16 15:49:48.569 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable mensagens_notificacao
+2026-02-16 15:49:48.571 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `mensagens_notificacao` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_modelo` INTEGER NOT NULL, `destinatario` NVARCHAR(500) NOT NULL, `variaveis_json` LONGTEXT CHARACTER SET utf8, `situacao` SMALLINT NOT NULL, `data_situacao` DATETIME, `erro` LONGTEXT CHARACTER SET utf8, CONSTRAINT `PK_mensagens_notificacao` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:49:48.587 [Information] FluentMigrator.Runner.MigrationRunner - => 0,015613s
+2026-02-16 15:49:48.589 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_mn_mmn mensagens_notificacao(id_modelo) modelos_mensagem_notificacao(id)
+2026-02-16 15:49:48.591 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `mensagens_notificacao` ADD CONSTRAINT `fk_mn_mmn` FOREIGN KEY (`id_modelo`) REFERENCES `modelos_mensagem_notificacao` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:49:48.624 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0333569s
+2026-02-16 15:49:48.629 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - INSERT INTO `VersionInfo` (`Version`, `AppliedOn`, `Description`) VALUES (1, (UTC_TIMESTAMP), 'Migracao01');
+2026-02-16 15:49:48.634 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Committing Transaction
+2026-02-16 15:49:48.636 [Information] FluentMigrator.Runner.MigrationRunner - 1: Migracao01 migrated
+2026-02-16 15:49:48.639 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0452175s
+2026-02-16 15:49:49.070 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-16 15:49:49.074 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-16 15:49:49.076 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-16 15:49:49.154 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-16 15:49:49.992 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-16 15:49:50.023 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-16 15:49:50.026 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-16 15:49:50.067 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-16 15:49:50.071 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-16 15:49:50.073 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-16 15:52:06.811 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 15:52:06.831 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-16 15:52:06.859 [Information] FluentMigrator.Runner.MigrationRunner - VersionMigration migrating
+2026-02-16 15:52:06.862 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 15:52:06.874 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable VersionInfo
+2026-02-16 15:52:06.879 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `VersionInfo` (`Version` BIGINT NOT NULL) ENGINE = INNODB;
+2026-02-16 15:52:06.900 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0168505s
+2026-02-16 15:52:06.901 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Committing Transaction
+2026-02-16 15:52:06.904 [Information] FluentMigrator.Runner.MigrationRunner - VersionMigration migrated
+2026-02-16 15:52:06.906 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0286475s
+2026-02-16 15:52:06.910 [Information] FluentMigrator.Runner.MigrationRunner - VersionUniqueMigration migrating
+2026-02-16 15:52:06.912 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 15:52:06.919 [Information] FluentMigrator.Runner.MigrationRunner - CreateIndex VersionInfo (Version)
+2026-02-16 15:52:06.922 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE UNIQUE INDEX `UC_Version` ON `VersionInfo` (`Version` ASC);
+2026-02-16 15:52:06.942 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0216403s
+2026-02-16 15:52:06.970 [Information] FluentMigrator.Runner.MigrationRunner - AlterTable VersionInfo
+2026-02-16 15:52:06.977 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0010546s
+2026-02-16 15:52:06.982 [Information] FluentMigrator.Runner.MigrationRunner - CreateColumn VersionInfo AppliedOn DateTime
+2026-02-16 15:52:06.985 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `VersionInfo` ADD COLUMN `AppliedOn` DATETIME;
+2026-02-16 15:52:07.002 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0169816s
+2026-02-16 15:52:07.004 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Committing Transaction
+2026-02-16 15:52:07.006 [Information] FluentMigrator.Runner.MigrationRunner - VersionUniqueMigration migrated
+2026-02-16 15:52:07.008 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0219936s
+2026-02-16 15:52:07.011 [Information] FluentMigrator.Runner.MigrationRunner - VersionDescriptionMigration migrating
+2026-02-16 15:52:07.013 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 15:52:07.017 [Information] FluentMigrator.Runner.MigrationRunner - AlterTable VersionInfo
+2026-02-16 15:52:07.020 [Information] FluentMigrator.Runner.MigrationRunner - => 9,15E-05s
+2026-02-16 15:52:07.021 [Information] FluentMigrator.Runner.MigrationRunner - CreateColumn VersionInfo Description String
+2026-02-16 15:52:07.023 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `VersionInfo` ADD COLUMN `Description` NVARCHAR(1024);
+2026-02-16 15:52:07.079 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0212422s
+2026-02-16 15:52:07.081 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Committing Transaction
+2026-02-16 15:52:07.083 [Information] FluentMigrator.Runner.MigrationRunner - VersionDescriptionMigration migrated
+2026-02-16 15:52:07.085 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0604046s
+2026-02-16 15:52:07.091 [Information] FluentMigrator.Runner.MigrationRunner - 1: Migracao01 migrating
+2026-02-16 15:52:07.093 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 15:52:07.108 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable arquivos_binarios
+2026-02-16 15:52:07.112 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `arquivos_binarios` (`id` INTEGER NOT NULL AUTO_INCREMENT, `arquivo` LONGBLOB NOT NULL, `tipo_arquivo` SMALLINT NOT NULL, CONSTRAINT `PK_arquivos_binarios` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:07.128 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0174637s
+2026-02-16 15:52:07.131 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable eventos
+2026-02-16 15:52:07.134 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `eventos` (`id` INTEGER NOT NULL AUTO_INCREMENT, `nome` NVARCHAR(200) NOT NULL, `data_inicio_insc` DATETIME NOT NULL, `data_fim_insc` DATETIME NOT NULL, `data_inicio_evento` DATETIME NOT NULL, `data_fim_evento` DATETIME NOT NULL, `data_registro` DATETIME NOT NULL, `id_arquivo_logotipo` INTEGER, `idade_minima_insc_adulto` INTEGER NOT NULL, `regulamento` LONGTEXT CHARACTER SET utf8, CONSTRAINT `PK_eventos` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:07.156 [Information] FluentMigrator.Runner.MigrationRunner - => 0,022069s
+2026-02-16 15:52:07.159 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_evento_arqbin eventos(id_arquivo_logotipo) arquivos_binarios(id)
+2026-02-16 15:52:07.163 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `eventos` ADD CONSTRAINT `fk_evento_arqbin` FOREIGN KEY (`id_arquivo_logotipo`) REFERENCES `arquivos_binarios` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:07.209 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0481972s
+2026-02-16 15:52:07.233 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable pessoas
+2026-02-16 15:52:07.236 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `pessoas` (`id` INTEGER NOT NULL AUTO_INCREMENT, `cpf` NVARCHAR(11), `nome` NVARCHAR(200) NOT NULL, `celular` NVARCHAR(15) NOT NULL, `email` NVARCHAR(100) NOT NULL, `alergia_alimentos` NVARCHAR(100), `data_nascimento` DATE, `eh_diabetico` TINYINT(1) NOT NULL, `eh_vegetariano` TINYINT(1) NOT NULL, `sexo` SMALLINT, `usa_adocante_diar` TINYINT(1), CONSTRAINT `PK_pessoas` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:07.274 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0383054s
+2026-02-16 15:52:07.276 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable inscricoes
+2026-02-16 15:52:07.278 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `inscricoes` (`id` INTEGER NOT NULL AUTO_INCREMENT, `tipo_inscricao` NVARCHAR(30) NOT NULL, `confirmado` TINYINT(1) NOT NULL, `data_recebimento` DATE NOT NULL, `dormira` TINYINT(1) NOT NULL, `id_evento` INTEGER NOT NULL, `nome_cracha` NVARCHAR(150), `id_pessoa` INTEGER NOT NULL, `situacao` SMALLINT NOT NULL, `observacoes` LONGTEXT CHARACTER SET utf8, `id_insc_responsavel_1` INTEGER, `id_insc_responsavel_2` INTEGER, `tipo` SMALLINT, `instituicoes_espiritas_freq` NVARCHAR(300), CONSTRAINT `PK_inscricoes` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:07.294 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0159524s
+2026-02-16 15:52:07.326 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_insc_evento inscricoes(id_evento) eventos(id)
+2026-02-16 15:52:07.333 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `inscricoes` ADD CONSTRAINT `fk_insc_evento` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:07.372 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0428495s
+2026-02-16 15:52:07.374 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_insc_pessoa inscricoes(id_pessoa) pessoas(id)
+2026-02-16 15:52:07.376 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `inscricoes` ADD CONSTRAINT `fk_insc_pessoa` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoas` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:07.423 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0467538s
+2026-02-16 15:52:07.450 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_insc_inf_1 inscricoes(id_insc_responsavel_1) inscricoes(id)
+2026-02-16 15:52:07.455 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `inscricoes` ADD CONSTRAINT `fk_insc_inf_1` FOREIGN KEY (`id_insc_responsavel_1`) REFERENCES `inscricoes` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:07.493 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0400981s
+2026-02-16 15:52:07.495 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_insc_inf_2 inscricoes(id_insc_responsavel_2) inscricoes(id)
+2026-02-16 15:52:07.529 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `inscricoes` ADD CONSTRAINT `fk_insc_inf_2` FOREIGN KEY (`id_insc_responsavel_2`) REFERENCES `inscricoes` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:07.578 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0810407s
+2026-02-16 15:52:07.581 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable formas_pagamento
+2026-02-16 15:52:07.583 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `formas_pagamento` (`id` INTEGER NOT NULL AUTO_INCREMENT, `nome` NVARCHAR(200) NOT NULL, `nr_parcelas_minima` INTEGER NOT NULL, `nr_parcelas_maxima` INTEGER NOT NULL, CONSTRAINT `PK_formas_pagamento` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:07.600 [Information] FluentMigrator.Runner.MigrationRunner - => 0,016163s
+2026-02-16 15:52:07.621 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable contas_bancarias
+2026-02-16 15:52:07.625 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `contas_bancarias` (`id` INTEGER NOT NULL AUTO_INCREMENT, `nome` NVARCHAR(250) NOT NULL, CONSTRAINT `PK_contas_bancarias` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:07.643 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0189793s
+2026-02-16 15:52:07.646 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable transacoes
+2026-02-16 15:52:07.650 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `transacoes` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_conta_bancaria` INTEGER NOT NULL, `data_hora` DATETIME NOT NULL, `descricao` NVARCHAR(200), `tipo` SMALLINT NOT NULL, `valor` DECIMAL(18,2) NOT NULL, CONSTRAINT `PK_transacoes` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:07.665 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0160473s
+2026-02-16 15:52:07.667 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_trans_cb transacoes(id_conta_bancaria) contas_bancarias(id)
+2026-02-16 15:52:07.670 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `transacoes` ADD CONSTRAINT `fk_trans_cb` FOREIGN KEY (`id_conta_bancaria`) REFERENCES `contas_bancarias` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:07.700 [Information] FluentMigrator.Runner.MigrationRunner - => 0,030141s
+2026-02-16 15:52:07.702 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable contas
+2026-02-16 15:52:07.704 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `contas` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_pessoa` INTEGER NOT NULL, `valor` DECIMAL(18,2) NOT NULL, `liquidado` TINYINT(1) NOT NULL, `data_criado` DATETIME NOT NULL, `descricao` NVARCHAR(200), `data_vencimento` DATETIME NOT NULL, `tipo` SMALLINT NOT NULL, `valor_total_transacoes` DECIMAL(18,2) NOT NULL, `valor_total_desconto` DECIMAL(18,2) NOT NULL, `valor_total_juros` DECIMAL(18,2) NOT NULL, `valor_total_multa` DECIMAL(18,2) NOT NULL, CONSTRAINT `PK_contas` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:07.721 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0165634s
+2026-02-16 15:52:07.723 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_ct_pe contas(id_pessoa) pessoas(id)
+2026-02-16 15:52:07.726 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `contas` ADD CONSTRAINT `fk_ct_pe` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoas` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:07.771 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0454371s
+2026-02-16 15:52:07.773 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable transacoes_conta
+2026-02-16 15:52:07.776 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `transacoes_conta` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_conta` INTEGER NOT NULL, `id_transacao` INTEGER NOT NULL, `data` DATETIME NOT NULL, `valor_transacao` DECIMAL(18,2) NOT NULL, `valor_multa` DECIMAL(18,2) NOT NULL, `valor_juros` DECIMAL(18,2) NOT NULL, `valor_desconto` DECIMAL(18,2) NOT NULL, CONSTRAINT `PK_transacoes_conta` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:07.796 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0202319s
+2026-02-16 15:52:07.822 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_tc_ct transacoes_conta(id_conta) contas(id)
+2026-02-16 15:52:07.826 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `transacoes_conta` ADD CONSTRAINT `fk_tc_ct` FOREIGN KEY (`id_conta`) REFERENCES `contas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2026-02-16 15:52:07.875 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0490188s
+2026-02-16 15:52:07.878 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_tc_tr transacoes_conta(id_transacao) transacoes(id)
+2026-02-16 15:52:07.882 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `transacoes_conta` ADD CONSTRAINT `fk_tc_tr` FOREIGN KEY (`id_transacao`) REFERENCES `transacoes` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:07.950 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0689665s
+2026-02-16 15:52:07.952 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable pedidos
+2026-02-16 15:52:07.954 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `pedidos` (`id` INTEGER NOT NULL AUTO_INCREMENT, `valor` DECIMAL(18,2) NOT NULL, `tipo` SMALLINT NOT NULL, `id_forma_pagamento` INTEGER, `id_conta` INTEGER NOT NULL, `id_pessoa_pagadora` INTEGER NOT NULL, CONSTRAINT `PK_pedidos` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:07.977 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0218834s
+2026-02-16 15:52:07.980 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_pedido_forma_pag pedidos(id_forma_pagamento) formas_pagamento(id)
+2026-02-16 15:52:07.984 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `pedidos` ADD CONSTRAINT `fk_pedido_forma_pag` FOREIGN KEY (`id_forma_pagamento`) REFERENCES `formas_pagamento` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:08.041 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0577558s
+2026-02-16 15:52:08.043 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_pedido_conta pedidos(id_conta) contas(id)
+2026-02-16 15:52:08.046 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `pedidos` ADD CONSTRAINT `fk_pedido_conta` FOREIGN KEY (`id_conta`) REFERENCES `contas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2026-02-16 15:52:08.088 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0418783s
+2026-02-16 15:52:08.090 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_pedido_pessoa_pag pedidos(id_pessoa_pagadora) pessoas(id)
+2026-02-16 15:52:08.092 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `pedidos` ADD CONSTRAINT `fk_pedido_pessoa_pag` FOREIGN KEY (`id_pessoa_pagadora`) REFERENCES `pessoas` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:08.141 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0479407s
+2026-02-16 15:52:08.143 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable pedidos_inscricoes
+2026-02-16 15:52:08.146 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `pedidos_inscricoes` (`id_pedido` INTEGER NOT NULL, `id_inscricao` INTEGER NOT NULL) ENGINE = INNODB;
+2026-02-16 15:52:08.162 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0165587s
+2026-02-16 15:52:08.195 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_pedinsc_pedido pedidos_inscricoes(id_pedido) pedidos(id)
+2026-02-16 15:52:08.198 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `pedidos_inscricoes` ADD CONSTRAINT `fk_pedinsc_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:08.242 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0442895s
+2026-02-16 15:52:08.244 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_pedinsc_insc pedidos_inscricoes(id_inscricao) inscricoes(id)
+2026-02-16 15:52:08.248 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `pedidos_inscricoes` ADD CONSTRAINT `fk_pedinsc_insc` FOREIGN KEY (`id_inscricao`) REFERENCES `inscricoes` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:08.290 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0431527s
+2026-02-16 15:52:08.292 [Information] FluentMigrator.Runner.MigrationRunner - CreateConstraint pk_pedidos_inscricoes
+2026-02-16 15:52:08.295 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `pedidos_inscricoes` ADD CONSTRAINT `pk_pedidos_inscricoes` PRIMARY KEY (`id_pedido`, `id_inscricao`);
+2026-02-16 15:52:08.322 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0270194s
+2026-02-16 15:52:08.344 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable integradores_financeiros
+2026-02-16 15:52:08.347 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `integradores_financeiros` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_conta_bancaria` INTEGER NOT NULL, `token_acesso` NVARCHAR(1000) NOT NULL, `integracao_externa` SMALLINT NOT NULL, CONSTRAINT `PK_integradores_financeiros` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:08.368 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0208798s
+2026-02-16 15:52:08.370 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_if_cb integradores_financeiros(id_conta_bancaria) contas_bancarias(id)
+2026-02-16 15:52:08.373 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `integradores_financeiros` ADD CONSTRAINT `fk_if_cb` FOREIGN KEY (`id_conta_bancaria`) REFERENCES `contas_bancarias` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:08.401 [Information] FluentMigrator.Runner.MigrationRunner - => 0,028861s
+2026-02-16 15:52:08.403 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable registros_integracao_financeira
+2026-02-16 15:52:08.405 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `registros_integracao_financeira` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_integrador_financeiro` INTEGER NOT NULL, `id_conta` INTEGER NOT NULL, `valor` DECIMAL(18,2) NOT NULL, `data_registro` DATETIME NOT NULL, `tipo` SMALLINT NOT NULL, `situacao` SMALLINT NOT NULL, `numero_parcelas` INTEGER, `data_concluido_abortado` DATETIME, `id_no_integrador` NVARCHAR(1000), `id_transacao` INTEGER, CONSTRAINT `PK_registros_integracao_financeira` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:08.420 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0149141s
+2026-02-16 15:52:08.422 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_rif_if registros_integracao_financeira(id_integrador_financeiro) integradores_financeiros(id)
+2026-02-16 15:52:08.424 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `registros_integracao_financeira` ADD CONSTRAINT `fk_rif_if` FOREIGN KEY (`id_integrador_financeiro`) REFERENCES `integradores_financeiros` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:08.463 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0383206s
+2026-02-16 15:52:08.466 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_rif_cb registros_integracao_financeira(id_conta) contas_bancarias(id)
+2026-02-16 15:52:08.469 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `registros_integracao_financeira` ADD CONSTRAINT `fk_rif_cb` FOREIGN KEY (`id_conta`) REFERENCES `contas_bancarias` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:08.503 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0346413s
+2026-02-16 15:52:08.505 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_rif_tra registros_integracao_financeira(id_transacao) transacoes(id)
+2026-02-16 15:52:08.531 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `registros_integracao_financeira` ADD CONSTRAINT `fk_rif_tra` FOREIGN KEY (`id_transacao`) REFERENCES `transacoes` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:08.573 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0651299s
+2026-02-16 15:52:08.575 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable registro_integracao_financeira_logs
+2026-02-16 15:52:08.577 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `registro_integracao_financeira_logs` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_registro_integracao` INTEGER NOT NULL, `tipo` SMALLINT NOT NULL, `data` DATETIME NOT NULL, `mensagem` NVARCHAR(500), `dados` NVARCHAR(4000), CONSTRAINT `PK_registro_integracao_financeira_logs` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:08.593 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0167546s
+2026-02-16 15:52:08.623 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_rifl_rif registro_integracao_financeira_logs(id_registro_integracao) registros_integracao_financeira(id)
+2026-02-16 15:52:08.627 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `registro_integracao_financeira_logs` ADD CONSTRAINT `fk_rifl_rif` FOREIGN KEY (`id_registro_integracao`) REFERENCES `registros_integracao_financeira` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2026-02-16 15:52:08.664 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0380975s
+2026-02-16 15:52:08.666 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable integracao_financeira_formas_pags
+2026-02-16 15:52:08.668 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `integracao_financeira_formas_pags` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_integrador_financeiro` INTEGER NOT NULL, `id_forma_pagamento` INTEGER NOT NULL, `tipo_integracao` SMALLINT NOT NULL, CONSTRAINT `PK_integracao_financeira_formas_pags` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:08.689 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0198585s
+2026-02-16 15:52:08.691 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_iffp_if integracao_financeira_formas_pags(id_integrador_financeiro) integradores_financeiros(id)
+2026-02-16 15:52:08.695 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `integracao_financeira_formas_pags` ADD CONSTRAINT `fk_iffp_if` FOREIGN KEY (`id_integrador_financeiro`) REFERENCES `integradores_financeiros` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2026-02-16 15:52:08.750 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0556152s
+2026-02-16 15:52:08.752 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_iffp_fp integracao_financeira_formas_pags(id_forma_pagamento) formas_pagamento(id)
+2026-02-16 15:52:08.754 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `integracao_financeira_formas_pags` ADD CONSTRAINT `fk_iffp_fp` FOREIGN KEY (`id_forma_pagamento`) REFERENCES `formas_pagamento` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:08.785 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0313857s
+2026-02-16 15:52:08.787 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable precos_inscricao
+2026-02-16 15:52:08.789 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `precos_inscricao` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_evento` INTEGER NOT NULL, `idade_max` INTEGER NOT NULL, CONSTRAINT `PK_precos_inscricao` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:08.804 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0146822s
+2026-02-16 15:52:08.806 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_preco_evento precos_inscricao(id_evento) eventos(id)
+2026-02-16 15:52:08.809 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `precos_inscricao` ADD CONSTRAINT `fk_preco_evento` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:08.869 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0254263s
+2026-02-16 15:52:08.886 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable preco_inscricao_valores
+2026-02-16 15:52:08.890 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `preco_inscricao_valores` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_preco_inscricao` INTEGER NOT NULL, `id_forma_pagamento` INTEGER NOT NULL, `valor` DECIMAL(18,2) NOT NULL, CONSTRAINT `PK_preco_inscricao_valores` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:08.915 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0252823s
+2026-02-16 15:52:08.919 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_piv_pi preco_inscricao_valores(id_preco_inscricao) precos_inscricao(id)
+2026-02-16 15:52:08.946 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `preco_inscricao_valores` ADD CONSTRAINT `fk_piv_pi` FOREIGN KEY (`id_preco_inscricao`) REFERENCES `precos_inscricao` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2026-02-16 15:52:08.980 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0576046s
+2026-02-16 15:52:08.982 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_piv_forma preco_inscricao_valores(id_forma_pagamento) formas_pagamento(id)
+2026-02-16 15:52:08.984 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `preco_inscricao_valores` ADD CONSTRAINT `fk_piv_forma` FOREIGN KEY (`id_forma_pagamento`) REFERENCES `formas_pagamento` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:09.011 [Information] FluentMigrator.Runner.MigrationRunner - => 0,026519s
+2026-02-16 15:52:09.013 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable modelos_mensagem_notificacao
+2026-02-16 15:52:09.015 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `modelos_mensagem_notificacao` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_evento` INTEGER NOT NULL, `meio` SMALLINT NOT NULL, `tipo` SMALLINT NOT NULL, `nome` NVARCHAR(200) NOT NULL, `assunto` NVARCHAR(200), `mensagem` LONGTEXT CHARACTER SET utf8 NOT NULL, `ativo` TINYINT(1) NOT NULL, CONSTRAINT `PK_modelos_mensagem_notificacao` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:09.036 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0209825s
+2026-02-16 15:52:09.039 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_mmn_ev modelos_mensagem_notificacao(id_evento) eventos(id)
+2026-02-16 15:52:09.042 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `modelos_mensagem_notificacao` ADD CONSTRAINT `fk_mmn_ev` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+2026-02-16 15:52:09.082 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0406926s
+2026-02-16 15:52:09.084 [Information] FluentMigrator.Runner.MigrationRunner - CreateTable mensagens_notificacao
+2026-02-16 15:52:09.087 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - CREATE TABLE `mensagens_notificacao` (`id` INTEGER NOT NULL AUTO_INCREMENT, `id_modelo` INTEGER NOT NULL, `destinatario` NVARCHAR(500) NOT NULL, `variaveis_json` LONGTEXT CHARACTER SET utf8, `situacao` SMALLINT NOT NULL, `data_situacao` DATETIME, `erro` LONGTEXT CHARACTER SET utf8, CONSTRAINT `PK_mensagens_notificacao` PRIMARY KEY (`id`)) ENGINE = INNODB;
+2026-02-16 15:52:09.100 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0141632s
+2026-02-16 15:52:09.102 [Information] FluentMigrator.Runner.MigrationRunner - CreateForeignKey fk_mn_mmn mensagens_notificacao(id_modelo) modelos_mensagem_notificacao(id)
+2026-02-16 15:52:09.104 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - ALTER TABLE `mensagens_notificacao` ADD CONSTRAINT `fk_mn_mmn` FOREIGN KEY (`id_modelo`) REFERENCES `modelos_mensagem_notificacao` (`id`) ON UPDATE CASCADE;
+2026-02-16 15:52:09.137 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0324116s
+2026-02-16 15:52:09.142 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - INSERT INTO `VersionInfo` (`Version`, `AppliedOn`, `Description`) VALUES (1, (UTC_TIMESTAMP), 'Migracao01');
+2026-02-16 15:52:09.147 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Committing Transaction
+2026-02-16 15:52:09.152 [Information] FluentMigrator.Runner.MigrationRunner - 1: Migracao01 migrated
+2026-02-16 15:52:09.155 [Information] FluentMigrator.Runner.MigrationRunner - => 0,0469885s
+2026-02-16 15:52:09.555 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-16 15:52:09.559 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-16 15:52:09.561 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-16 15:52:09.624 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-16 15:52:09.649 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-16 15:52:09.734 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-16 15:52:09.736 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-16 15:52:09.763 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-16 15:52:09.766 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-16 15:52:09.768 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-16 15:58:52.098 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.Exception: Fora do período de inscrição online!
+   at EventoWeb.Comum.Negocio.Servicos.ValidacaoInscricaoPeriodoInscricaoOnLine.Validar(Inscricao entidade) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\ValidacaoInscricaoPeriodoInscricaoOnLine.cs:line 14
+   at EventoWeb.Comum.Negocio.Servicos.SrvInclusaoInscricao.Incluir(Inscricao inscricao) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\SrvInclusaoInscricao.cs:line 15
+   at EventoWeb.Comum.Aplicacao.Inscricoes.AppInscricaoInclusaoOnLine.<Incluir>b__7_0() in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Inscricoes\AppInscricaoInclusaoOnLine.cs:line 33
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\AppBase.cs:line 20
+   at EventoWeb.Comum.Aplicacao.Inscricoes.AppInscricaoInclusaoOnLine.Incluir() in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Inscricoes\AppInscricaoInclusaoOnLine.cs:line 22
+   at EventoWeb.Inscricao.Controllers.InscricoesController.Incluir(DTOInscricao dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\InscricoesController.cs:line 17
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 16:00:00.370 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.NullReferenceException: Object reference not set to an instance of an object.
+   at EventoWeb.Comum.Negocio.Servicos.Notificacoes.Inscricoes.SrvNotificacaoInscricaoRecebida.Notificar(IEnumerable`1 inscricoes) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\Notificacoes\Inscricoes\SrvNotificacaoInscricaoRecebida.cs:line 17
+   at EventoWeb.Comum.Negocio.Servicos.SrvInclusaoPedido.Incluir(Pedido pedido, DadosCartaoCredito dadosCartaoCredito) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\SrvInclusaoPedido.cs:line 60
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0() in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 77
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\AppBase.cs:line 20
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 47
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method8(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 16:01:41.359 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 16:01:41.377 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-16 16:01:41.847 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-16 16:01:41.883 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-16 16:01:41.886 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-16 16:01:41.956 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-16 16:01:41.981 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-16 16:01:42.040 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-16 16:01:42.042 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-16 16:01:42.101 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-16 16:01:42.107 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-16 16:01:42.134 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-16 16:04:48.711 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.Exception: Forma de pagamento deve ser informada para pedidos do tipo débito.
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0() in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 58
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\AppBase.cs:line 20
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 51
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 16:05:17.181 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.Exception: Forma de pagamento deve ser informada para pedidos do tipo débito.
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0() in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 58
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\AppBase.cs:line 20
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 51
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 16:05:46.526 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.Exception: Somente são aceitas inscrições que estejam no limbo
+   at EventoWeb.Comum.Negocio.Entidades.Pedido..ctor(Pessoa pagador, IEnumerable`1 inscricoes, ValorMonetario valor, EnumTipoPedido tipo, FormaPagamento forma) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Entidades\Pedido.cs:line 18
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0() in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 63
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\AppBase.cs:line 20
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 51
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 16:07:02.007 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.Collections.Generic.KeyNotFoundException: The given key 'Asaas' was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at EventoWeb.Comum.Negocio.Servicos.SrvIntegracaoFinanceira.ProcessarIntegracao(Pedido pedido, DadosCartaoCredito dadosCartaoCredito) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\SrvIntegracaoFinanceira.cs:line 32
+   at EventoWeb.Comum.Negocio.Servicos.SrvInclusaoPedido.Incluir(Pedido pedido, DadosCartaoCredito dadosCartaoCredito) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\SrvInclusaoPedido.cs:line 57
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0() in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 81
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\AppBase.cs:line 20
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 51
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 16:08:48.512 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.Collections.Generic.KeyNotFoundException: The given key 'Asaas' was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at EventoWeb.Comum.Negocio.Servicos.SrvIntegracaoFinanceira.ProcessarIntegracao(Pedido pedido, DadosCartaoCredito dadosCartaoCredito) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\SrvIntegracaoFinanceira.cs:line 32
+   at EventoWeb.Comum.Negocio.Servicos.SrvInclusaoPedido.Incluir(Pedido pedido, DadosCartaoCredito dadosCartaoCredito) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\SrvInclusaoPedido.cs:line 57
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0() in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 81
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\AppBase.cs:line 20
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 51
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 16:09:50.067 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 16:09:50.088 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-16 16:09:50.635 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-16 16:09:50.639 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-16 16:09:50.642 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-16 16:09:50.703 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-16 16:09:50.729 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-16 16:09:50.757 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-16 16:09:50.760 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-16 16:09:50.796 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-16 16:09:50.798 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-16 16:09:50.801 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-16 16:11:32.915 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. NHibernate.Exceptions.GenericADOException: could not insert: [EventoWeb.Comum.Negocio.Entidades.IntegracaoFinanceira.RegistroIntegracaoFinanceira][SQL: INSERT INTO registros_integracao_financeira (id_integrador_financeiro, id_conta, valor, data_registro, tipo, situacao, numero_parcelas, data_concluido_abortado, id_no_integrador, id_transacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);SELECT LAST_INSERT_ID()]
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`eventoweb4`.`registros_integracao_financeira`, CONSTRAINT `fk_rif_cb` FOREIGN KEY (`id_conta`) REFERENCES `contas_bancarias` (`id`) ON UPDATE CASCADE)
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(DbCommand cmd)
+   at NHibernate.Id.IdentityGenerator.InsertSelectDelegate.ExecuteAndExtract(DbCommand insert, ISessionImplementor session)
+   at NHibernate.Id.Insert.AbstractReturningDelegate.PerformInsert(SqlCommandInfo insertSQL, ISessionImplementor session, IBinder binder)
+   --- End of inner exception stack trace ---
+   at NHibernate.Id.Insert.AbstractReturningDelegate.PerformInsert(SqlCommandInfo insertSQL, ISessionImplementor session, IBinder binder)
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object[] fields, Boolean[] notNull, SqlCommandInfo sql, Object obj, ISessionImplementor session)
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object[] fields, Object obj, ISessionImplementor session)
+   at NHibernate.Action.EntityIdentityInsertAction.Execute()
+   at NHibernate.Engine.ActionQueue.InnerExecute(IExecutable executable)
+   at NHibernate.Engine.ActionQueue.Execute(IExecutable executable)
+   at NHibernate.Event.Default.AbstractSaveEventListener.PerformSaveOrReplicate(Object entity, EntityKey key, IEntityPersister persister, Boolean useIdentityColumn, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   at NHibernate.Event.Default.AbstractSaveEventListener.PerformSave(Object entity, Object id, IEntityPersister persister, Boolean useIdentityColumn, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   at NHibernate.Event.Default.AbstractSaveEventListener.SaveWithGeneratedId(Object entity, String entityName, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   at NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.SaveWithGeneratedOrRequestedId(SaveOrUpdateEvent event)
+   at NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.EntityIsTransient(SaveOrUpdateEvent event)
+   at NHibernate.Event.Default.DefaultSaveEventListener.PerformSaveOrUpdate(SaveOrUpdateEvent event)
+   at NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.OnSaveOrUpdate(SaveOrUpdateEvent event)
+   at NHibernate.Impl.SessionImpl.FireSave(SaveOrUpdateEvent event)
+   at NHibernate.Impl.SessionImpl.Save(Object obj)
+   at EventoWeb.Comum.Persistencia.Repositorios.PersistenciaNH`1.Incluir(T objeto) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Persistencia\Repositorios\PersistenciaNH.cs:line 12
+   at EventoWeb.Comum.Negocio.Servicos.SrvIntegracaoFinanceira.ProcessarIntegracao(Pedido pedido, DadosCartaoCredito dadosCartaoCredito) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\SrvIntegracaoFinanceira.cs:line 60
+   at EventoWeb.Comum.Negocio.Servicos.SrvInclusaoPedido.Incluir(Pedido pedido, DadosCartaoCredito dadosCartaoCredito) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\SrvInclusaoPedido.cs:line 57
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0() in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 81
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\AppBase.cs:line 20
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 51
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 16:13:31.227 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. NHibernate.Exceptions.GenericADOException: could not insert: [EventoWeb.Comum.Negocio.Entidades.IntegracaoFinanceira.RegistroIntegracaoFinanceira][SQL: INSERT INTO registros_integracao_financeira (id_integrador_financeiro, id_conta, valor, data_registro, tipo, situacao, numero_parcelas, data_concluido_abortado, id_no_integrador, id_transacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);SELECT LAST_INSERT_ID()]
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`eventoweb4`.`registros_integracao_financeira`, CONSTRAINT `fk_rif_cb` FOREIGN KEY (`id_conta`) REFERENCES `contas_bancarias` (`id`) ON UPDATE CASCADE)
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(DbCommand cmd)
+   at NHibernate.Id.IdentityGenerator.InsertSelectDelegate.ExecuteAndExtract(DbCommand insert, ISessionImplementor session)
+   at NHibernate.Id.Insert.AbstractReturningDelegate.PerformInsert(SqlCommandInfo insertSQL, ISessionImplementor session, IBinder binder)
+   --- End of inner exception stack trace ---
+   at NHibernate.Id.Insert.AbstractReturningDelegate.PerformInsert(SqlCommandInfo insertSQL, ISessionImplementor session, IBinder binder)
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object[] fields, Boolean[] notNull, SqlCommandInfo sql, Object obj, ISessionImplementor session)
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object[] fields, Object obj, ISessionImplementor session)
+   at NHibernate.Action.EntityIdentityInsertAction.Execute()
+   at NHibernate.Engine.ActionQueue.InnerExecute(IExecutable executable)
+   at NHibernate.Engine.ActionQueue.Execute(IExecutable executable)
+   at NHibernate.Event.Default.AbstractSaveEventListener.PerformSaveOrReplicate(Object entity, EntityKey key, IEntityPersister persister, Boolean useIdentityColumn, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   at NHibernate.Event.Default.AbstractSaveEventListener.PerformSave(Object entity, Object id, IEntityPersister persister, Boolean useIdentityColumn, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   at NHibernate.Event.Default.AbstractSaveEventListener.SaveWithGeneratedId(Object entity, String entityName, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   at NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.SaveWithGeneratedOrRequestedId(SaveOrUpdateEvent event)
+   at NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.EntityIsTransient(SaveOrUpdateEvent event)
+   at NHibernate.Event.Default.DefaultSaveEventListener.PerformSaveOrUpdate(SaveOrUpdateEvent event)
+   at NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.OnSaveOrUpdate(SaveOrUpdateEvent event)
+   at NHibernate.Impl.SessionImpl.FireSave(SaveOrUpdateEvent event)
+   at NHibernate.Impl.SessionImpl.Save(Object obj)
+   at EventoWeb.Comum.Persistencia.Repositorios.PersistenciaNH`1.Incluir(T objeto) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Persistencia\Repositorios\PersistenciaNH.cs:line 12
+   at EventoWeb.Comum.Negocio.Servicos.SrvIntegracaoFinanceira.ProcessarIntegracao(Pedido pedido, DadosCartaoCredito dadosCartaoCredito) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\SrvIntegracaoFinanceira.cs:line 60
+   at EventoWeb.Comum.Negocio.Servicos.SrvInclusaoPedido.Incluir(Pedido pedido, DadosCartaoCredito dadosCartaoCredito) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\SrvInclusaoPedido.cs:line 57
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0() in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 81
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\AppBase.cs:line 20
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 51
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 16:15:17.562 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 16:15:17.581 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-16 16:15:18.040 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-16 16:15:18.045 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-16 16:15:18.047 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-16 16:15:18.114 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-16 16:15:18.141 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-16 16:15:18.222 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-16 16:15:18.225 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-16 16:15:18.252 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-16 16:15:18.254 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-16 16:15:18.256 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-16 16:16:00.068 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. NHibernate.Exceptions.GenericADOException: could not insert: [EventoWeb.Comum.Negocio.Entidades.IntegracaoFinanceira.RegistroIntegracaoFinanceira][SQL: INSERT INTO registros_integracao_financeira (id_integrador_financeiro, id_conta, valor, data_registro, tipo, situacao, numero_parcelas, data_concluido_abortado, id_no_integrador, id_transacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);SELECT LAST_INSERT_ID()]
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`eventoweb4`.`registros_integracao_financeira`, CONSTRAINT `fk_rif_cb` FOREIGN KEY (`id_conta`) REFERENCES `contas_bancarias` (`id`) ON UPDATE CASCADE)
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(DbCommand cmd)
+   at NHibernate.Id.IdentityGenerator.InsertSelectDelegate.ExecuteAndExtract(DbCommand insert, ISessionImplementor session)
+   at NHibernate.Id.Insert.AbstractReturningDelegate.PerformInsert(SqlCommandInfo insertSQL, ISessionImplementor session, IBinder binder)
+   --- End of inner exception stack trace ---
+   at NHibernate.Id.Insert.AbstractReturningDelegate.PerformInsert(SqlCommandInfo insertSQL, ISessionImplementor session, IBinder binder)
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object[] fields, Boolean[] notNull, SqlCommandInfo sql, Object obj, ISessionImplementor session)
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object[] fields, Object obj, ISessionImplementor session)
+   at NHibernate.Action.EntityIdentityInsertAction.Execute()
+   at NHibernate.Engine.ActionQueue.InnerExecute(IExecutable executable)
+   at NHibernate.Engine.ActionQueue.Execute(IExecutable executable)
+   at NHibernate.Event.Default.AbstractSaveEventListener.PerformSaveOrReplicate(Object entity, EntityKey key, IEntityPersister persister, Boolean useIdentityColumn, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   at NHibernate.Event.Default.AbstractSaveEventListener.PerformSave(Object entity, Object id, IEntityPersister persister, Boolean useIdentityColumn, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   at NHibernate.Event.Default.AbstractSaveEventListener.SaveWithGeneratedId(Object entity, String entityName, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   at NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.SaveWithGeneratedOrRequestedId(SaveOrUpdateEvent event)
+   at NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.EntityIsTransient(SaveOrUpdateEvent event)
+   at NHibernate.Event.Default.DefaultSaveEventListener.PerformSaveOrUpdate(SaveOrUpdateEvent event)
+   at NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.OnSaveOrUpdate(SaveOrUpdateEvent event)
+   at NHibernate.Impl.SessionImpl.FireSave(SaveOrUpdateEvent event)
+   at NHibernate.Impl.SessionImpl.Save(Object obj)
+   at EventoWeb.Comum.Persistencia.Repositorios.PersistenciaNH`1.Incluir(T objeto) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Persistencia\Repositorios\PersistenciaNH.cs:line 12
+   at EventoWeb.Comum.Negocio.Servicos.SrvIntegracaoFinanceira.ProcessarIntegracao(Pedido pedido, DadosCartaoCredito dadosCartaoCredito) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\SrvIntegracaoFinanceira.cs:line 60
+   at EventoWeb.Comum.Negocio.Servicos.SrvInclusaoPedido.Incluir(Pedido pedido, DadosCartaoCredito dadosCartaoCredito) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\SrvInclusaoPedido.cs:line 57
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0() in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 81
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\AppBase.cs:line 20
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 51
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 16:19:29.410 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. NHibernate.Exceptions.GenericADOException: could not insert: [EventoWeb.Comum.Negocio.Entidades.IntegracaoFinanceira.RegistroIntegracaoFinanceira][SQL: INSERT INTO registros_integracao_financeira (id_integrador_financeiro, id_conta, valor, data_registro, tipo, situacao, numero_parcelas, data_concluido_abortado, id_no_integrador, id_transacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);SELECT LAST_INSERT_ID()]
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`eventoweb4`.`registros_integracao_financeira`, CONSTRAINT `fk_rif_ct` FOREIGN KEY (`id`) REFERENCES `contas` (`id`) ON UPDATE CASCADE)
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(DbCommand cmd)
+   at NHibernate.Id.IdentityGenerator.InsertSelectDelegate.ExecuteAndExtract(DbCommand insert, ISessionImplementor session)
+   at NHibernate.Id.Insert.AbstractReturningDelegate.PerformInsert(SqlCommandInfo insertSQL, ISessionImplementor session, IBinder binder)
+   --- End of inner exception stack trace ---
+   at NHibernate.Id.Insert.AbstractReturningDelegate.PerformInsert(SqlCommandInfo insertSQL, ISessionImplementor session, IBinder binder)
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object[] fields, Boolean[] notNull, SqlCommandInfo sql, Object obj, ISessionImplementor session)
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object[] fields, Object obj, ISessionImplementor session)
+   at NHibernate.Action.EntityIdentityInsertAction.Execute()
+   at NHibernate.Engine.ActionQueue.InnerExecute(IExecutable executable)
+   at NHibernate.Engine.ActionQueue.Execute(IExecutable executable)
+   at NHibernate.Event.Default.AbstractSaveEventListener.PerformSaveOrReplicate(Object entity, EntityKey key, IEntityPersister persister, Boolean useIdentityColumn, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   at NHibernate.Event.Default.AbstractSaveEventListener.PerformSave(Object entity, Object id, IEntityPersister persister, Boolean useIdentityColumn, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   at NHibernate.Event.Default.AbstractSaveEventListener.SaveWithGeneratedId(Object entity, String entityName, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   at NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.SaveWithGeneratedOrRequestedId(SaveOrUpdateEvent event)
+   at NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.EntityIsTransient(SaveOrUpdateEvent event)
+   at NHibernate.Event.Default.DefaultSaveEventListener.PerformSaveOrUpdate(SaveOrUpdateEvent event)
+   at NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.OnSaveOrUpdate(SaveOrUpdateEvent event)
+   at NHibernate.Impl.SessionImpl.FireSave(SaveOrUpdateEvent event)
+   at NHibernate.Impl.SessionImpl.Save(Object obj)
+   at EventoWeb.Comum.Persistencia.Repositorios.PersistenciaNH`1.Incluir(T objeto)
+   at EventoWeb.Comum.Negocio.Servicos.SrvIntegracaoFinanceira.ProcessarIntegracao(Pedido pedido, DadosCartaoCredito dadosCartaoCredito)
+   at EventoWeb.Comum.Negocio.Servicos.SrvInclusaoPedido.Incluir(Pedido pedido, DadosCartaoCredito dadosCartaoCredito)
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0()
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar)
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido)
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 16:21:51.848 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. NHibernate.Exceptions.GenericADOException: could not insert: [EventoWeb.Comum.Negocio.Entidades.IntegracaoFinanceira.RegistroIntegracaoFinanceira][SQL: INSERT INTO registros_integracao_financeira (id_integrador_financeiro, id_conta, valor, data_registro, tipo, situacao, numero_parcelas, data_concluido_abortado, id_no_integrador, id_transacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);SELECT LAST_INSERT_ID()]
+ ---> MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`eventoweb4`.`registros_integracao_financeira`, CONSTRAINT `fk_rif_ct` FOREIGN KEY (`id`) REFERENCES `contas` (`id`) ON UPDATE CASCADE)
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacketAsync(Boolean execAsync)
+   at MySql.Data.MySqlClient.NativeDriver.GetResultAsync(Int32 affectedRow, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.GetResultAsync(Int32 statementId, Int32 affectedRows, Int64 insertedId, Boolean execAsync)
+   at MySql.Data.MySqlClient.Driver.NextResultAsync(Int32 statementId, Boolean force, Boolean execAsync)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResultAsync(Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, Boolean execAsync, CancellationToken cancellationToken)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at NHibernate.AdoNet.AbstractBatcher.DoExecuteReader(DbCommand cmd)
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(DbCommand cmd)
+   at NHibernate.Id.IdentityGenerator.InsertSelectDelegate.ExecuteAndExtract(DbCommand insert, ISessionImplementor session)
+   at NHibernate.Id.Insert.AbstractReturningDelegate.PerformInsert(SqlCommandInfo insertSQL, ISessionImplementor session, IBinder binder)
+   --- End of inner exception stack trace ---
+   at NHibernate.Id.Insert.AbstractReturningDelegate.PerformInsert(SqlCommandInfo insertSQL, ISessionImplementor session, IBinder binder)
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object[] fields, Boolean[] notNull, SqlCommandInfo sql, Object obj, ISessionImplementor session)
+   at NHibernate.Persister.Entity.AbstractEntityPersister.Insert(Object[] fields, Object obj, ISessionImplementor session)
+   at NHibernate.Action.EntityIdentityInsertAction.Execute()
+   at NHibernate.Engine.ActionQueue.InnerExecute(IExecutable executable)
+   at NHibernate.Engine.ActionQueue.Execute(IExecutable executable)
+   at NHibernate.Event.Default.AbstractSaveEventListener.PerformSaveOrReplicate(Object entity, EntityKey key, IEntityPersister persister, Boolean useIdentityColumn, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   at NHibernate.Event.Default.AbstractSaveEventListener.PerformSave(Object entity, Object id, IEntityPersister persister, Boolean useIdentityColumn, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   at NHibernate.Event.Default.AbstractSaveEventListener.SaveWithGeneratedId(Object entity, String entityName, Object anything, IEventSource source, Boolean requiresImmediateIdAccess)
+   at NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.SaveWithGeneratedOrRequestedId(SaveOrUpdateEvent event)
+   at NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.EntityIsTransient(SaveOrUpdateEvent event)
+   at NHibernate.Event.Default.DefaultSaveEventListener.PerformSaveOrUpdate(SaveOrUpdateEvent event)
+   at NHibernate.Event.Default.DefaultSaveOrUpdateEventListener.OnSaveOrUpdate(SaveOrUpdateEvent event)
+   at NHibernate.Impl.SessionImpl.FireSave(SaveOrUpdateEvent event)
+   at NHibernate.Impl.SessionImpl.Save(Object obj)
+   at EventoWeb.Comum.Persistencia.Repositorios.PersistenciaNH`1.Incluir(T objeto)
+   at EventoWeb.Comum.Negocio.Servicos.SrvIntegracaoFinanceira.ProcessarIntegracao(Pedido pedido, DadosCartaoCredito dadosCartaoCredito)
+   at EventoWeb.Comum.Negocio.Servicos.SrvInclusaoPedido.Incluir(Pedido pedido, DadosCartaoCredito dadosCartaoCredito)
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0()
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar)
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido)
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method84(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 16:30:48.430 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.AggregateException: One or more errors occurred. (Código:invalid_creditCard. Erro: Informe o nome do portador.)
+ ---> System.Exception: Código:invalid_creditCard. Erro: Informe o nome do portador.
+ ---> System.Exception: Código:invalid_creditCard. Erro: Informe o número do seu cartão.
+ ---> System.Exception: Código:invalid_creditCard. Erro: Informe o mês de vencimento do seu cartão.
+ ---> System.Exception: Código:invalid_creditCard. Erro: Informe o ano de vencimento do seu cartão.
+ ---> System.Exception: Código:invalid_creditCard. Erro: Informe o código de segurança do seu cartão.
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   at EventoWeb.Comum.Persistencia.Integracoes.Asaas.IntegracaoFinanceiraAsaas.Enviar(IntegracaoFinanceiraPorFormaPag integrador, Pedido pedido, DadosCartaoCredito dadosCartaoCredito)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at EventoWeb.Comum.Negocio.Servicos.SrvIntegracaoFinanceira.ProcessarIntegracao(Pedido pedido, DadosCartaoCredito dadosCartaoCredito)
+   at EventoWeb.Comum.Negocio.Servicos.SrvInclusaoPedido.Incluir(Pedido pedido, DadosCartaoCredito dadosCartaoCredito)
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0()
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar)
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido)
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method86(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 16:33:43.376 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.AggregateException: One or more errors occurred. (Código:invalid_creditCard. Erro: Informe o nome do titular do cartão.)
+ ---> System.Exception: Código:invalid_creditCard. Erro: Informe o nome do titular do cartão.
+ ---> System.Exception: Código:invalid_creditCard. Erro: Informe o email do titular do cartão.
+ ---> System.Exception: Código:invalid_creditCard. Erro: Informe o CPF ou CNPJ do titular do cartão.
+ ---> System.Exception: Código:invalid_creditCard. Erro: Informe o número de contato com DDD do titular do cartão.
+ ---> System.Exception: Código:invalid_creditCard. Erro: Informe o CEP do titular do cartão.
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   at EventoWeb.Comum.Persistencia.Integracoes.Asaas.IntegracaoFinanceiraAsaas.Enviar(IntegracaoFinanceiraPorFormaPag integrador, Pedido pedido, DadosCartaoCredito dadosCartaoCredito)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at EventoWeb.Comum.Negocio.Servicos.SrvIntegracaoFinanceira.ProcessarIntegracao(Pedido pedido, DadosCartaoCredito dadosCartaoCredito)
+   at EventoWeb.Comum.Negocio.Servicos.SrvInclusaoPedido.Incluir(Pedido pedido, DadosCartaoCredito dadosCartaoCredito)
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0()
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar)
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido)
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method86(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 16:34:31.386 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.AggregateException: One or more errors occurred. (Código:invalid_action. Erro: Transação não autorizada. Verifique os dados do cartão de crédito e tente novamente.)
+ ---> System.Exception: Código:invalid_action. Erro: Transação não autorizada. Verifique os dados do cartão de crédito e tente novamente.
+   at EventoWeb.Comum.Persistencia.Integracoes.Asaas.IntegracaoFinanceiraAsaas.Enviar(IntegracaoFinanceiraPorFormaPag integrador, Pedido pedido, DadosCartaoCredito dadosCartaoCredito)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at EventoWeb.Comum.Negocio.Servicos.SrvIntegracaoFinanceira.ProcessarIntegracao(Pedido pedido, DadosCartaoCredito dadosCartaoCredito)
+   at EventoWeb.Comum.Negocio.Servicos.SrvInclusaoPedido.Incluir(Pedido pedido, DadosCartaoCredito dadosCartaoCredito)
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0()
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar)
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido)
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method86(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 16:36:23.630 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.Exception: Somente são aceitas inscrições que estejam no limbo
+   at EventoWeb.Comum.Negocio.Entidades.Pedido..ctor(Pessoa pagador, IEnumerable`1 inscricoes, ValorMonetario valor, EnumTipoPedido tipo, FormaPagamento forma)
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0()
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar)
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido)
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method86(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 17:10:12.078 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 17:10:12.098 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-16 17:10:12.556 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-16 17:10:12.560 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-16 17:10:12.562 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-16 17:10:12.625 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-16 17:10:12.650 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-16 17:10:12.676 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-16 17:10:12.678 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-16 17:10:12.708 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-16 17:10:12.710 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-16 17:10:12.743 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-16 17:10:47.876 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.AggregateException: One or more errors occurred. (Código:invalid_installmentValue. Erro: O valor da parcela deve ser informado.)
+ ---> System.Exception: Código:invalid_installmentValue. Erro: O valor da parcela deve ser informado.
+   at EventoWeb.Comum.Persistencia.Integracoes.Asaas.IntegracaoFinanceiraAsaas.Enviar(IntegracaoFinanceiraPorFormaPag integrador, Pedido pedido, DadosCartaoCredito dadosCartaoCredito) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Persistencia\Integracoes\Asaas\IntegracaoFinanceiraAsaas.cs:line 92
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at EventoWeb.Comum.Negocio.Servicos.SrvIntegracaoFinanceira.ProcessarIntegracao(Pedido pedido, DadosCartaoCredito dadosCartaoCredito) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\SrvIntegracaoFinanceira.cs:line 34
+   at EventoWeb.Comum.Negocio.Servicos.SrvInclusaoPedido.Incluir(Pedido pedido, DadosCartaoCredito dadosCartaoCredito) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\SrvInclusaoPedido.cs:line 57
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0() in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 81
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\AppBase.cs:line 20
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 51
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 17:12:49.178 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 17:12:49.225 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-16 17:12:49.797 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-16 17:12:49.801 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-16 17:12:49.804 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-16 17:12:49.876 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-16 17:12:49.902 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-16 17:12:49.932 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-16 17:12:49.934 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-16 17:12:49.970 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-16 17:12:49.973 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-16 17:12:49.976 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-16 17:13:14.433 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.ArgumentException: Número de parcelas deve ser informado e maior que 1 para crédito parcelado. (Parameter 'numeroParcelas')
+   at EventoWeb.Comum.Negocio.Entidades.IntegracaoFinanceira.RegistroIntegracaoFinanceira..ctor(IntegradorFinanceiro integrador, Conta conta, ValorMonetario valor, EnumTipoIntegracao tipo, String identificacaoNoIntegrador, Nullable`1 numeroParcelas) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Entidades\IntegracaoFinanceira\RegistroIntegracaoFinanceira.cs:line 21
+   at EventoWeb.Comum.Negocio.Servicos.SrvIntegracaoFinanceira.ProcessarIntegracao(Pedido pedido, DadosCartaoCredito dadosCartaoCredito) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\SrvIntegracaoFinanceira.cs:line 38
+   at EventoWeb.Comum.Negocio.Servicos.SrvInclusaoPedido.Incluir(Pedido pedido, DadosCartaoCredito dadosCartaoCredito) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Negocio\Servicos\SrvInclusaoPedido.cs:line 57
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.<>c__DisplayClass10_0.<Incluir>b__0() in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 81
+   at EventoWeb.Comum.Aplicacao.AppBase.ExecutarSeguramente(Action acaoExecutar) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\AppBase.cs:line 20
+   at EventoWeb.Comum.Aplicacao.Pedidos.AppPedidoInclusao.Incluir(DTOPedido dtoPedido) in C:\Users\desen\Documents\EventoWeb\eventoweb_comum_back\EventoWeb.Comum\Aplicacao\Pedidos\AppPedidoInclusao.cs:line 51
+   at EventoWeb.Inscricao.Controllers.PedidosController.Incluir(DTOPedido dto) in C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\Controllers\PedidosController.cs:line 13
+   at lambda_method2(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-16 17:15:35.647 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-16 17:15:35.666 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-16 17:15:36.112 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-16 17:15:36.116 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-16 17:15:36.118 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-16 17:15:36.188 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-16 17:15:36.213 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-16 17:15:36.281 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-16 17:15:36.283 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-16 17:15:36.311 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-16 17:15:36.313 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-16 17:15:36.315 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
