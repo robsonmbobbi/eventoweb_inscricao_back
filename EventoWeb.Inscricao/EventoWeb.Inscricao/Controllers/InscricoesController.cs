@@ -8,7 +8,8 @@ namespace EventoWeb.Inscricao.Controllers;
 public class InscricoesController(
     AppInscricaoInclusaoOnLine appInclusao,
     AppInscricaoAtualizacao appAtualizacao,
-    AppInscricaoObtencao appObtencao) : ControllerBase
+    AppInscricaoObtencao appObtencao,
+    AppInscricaoPesquisaPessoa appPesquisa) : ControllerBase
 {
     [HttpPost("incluir")]
     public DTOInscricao Incluir([FromBody] DTOInscricao dto)
@@ -28,5 +29,11 @@ public class InscricoesController(
     public DTOInscricao? Obter(int id)
     {
         return appObtencao.Obter(id);
+    }
+
+    [HttpGet("pesquisar/evento/{idEvento: int}/cpf/{cpf:string}")]
+    public DTOInscricaoPesquisaPessoa Pesquisar(int idEvento, string cpf)
+    {
+        return appPesquisa.Pesquisar(idEvento, cpf);
     }
 }

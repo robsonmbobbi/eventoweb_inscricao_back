@@ -98,9 +98,11 @@ builder.Services.AddScoped<IPersistencia<RegistroIntegracaoFinanceira>>(p => p.G
 builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().ModelosMensagemNotificacao);
 builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().MensagensNotificacao);
 builder.Services.AddScoped<AppEventoListagem>();
+builder.Services.AddScoped<AppEventoCalcularIdade>();
 builder.Services.AddScoped<AppInscricaoInclusaoOnLine>();
 builder.Services.AddScoped<AppInscricaoAtualizacao>();
 builder.Services.AddScoped<AppInscricaoObtencao>();
+builder.Services.AddScoped<AppInscricaoPesquisaPessoa>();
 builder.Services.AddScoped<AppPrecoInscricaoObtencaoIdade>();
 builder.Services.AddScoped<AppPedidoInclusao>();
 

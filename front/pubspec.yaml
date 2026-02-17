@@ -1,0 +1,53 @@
+name: eventoweb_inscricao
+description: "Fork aplicativo de inscrições para eventos CEOMG com Flutter."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.3.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Routing
+  go_router: ^14.0.0
+  
+  # Dependency Injection
+  get_it: ^7.6.0
+  
+  # State Management / MVVM
+  provider: ^6.1.0
+  
+  # HTTP Client
+  http: ^1.1.0
+  
+  # Input Masks
+  mask_text_input_formatter: ^2.4.0
+  
+  # Date & Time utilities
+  intl: ^0.19.0
+  
+  # Local Storage
+  shared_preferences: ^2.2.0
+  
+  # UI Components
+  flutter_svg: ^2.0.0
+  
+  # Validation
+  validators: ^3.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/logos/

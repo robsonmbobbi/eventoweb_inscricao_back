@@ -1,0 +1,43 @@
+import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:provider/provider.dart';
+
+import 'core/router.dart';
+import 'core/service_locator.dart';
+import 'core/theme.dart';
+import 'services/eventos/eventos_service.dart';
+import 'views/viewmodels/events_viewmodel.dart';
+
+final getIt = GetIt.instance;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Setup dependency injection
+  await ServiceLocator.setup();
+  
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) => MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => EventsViewModel(
+            apiService: getIt<EventosService>(),
+          ),
+        ),
+      ],
+      child: MaterialApp.router(
+        title: 'EventoWeb Inscrições',
+        theme: AppTheme.lightTheme(),
+        darkTheme: AppTheme.darkTheme(),
+        themeMode: ThemeMode.light,
+        routerConfig: appRouter,
+        debugShowCheckedModeBanner: false,
+      ),
+    );
+}
