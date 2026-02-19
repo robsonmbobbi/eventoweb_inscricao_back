@@ -184,13 +184,6 @@ class EventCard extends StatelessWidget {
                   value:
                       '${dateFormat.format(evento.dataInicialRealizacao)} a ${dateFormat.format(evento.dataFinalRealizacao)}',
                 ),
-                const SizedBox(height: 8),
-                // Minimum Age
-                _InfoRow(
-                  icon: Icons.person,
-                  label: 'Idade mínima (Adulto):',
-                  value: '${evento.idadeMinimaAdulto} anos',
-                ),
                 const SizedBox(height: 16),
                 // Inscription Button
                 SizedBox(

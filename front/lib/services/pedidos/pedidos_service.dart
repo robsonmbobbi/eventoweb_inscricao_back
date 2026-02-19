@@ -3,13 +3,18 @@ import '../../models/dto_resultado_pedido.dart';
 import '../base_api_service.dart';
 
 /// Service para gerenciar endpoints de pedidos/pagamentos
-class PedidosService extends BaseApiService {
-  PedidosService(super.httpClient);
+class PedidosService {
+  PedidosService(this._apiService);
+
+  final BaseApiService _apiService;
   
   /// Incluir novo pedido de pagamento
-  Future<DTOResultadoPedido> incluirPedido(DTOPedido pedido) async => post(
+  Future<DTOResultadoPedido> incluirPedido(DTOPedido pedido) async {
+    var response = await _apiService.post(
       '/pedidos/incluir',
-      body: pedido.toJson(),
-      parser: DTOResultadoPedido.fromJson,
+      body: pedido.toJson()
     );
+
+    return DTOResultadoPedido.fromJson(response.data);
+  }
 }

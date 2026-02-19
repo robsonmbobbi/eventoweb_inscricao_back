@@ -189,6 +189,20 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   ) => Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        TextFormField(
+          decoration: const InputDecoration(
+            labelText: 'CPF',
+            hintText: 'Digite seu CPF',
+            prefixIcon: Icon(Icons.person),
+          ),
+          inputFormatters: [InputFormatters.cpfFormatter],
+          validator: InputValidators.validateCPF,
+          onChanged: viewModel.setCpf,
+          enabled: false,
+          autofocus: true,
+          initialValue: viewModel.cpf,
+        ),
+        const SizedBox(height: 24),
         Text(
           'Data de Nascimento',
           style: Theme.of(context).textTheme.headlineSmall,
@@ -319,6 +333,41 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           ),
           const SizedBox(height: 16),
 
+          // Nome do Crachá
+          TextFormField(
+            initialValue: viewModel.nomeCracha,
+            decoration: const InputDecoration(
+              labelText: 'Nome do Crachá',
+              hintText: 'Nome que aparecerá no seu crachá',
+              prefixIcon: Icon(Icons.badge),
+            ),
+            onChanged: viewModel.setNomeCracha,
+            maxLength: 150,
+          ),
+          const SizedBox(height: 16),
+
+          // Sexo
+          DropdownButtonFormField<EnumSexo?>(
+            initialValue: viewModel.sexo,
+            decoration: const InputDecoration(
+              labelText: 'Sexo *',
+              prefixIcon: Icon(Icons.wc),
+            ),
+            items: const [
+              DropdownMenuItem(
+                value: EnumSexo.masculino,
+                child: Text('Masculino'),
+              ),
+              DropdownMenuItem(
+                value: EnumSexo.feminino,
+                child: Text('Feminino'),
+              ),
+            ],
+            validator: (value) => value == null ? 'Sexo é obrigatório' : null,
+            onChanged: viewModel.setSexo,
+          ),
+          const SizedBox(height: 16),
+
           // Email
           TextFormField(
             initialValue: viewModel.email,
@@ -343,28 +392,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             inputFormatters: [InputFormatters.celularFormatter],
             validator: InputValidators.validateCelular,
             onChanged: viewModel.setCelular,
-          ),
-          const SizedBox(height: 16),
-
-          // Sexo
-          DropdownButtonFormField<EnumSexo>(
-            value: viewModel.sexo,
-            decoration: const InputDecoration(
-              labelText: 'Sexo *',
-              prefixIcon: Icon(Icons.wc),
-            ),
-            items: const [
-              DropdownMenuItem(
-                value: EnumSexo.masculino,
-                child: Text('Masculino'),
-              ),
-              DropdownMenuItem(
-                value: EnumSexo.feminino,
-                child: Text('Feminino'),
-              ),
-            ],
-            validator: (value) => value == null ? 'Sexo é obrigatório' : null,
-            onChanged: viewModel.setSexo,
           ),
           const SizedBox(height: 16),
 
@@ -415,32 +442,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             value: viewModel.dormeEvento,
             onChanged: (value) => viewModel.setDormeEvento(value ?? true),
             controlAffinity: ListTileControlAffinity.leading,
-          ),
-          const SizedBox(height: 16),
-
-          // Nome do Crachá
-          TextFormField(
-            initialValue: viewModel.nomeCracha,
-            decoration: const InputDecoration(
-              labelText: 'Nome do Crachá',
-              hintText: 'Nome que aparecerá no seu crachá',
-              prefixIcon: Icon(Icons.badge),
-            ),
-            onChanged: viewModel.setNomeCracha,
-            maxLength: 150,
-          ),
-          const SizedBox(height: 16),
-
-          // Observações
-          TextFormField(
-            initialValue: viewModel.observacoes,
-            decoration: const InputDecoration(
-              labelText: 'Observações',
-              hintText: 'Deixe aqui qualquer observação importante',
-              prefixIcon: Icon(Icons.notes),
-            ),
-            maxLines: 4,
-            onChanged: viewModel.setObservacoes,
           ),
           const SizedBox(height: 16),
 
@@ -515,6 +516,19 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ),
             const SizedBox(height: 16),
           ],
+
+          // Observações
+          TextFormField(
+            initialValue: viewModel.observacoes,
+            decoration: const InputDecoration(
+              labelText: 'Observações',
+              hintText: 'Deixe aqui qualquer observação importante',
+              prefixIcon: Icon(Icons.notes),
+            ),
+            maxLines: 4,
+            onChanged: viewModel.setObservacoes,
+          ),
+          const SizedBox(height: 16),
 
           // Action buttons
           ElevatedButton(

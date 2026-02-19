@@ -131,7 +131,7 @@ app.UseCors(builder => builder
     .AllowCredentials()
 );
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.MapControllers();
 app.ConfigureExceptionHandler();
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front2/views/viewmodels/registration_viewmodel.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -17,6 +18,9 @@ class Routes {
   static const String events = '/';
   static const String orders = '/orders';
   static const String registration = '/registration';
+  static const String regulation = '/regulation';
+  static const String search = '/search';
+  static const String verification = '/verification';
   static const String payment = '/payment';
   static const String paymentSuccess = '/payment-success';
 }
@@ -28,55 +32,123 @@ final appRouter = GoRouter(
       path: Routes.events,
       name: 'events',
       builder: (context, state) => const EventsScreen(),
-    ),
-    GoRoute(
-      path: Routes.orders,
-      name: 'orders',
-      builder: (context, state) {
-        final eventId = state.extra as int?;
-        return ChangeNotifierProvider(
-          create: (_) => OrdersViewModel(
-            apiService: getIt.get(),
-            idEvento: eventId ?? 0,
-          ),
-          child: OrdersScreen(eventId: eventId ?? 0),
-        );
-      },
-    ),
-    GoRoute(
-      path: Routes.registration,
-      name: 'registration',
-      builder: (context, state) {
-        final eventId = state.extra as int?;
-        // Get evento from context or use a placeholder
-        // This would typically come from the previous screen's context
-        final evento = DTOEvento(
-          id: eventId,
-          nome: 'Evento',
-          dataInicialInscricao: DateTime.now(),
-          dataFinalInscricao: DateTime.now(),
-          dataInicialRealizacao: DateTime.now(),
-          dataFinalRealizacao: DateTime.now(),
-          idadeMinimaAdulto: 18,
-        );
-        return RegistrationScreen(
-          eventId: eventId ?? 0,
-          evento: evento,
-        );
-      },
-    ),
-    GoRoute(
-      path: Routes.payment,
-      name: 'payment',
-      builder: (context, state) => const PaymentScreen(),
-    ),
-    GoRoute(
-      path: Routes.paymentSuccess,
-      name: 'paymentSuccess',
-      builder: (context, state) {
-        final result = state.extra as DTOResultadoPedido?;
-        return PaymentSuccessScreen(resultado: result);
-      },
+      routes: [
+        GoRoute(
+          path: '${Routes.orders}/:idEvento',
+          name: 'orders',
+          builder: (context, state) {
+            final eventId = int.parse(state.pathParameters['idEvento']!);
+            return ChangeNotifierProvider(
+              create: (_) => OrdersViewModel(
+                apiService: getIt.get(),
+                idEvento: eventId ?? 0,
+              ),
+              child: OrdersScreen(eventId: eventId ?? 0),
+            );
+          },
+          routes: [
+            ShellRoute(
+              builder: (context, state, child) {
+                return ChangeNotifierProvider(
+                  create: (_) => RegistrationViewModel(
+                    eventoService: getIt(),
+                    inscricoesService: getIt(),
+                    idEvento: context.read<OrdersViewModel>().idEvento
+                  ),
+                  child: child,
+                );
+              },
+              routes: [
+                GoRoute(
+                  path: Routes.registration,
+                  name: 'registration',
+                  builder: (context, state) {
+                    var model = context.read<OrdersViewModel>();
+
+                    return RegistrationScreen(
+                      eventId: model.idEvento,
+                      evento: model.evento!
+                    );
+                  },
+                ),
+                GoRoute(
+                  path: Routes.regulation,
+                  name: 'regulation',
+                  builder: (context, state) {
+                    return Text('regulation');
+                  },
+                ),
+                GoRoute(
+                  path: Routes.search,
+                  name: 'search',
+                  builder: (context, state) {
+                    return Text('search');
+                  },
+                ),
+                GoRoute(
+                  path: Routes.verification,
+                  name: 'verification',
+                  builder: (context, state) {
+                    return Text('verification');
+                  },
+                ),
+              ],
+              redirect: (context, state) {
+                var model = context.read<RegistrationViewModel>();
+
+                if (state.matchedLocation != Routes.regulation && !model.regulamentoAceito) {
+                  return Routes.regulation;
+                }
+
+                if (state.matchedLocation != Routes.search && !model.cpfBuscado) {
+                  return Routes.search;
+                }
+
+                if (state.matchedLocation != Routes.verification && !model.dataNascimentoInformada) {
+                  return Routes.verification;
+                }
+
+                return state.path;
+              }
+            ),
+            GoRoute(
+              path: Routes.registration,
+              name: 'registration',
+
+              builder: (context, state) {
+
+                return ChangeNotifierProvider(
+                    create: (_) => RegistrationViewModel(
+                        eventoService: getIt(),
+                        inscricoesService: getIt(),
+                        idEvento: context.read<OrdersViewModel>().idEvento
+                    ),
+
+
+                )
+
+                return RegistrationScreen(
+                  eventId: eventId ?? 0,
+                  evento: evento,
+                );
+              },
+            ),
+            GoRoute(
+              path: Routes.payment,
+              name: 'payment',
+              builder: (context, state) => const PaymentScreen(),
+            ),
+            GoRoute(
+              path: Routes.paymentSuccess,
+              name: 'paymentSuccess',
+              builder: (context, state) {
+                final result = state.extra as DTOResultadoPedido?;
+                return PaymentSuccessScreen(resultado: result);
+              },
+            ),
+          ]
+        ),
+      ]
     ),
   ],
 );

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:front2/models/dto_evento.dart';
+import 'package:front2/services/eventos/eventos_service.dart';
 import '../../models/dto_inscricao.dart';
 import '../../services/pedidos/pedidos_service.dart';
 
 class OrdersViewModel extends ChangeNotifier {
-  final PedidosService apiService;
-
+  final EventosService apiService;
   final int idEvento;
+  late final DTOEvento? evento;
+
   List<DTOInscricao> _inscricoes = [];
   bool _isLoading = false;
   String? _error;
@@ -32,6 +35,23 @@ class OrdersViewModel extends ChangeNotifier {
       _inscricoes.removeAt(index);
       notifyListeners();
     }
+  }
+
+  Future<void> carregarEvento() async {
+
+    if (evento != null) {
+      return;
+    }
+
+    var dto = await apiService.obter(idEvento);
+    if (dto == null) {
+      _error = 'Evento não encontrado com o id $idEvento';
+    }
+    else {
+      evento = dto;
+    }
+
+    notifyListeners();
   }
 
   // Get total inscriptions count

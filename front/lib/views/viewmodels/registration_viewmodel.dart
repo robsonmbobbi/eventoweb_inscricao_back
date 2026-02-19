@@ -35,12 +35,15 @@ class RegistrationViewModel extends ChangeNotifier {
   String? _nomeResponsavel2;
 
   // State
-  EnumTipoInscricao? _tipoInscricao;
   DTOInscricaoPesquisaPessoa? _pesquisa;
-  bool _isLoading = false;
-  String? _error;
   bool _cpfBuscado = false;
   bool _dataNascimentoInformada = false;
+  bool _regulamentoAceito = false;
+
+  EnumTipoInscricao? _tipoInscricao;
+
+  bool _isLoading = false;
+  String? _error;
   int? _idade;
 
   RegistrationViewModel({
@@ -76,6 +79,7 @@ class RegistrationViewModel extends ChangeNotifier {
   bool get cpfBuscado => _cpfBuscado;
   bool get dataNascimentoInformada => _dataNascimentoInformada;
   int? get idade => _idade;
+  bool get regulamentoAceito => _regulamentoAceito;
 
   // Setters
   void setCpf(String value) {
@@ -91,6 +95,10 @@ class RegistrationViewModel extends ChangeNotifier {
       _dataNascimentoInformada = false;
     }
     notifyListeners();
+  }
+
+  void setRegulamentoAceito() {
+    _regulamentoAceito = true;
   }
 
   void setNome(String value) {
@@ -203,7 +211,7 @@ class RegistrationViewModel extends ChangeNotifier {
       _error = e.toString();
       _pesquisa = null;
     } catch (e) {
-      _error = 'Erro ao pesquisar CPF';
+      _error = 'Erro ao pesquisar CPF $e';
       _pesquisa = null;
     } finally {
       _isLoading = false;
@@ -224,7 +232,7 @@ class RegistrationViewModel extends ChangeNotifier {
       _error = e.toString();
       _idade = null;
     } catch (e) {
-      _error = 'Erro ao calcular idade';
+      _error = 'Erro ao calcular idade $e';
       _idade = null;
     } finally {
       _isLoading = false;
@@ -279,7 +287,7 @@ class RegistrationViewModel extends ChangeNotifier {
 
       DTOInscricao resultado;
       if (_pesquisa?.situacao == EnumSituacaoPesquisaPessoa.inscricaoNaoExiste) {
-        resultado = await inscricoesService.incluir(inscricao);
+        resultado = (await inscricoesService.incluir(inscricao));
       } else {
         await inscricoesService.atualizar(inscricao);
         resultado = inscricao;

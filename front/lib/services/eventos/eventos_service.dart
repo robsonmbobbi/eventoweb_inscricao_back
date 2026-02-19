@@ -1,20 +1,39 @@
 import '../../models/dto_evento.dart';
 import '../base_api_service.dart';
 
-/// Service para gerenciar endpoints de eventos
-class EventosService extends BaseApiService {
-  EventosService(super.httpClient);
-  
-  Future<List<DTOEvento>> listar() async => get(
-      '/eventos/listar',
-      parser: (json) {
-        final eventos = json['eventos'] as List? ?? [];
-        return eventos.map((e) => DTOEvento.fromJson(e as Map<String, dynamic>)).toList();
-      },
-    );
+class EventosService {
 
-  Future<int> obterIdade(int idEvento, DateTime dataNascimento) async => get(
-      '/eventos/$idEvento/obter-idade/${dataNascimento.toIso8601String()}',
-      parser: (json) => json['idade'] as int,
-    );
+  EventosService(this._apiService);
+
+  final BaseApiService _apiService;
+  
+  Future<List<DTOEvento>?> listar() async {
+    var response = await _apiService.get('/eventos/listar');
+    if (response.data != null && response.data.isNotEmpty) {
+      return List<DTOEvento>.from(
+          response.data.map((e) => DTOEvento.fromJson(e)));
+    }
+
+    return [];
+  }
+
+  Future<DTOEvento?> obter(int id) async {
+    var response = await _apiService.get('/eventos/obter/$id');
+    if (response.data != null && response.data.isNotEmpty) {
+      return DTOEvento.fromJson(response.data);
+    }
+
+    return null;
+  }
+
+
+  Future<int> obterIdade(int idEvento, DateTime dataNascimento) async {
+
+    var response = await _apiService.get('/eventos/$idEvento/obter-idade/${dataNascimento.toIso8601String()}');
+    if (response.data != null && response.data.isNotEmpty) {
+      return response.data['idade'] as int;
+    }
+
+    return -1;
+  }
 }

@@ -31,7 +31,7 @@ public class InscricoesController(
         return appObtencao.Obter(id);
     }
 
-    [HttpGet("pesquisar/evento/{idEvento: int}/cpf/{cpf:string}")]
+    [HttpGet("pesquisar/evento/{idEvento}/cpf/{cpf}")]
     public DTOInscricaoPesquisaPessoa Pesquisar(int idEvento, string cpf)
     {
         return appPesquisa.Pesquisar(idEvento, cpf);

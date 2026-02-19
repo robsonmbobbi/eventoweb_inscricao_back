@@ -23,7 +23,7 @@ class EventsViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _eventos = await apiService.listar();
+      _eventos = await apiService.listar() ?? [];
       _error = null;
     } on Exception catch (e) {
       _error = e.toString();

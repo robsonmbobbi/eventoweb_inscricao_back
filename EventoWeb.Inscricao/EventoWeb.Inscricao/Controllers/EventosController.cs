@@ -14,7 +14,7 @@ public class EventosController(AppEventoListagem appListagem, AppEventoCalcularI
         return appListagem.Listar(EnumFiltroListagemEventos.EmPeriodoInscricao);
     }
 
-    [HttpGet("{idEvento: int}/obter-idade/${dataNascimento: date}")]
+    [HttpGet("{idEvento}/obter-idade/{dataNascimento}")]
     public Object ObterIdade(int idEvento, DateTime dataNascimento)
     {
         return new

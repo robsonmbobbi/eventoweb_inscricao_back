@@ -3,7 +3,7 @@ import 'enums/enums.dart';
 /// Representa os dados pessoais de um inscrito
 class DTOPessoa {
   final String nome;
-  final DateTime dataNascimento;
+  final DateTime? dataNascimento;
   final String cpf;
   final String? alergiaAlimentos;
   final String celular;
@@ -28,7 +28,7 @@ class DTOPessoa {
 
   factory DTOPessoa.fromJson(Map<String, dynamic> json) => DTOPessoa(
       nome: json['nome'],
-      dataNascimento: DateTime.parse(json['dataNascimento']),
+      dataNascimento: json['dataNascimento'] == null ? null : DateTime.parse(json['dataNascimento']),
       cpf: json['cpf'],
       alergiaAlimentos: json['alergiaAlimentos'],
       celular: json['celular'],
@@ -41,7 +41,7 @@ class DTOPessoa {
 
   Map<String, dynamic> toJson() => {
       'nome': nome,
-      'dataNascimento': dataNascimento.toIso8601String(),
+      'dataNascimento': dataNascimento?.toIso8601String(),
       'cpf': cpf,
       'alergiaAlimentos': alergiaAlimentos,
       'celular': celular,
