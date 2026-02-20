@@ -99,6 +99,7 @@ builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().ModelosMensag
 builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().MensagensNotificacao);
 builder.Services.AddScoped<AppEventoListagem>();
 builder.Services.AddScoped<AppEventoCalcularIdade>();
+builder.Services.AddScoped<AppEventoObtencao>();
 builder.Services.AddScoped<AppInscricaoInclusaoOnLine>();
 builder.Services.AddScoped<AppInscricaoAtualizacao>();
 builder.Services.AddScoped<AppInscricaoObtencao>();

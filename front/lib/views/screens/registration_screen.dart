@@ -5,13 +5,10 @@ import 'package:provider/provider.dart';
 
 import '../../common/input_validators.dart';
 import '../../common/widgets.dart';
-import '../../core/service_locator.dart';
 import '../../core/theme.dart';
 import '../../models/dto_evento.dart';
 import '../../models/enums/enum_sexo.dart';
 import '../../models/enums/enum_situacao_pesquisa_pessoa.dart';
-import '../../services/eventos/eventos_service.dart';
-import '../../services/inscricoes/inscricoes_service.dart';
 import '../viewmodels/orders_viewmodel.dart';
 import '../viewmodels/registration_viewmodel.dart';
 
@@ -38,11 +35,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   void initState() {
     super.initState();
-    _viewModel = RegistrationViewModel(
-      eventoService: getIt<EventosService>(),
-      inscricoesService: getIt<InscricoesService>(),
-      idEvento: widget.eventId,
-    );
+    _viewModel = context.read();
   }
 
   @override

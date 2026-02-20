@@ -6,12 +6,18 @@ namespace EventoWeb.Inscricao.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class EventosController(AppEventoListagem appListagem, AppEventoCalcularIdade appCalculaIdade) : ControllerBase
+public class EventosController(AppEventoObtencao appEventoObtencao, AppEventoListagem appListagem, AppEventoCalcularIdade appCalculaIdade) : ControllerBase
 {
     [HttpGet("listar")]
     public IList<DTOEvento> Listar()
     {
         return appListagem.Listar(EnumFiltroListagemEventos.EmPeriodoInscricao);
+    }
+
+    [HttpGet("obter/{id}")]
+    public DTOEvento? Obter(int id)
+    {
+        return appEventoObtencao.Obter(id);
     }
 
     [HttpGet("{idEvento}/obter-idade/{dataNascimento}")]

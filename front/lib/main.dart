@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:front2/views/viewmodels/orders_viewmodel.dart';
+import 'package:front2/views/viewmodels/registration_viewmodel.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +23,6 @@ void main() async {
   
   // Setup dependency injection
   await ServiceLocator.setup();
-  
   runApp(const MyApp());
 }
 
@@ -35,7 +36,16 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => EventsViewModel(
-            apiService: getIt<EventosService>(),
+            apiService: getIt<EventosService>()
+          )
+        ),
+        ChangeNotifierProvider(
+          create: (_) => OrdersViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => RegistrationViewModel(
+            eventoService: getIt(),
+            inscricoesService: getIt()
           ),
         ),
       ],

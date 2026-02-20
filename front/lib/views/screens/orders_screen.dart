@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front2/views/viewmodels/registration_viewmodel.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -9,11 +10,9 @@ import '../../models/enums/enum_tipo_inscricao.dart';
 import '../viewmodels/orders_viewmodel.dart';
 
 class OrdersScreen extends StatelessWidget {
-  final int eventId;
 
   const OrdersScreen({
     super.key,
-    required this.eventId,
   });
 
   @override
@@ -34,6 +33,7 @@ class OrdersScreen extends StatelessWidget {
             cancelText: 'Não, continuar',
             onConfirm: () {
               context.read<OrdersViewModel>().reset();
+              context.read<RegistrationViewModel>().reset();
               context.go('/');
             },
           );
@@ -95,7 +95,7 @@ class OrdersScreen extends StatelessWidget {
                                       // Navigate to registration screen
                                       context.pushNamed(
                                         'registration',
-                                        extra: eventId,
+                                        extra: 0,
                                       );
                                     },
                                     icon: const Icon(Icons.add),
@@ -137,9 +137,8 @@ class OrdersScreen extends StatelessWidget {
                           ElevatedButton.icon(
                             onPressed: () {
                               // Navigate to registration screen
-                              context.pushNamed(
-                                'registration',
-                                extra: eventId,
+                              context.push(
+                                './registration'
                               );
                             },
                             icon: const Icon(Icons.add),

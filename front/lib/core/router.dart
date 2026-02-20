@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front2/views/screens/verification_screen.dart';
 import 'package:front2/views/viewmodels/registration_viewmodel.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +11,8 @@ import '../views/screens/orders_screen.dart';
 import '../views/screens/payment_screen.dart';
 import '../views/screens/payment_success_screen.dart';
 import '../views/screens/registration_screen.dart';
+import '../views/screens/regulation_screen.dart';
+import '../views/screens/search_registration_screen.dart';
 import '../views/viewmodels/orders_viewmodel.dart';
 import 'service_locator.dart';
 
@@ -27,6 +30,7 @@ class Routes {
 
 final appRouter = GoRouter(
   initialLocation: Routes.events,
+  debugLogDiagnostics: true,
   routes: [
     GoRoute(
       path: Routes.events,
@@ -34,31 +38,52 @@ final appRouter = GoRouter(
       builder: (context, state) => const EventsScreen(),
       routes: [
         GoRoute(
-          path: '${Routes.orders}/:idEvento',
+          path: '${Routes.orders}',
           name: 'orders',
           builder: (context, state) {
-            final eventId = int.parse(state.pathParameters['idEvento']!);
-            return ChangeNotifierProvider(
-              create: (_) => OrdersViewModel(
-                apiService: getIt.get(),
-                idEvento: eventId ?? 0,
-              ),
-              child: OrdersScreen(eventId: eventId ?? 0),
-            );
+            var evento = state.extra as DTOEvento;
+
+            var orderModel = context.read<OrdersViewModel>();
+            var regModel = context.read<RegistrationViewModel>();
+            if (orderModel.evento != null && orderModel.evento!.id! != evento.id!) {
+              orderModel.reset();
+              regModel.reset();
+            }
+
+            if (orderModel.evento == null) {
+              orderModel.init(evento);
+              regModel.init(evento);
+            }
+
+            return OrdersScreen();
           },
           routes: [
             ShellRoute(
-              builder: (context, state, child) {
-                return ChangeNotifierProvider(
-                  create: (_) => RegistrationViewModel(
-                    eventoService: getIt(),
-                    inscricoesService: getIt(),
-                    idEvento: context.read<OrdersViewModel>().idEvento
-                  ),
-                  child: child,
-                );
+              builder: (ctxShell, state, child) {
+                return child;
               },
               routes: [
+                GoRoute(
+                  path: Routes.regulation,
+                  name: 'regulation',
+                  builder: (context, state) {
+                    return RegulationScreen();
+                  },
+                ),
+                GoRoute(
+                  path: Routes.search,
+                  name: 'search',
+                  builder: (context, state) {
+                    return SearchRegistrationScreen();
+                  },
+                ),
+                GoRoute(
+                  path: Routes.verification,
+                  name: 'verification',
+                  builder: (context, state) {
+                    return VerificationScreen();
+                  },
+                ),
                 GoRoute(
                   path: Routes.registration,
                   name: 'registration',
@@ -66,72 +91,68 @@ final appRouter = GoRouter(
                     var model = context.read<OrdersViewModel>();
 
                     return RegistrationScreen(
-                      eventId: model.idEvento,
-                      evento: model.evento!
+                        eventId: model.evento!.id!,
+                        evento: model.evento!
                     );
                   },
                 ),
-                GoRoute(
-                  path: Routes.regulation,
-                  name: 'regulation',
-                  builder: (context, state) {
-                    return Text('regulation');
-                  },
-                ),
-                GoRoute(
-                  path: Routes.search,
-                  name: 'search',
-                  builder: (context, state) {
-                    return Text('search');
-                  },
-                ),
-                GoRoute(
-                  path: Routes.verification,
-                  name: 'verification',
-                  builder: (context, state) {
-                    return Text('verification');
-                  },
-                ),
               ],
-              redirect: (context, state) {
-                var model = context.read<RegistrationViewModel>();
+              redirect: (ctxRedirect, state) {
+                var registration = ctxRedirect.read<RegistrationViewModel>();
 
-                if (state.matchedLocation != Routes.regulation && !model.regulamentoAceito) {
-                  return Routes.regulation;
+                if (state.matchedLocation == 'registration') {
+                  if (!registration.regulamentoAceito) {
+                    return '${Routes.orders}${Routes.regulation}';
+                  }
+
+                  if (!registration.cpfBuscado) {
+                    return '${Routes.orders}${Routes.search}';
+                  }
+
+                  if (!registration.dataNascimentoInformada) {
+                    return '${Routes.orders}${Routes.verification}';
+                  }
+                }  else if (state.matchedLocation == 'search') {
+                  if (!registration.regulamentoAceito) {
+                    return '${Routes.orders}${Routes.regulation}';
+                  }
+
+                  if (registration.dataNascimentoInformada) {
+                    return '${Routes.orders}${Routes.registration}';
+                  }
+
+                  if (registration.cpfBuscado) {
+                    return '${Routes.orders}${Routes.verification}';
+                  }
                 }
+                else  if (state.matchedLocation == 'verification') {
+                  if (!registration.regulamentoAceito) {
+                    return '${Routes.orders}${Routes.regulation}';
+                  }
 
-                if (state.matchedLocation != Routes.search && !model.cpfBuscado) {
-                  return Routes.search;
-                }
+                  if (!registration.cpfBuscado) {
+                    return '${Routes.orders}${Routes.search}';
+                  }
 
-                if (state.matchedLocation != Routes.verification && !model.dataNascimentoInformada) {
-                  return Routes.verification;
+                  if (registration.dataNascimentoInformada) {
+                    return '${Routes.orders}${Routes.registration}';
+                  }
+                } else if (state.matchedLocation == 'regulation') {
+                  if (registration.dataNascimentoInformada) {
+                    return '${Routes.orders}${Routes.registration}';
+                  }
+
+                  if (registration.cpfBuscado) {
+                    return '${Routes.orders}${Routes.verification}';
+                  }
+
+                  if (registration.regulamentoAceito) {
+                    return '${Routes.orders}${Routes.search}';
+                  }
                 }
 
                 return state.path;
               }
-            ),
-            GoRoute(
-              path: Routes.registration,
-              name: 'registration',
-
-              builder: (context, state) {
-
-                return ChangeNotifierProvider(
-                    create: (_) => RegistrationViewModel(
-                        eventoService: getIt(),
-                        inscricoesService: getIt(),
-                        idEvento: context.read<OrdersViewModel>().idEvento
-                    ),
-
-
-                )
-
-                return RegistrationScreen(
-                  eventId: eventId ?? 0,
-                  evento: evento,
-                );
-              },
             ),
             GoRoute(
               path: Routes.payment,

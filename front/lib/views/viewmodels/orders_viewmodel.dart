@@ -5,23 +5,17 @@ import '../../models/dto_inscricao.dart';
 import '../../services/pedidos/pedidos_service.dart';
 
 class OrdersViewModel extends ChangeNotifier {
-  final EventosService apiService;
-  final int idEvento;
-  late final DTOEvento? evento;
+  DTOEvento? _evento;
 
   List<DTOInscricao> _inscricoes = [];
   bool _isLoading = false;
   String? _error;
 
-  OrdersViewModel({
-    required this.apiService,
-    required this.idEvento,
-  });
-
   // Getters
   List<DTOInscricao> get inscricoes => _inscricoes;
   bool get isLoading => _isLoading;
   String? get error => _error;
+  DTOEvento? get evento => _evento;
 
   // Add inscription to the order
   void adicionarInscricao(DTOInscricao inscricao) {
@@ -37,20 +31,13 @@ class OrdersViewModel extends ChangeNotifier {
     }
   }
 
-  Future<void> carregarEvento() async {
+  void init(DTOEvento evento) async {
 
-    if (evento != null) {
-      return;
+    if (_evento != null) {
+      throw Exception("OrdersViewModel já iniciado!");
     }
 
-    var dto = await apiService.obter(idEvento);
-    if (dto == null) {
-      _error = 'Evento não encontrado com o id $idEvento';
-    }
-    else {
-      evento = dto;
-    }
-
+    _evento = evento;
     notifyListeners();
   }
 
@@ -65,8 +52,10 @@ class OrdersViewModel extends ChangeNotifier {
 
   // Reset order
   void reset() {
+    _evento = null;
     _inscricoes = [];
     _error = null;
+
     notifyListeners();
   }
 }

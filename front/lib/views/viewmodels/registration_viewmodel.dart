@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front2/models/dto_evento.dart';
 import '../../models/dto_inscricao.dart';
 import '../../models/dto_inscricao_pesquisa_pessoa.dart';
 import '../../models/dto_pessoa.dart';
@@ -12,7 +13,8 @@ import '../../services/inscricoes/inscricoes_service.dart';
 class RegistrationViewModel extends ChangeNotifier {
   final EventosService eventoService;
   final InscricoesService inscricoesService;
-  final int idEvento;
+
+  DTOEvento? _evento;
 
   // Form state
   String _cpf = '';
@@ -48,8 +50,7 @@ class RegistrationViewModel extends ChangeNotifier {
 
   RegistrationViewModel({
     required this.eventoService,
-    required this.inscricoesService,
-    required this.idEvento,
+    required this.inscricoesService
   });
 
   // Getters
@@ -80,6 +81,8 @@ class RegistrationViewModel extends ChangeNotifier {
   bool get dataNascimentoInformada => _dataNascimentoInformada;
   int? get idade => _idade;
   bool get regulamentoAceito => _regulamentoAceito;
+
+  DTOEvento? get evento => _evento;
 
   // Setters
   void setCpf(String value) {
@@ -189,8 +192,8 @@ class RegistrationViewModel extends ChangeNotifier {
 
     try {
       final cleanCpf = cpf.replaceAll(RegExp(r'[^\d]'), '');
-      _pesquisa = await inscricoesService.pesquisarCPF(idEvento, cleanCpf);
-      _cpfBuscado = true;
+      _pesquisa = await inscricoesService.pesquisarCPF(_evento!.id!, cleanCpf);
+      _cpfBuscado = _pesquisa?.situacao != EnumSituacaoPesquisaPessoa.inscricaoRealizada;
 
       // If inscription found, load data
       if (_pesquisa!.pessoa != null) {
@@ -226,7 +229,7 @@ class RegistrationViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _idade = await eventoService.obterIdade(idEvento, dataNascimento);
+      _idade = await eventoService.obterIdade(_evento!.id!, dataNascimento);
       _error = null;
     } on Exception catch (e) {
       _error = e.toString();
@@ -263,7 +266,7 @@ class RegistrationViewModel extends ChangeNotifier {
       final inscricao = DTOInscricao(
         id: _pesquisa?.inscricao?.id,
         tipo: _tipoInscricao ?? EnumTipoInscricao.adulto,
-        idEvento: idEvento,
+        idEvento: _evento!.id!,
         instituicoesEspiritasFrequenta: _instituicoesEspiritasFrequenta,
         dormeEvento: _dormeEvento,
         nomeCracha: _nomeCracha,
@@ -307,9 +310,36 @@ class RegistrationViewModel extends ChangeNotifier {
     }
   }
 
+  void init(DTOEvento evento) {
+    if (_evento != null) {
+      throw Exception("RegistrationViewModel já iniciado!");
+    }
+
+    _evento = evento;
+    notifyListeners();
+  }
+
   // Clear error
   void clearError() {
     _error = null;
+    notifyListeners();
+  }
+
+  void resetSearch() {
+    _cpf = '';
+    _cpfBuscado = false;
+    _pesquisa = null;
+
+    notifyListeners();
+  }
+
+  void resetVerification() {
+    _cpf = '';
+    _pesquisa = null;
+    _dataNascimento = null;
+    _cpfBuscado = false;
+    _dataNascimentoInformada = false;
+
     notifyListeners();
   }
 
@@ -340,6 +370,9 @@ class RegistrationViewModel extends ChangeNotifier {
     _cpfBuscado = false;
     _dataNascimentoInformada = false;
     _idade = null;
+    _regulamentoAceito = false;
+    _evento = null;
+
     notifyListeners();
   }
 }

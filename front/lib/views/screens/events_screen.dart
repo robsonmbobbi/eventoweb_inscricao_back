@@ -93,7 +93,7 @@ class _EventsScreenState extends State<EventsScreen> {
                           isMobile: isMobile,
                           onInscribClick: () {
                             // Navigate to orders screen
-                            context.pushNamed('orders', extra: evento.id);
+                            context.pushNamed('orders', extra: evento);
                           },
                         );
                       },
