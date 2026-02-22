@@ -1,6 +1,5 @@
 /// Define os tipos de integração de pagamento possíveis
-enum EnumTipoIntegracao {
-  creditoVista,
-  creditoParcelado,
+enum EnumTipoPagamento {
+  credito,
   pix,
 }

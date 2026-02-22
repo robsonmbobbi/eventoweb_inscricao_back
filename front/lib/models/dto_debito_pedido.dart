@@ -2,7 +2,7 @@ import 'enums/enums.dart';
 
 /// Representa um débito de um pedido de pagamento
 class DTODebitoPedido {
-  final EnumTipoIntegracao tipoIntegracao;
+  final EnumTipoPagamento tipoIntegracao;
   final EnumStatusTransacao status;
   final String? imagemQRCodePixBase64;
   final String? pixCopiaECola;
@@ -15,7 +15,7 @@ class DTODebitoPedido {
   });
 
   factory DTODebitoPedido.fromJson(Map<String, dynamic> json) => DTODebitoPedido(
-      tipoIntegracao: EnumTipoIntegracao.values[json['tipoIntegracao']],
+      tipoIntegracao: EnumTipoPagamento.values[json['tipoIntegracao']],
       status: EnumStatusTransacao.values[json['status']],
       imagemQRCodePixBase64: json['imagemQRCodePixBase64'],
       pixCopiaECola: json['pixCopiaECola'],

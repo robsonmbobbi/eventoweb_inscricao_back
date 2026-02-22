@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front2/models/dto_evento.dart';
+import '../../common/ExceptionCommand.dart';
 import '../../models/dto_inscricao.dart';
 import '../../models/dto_inscricao_pesquisa_pessoa.dart';
 import '../../models/dto_pessoa.dart';
@@ -35,6 +36,8 @@ class RegistrationViewModel extends ChangeNotifier {
   String? _nomeResponsavel1;
   String? _cpfResponsavel2;
   String? _nomeResponsavel2;
+  String _cidade = '';
+  String _uf = '';
 
   // State
   DTOInscricaoPesquisaPessoa? _pesquisa;
@@ -72,6 +75,8 @@ class RegistrationViewModel extends ChangeNotifier {
   String? get nomeResponsavel1 => _nomeResponsavel1;
   String? get cpfResponsavel2 => _cpfResponsavel2;
   String? get nomeResponsavel2 => _nomeResponsavel2;
+  String get cidade => _cidade;
+  String get uf => _uf;
 
   EnumTipoInscricao? get tipoInscricao => _tipoInscricao;
   DTOInscricaoPesquisaPessoa? get pesquisa => _pesquisa;
@@ -92,16 +97,12 @@ class RegistrationViewModel extends ChangeNotifier {
 
   void setDataNascimento(DateTime? value) {
     _dataNascimento = value;
-    if (value != null) {
-      _dataNascimentoInformada = true;
-    } else {
-      _dataNascimentoInformada = false;
-    }
     notifyListeners();
   }
 
   void setRegulamentoAceito() {
     _regulamentoAceito = true;
+    notifyListeners();
   }
 
   void setNome(String value) {
@@ -184,63 +185,70 @@ class RegistrationViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Search CPF
-  Future<void> pesquisarCPF(String cpf) async {
-    _isLoading = true;
-    _error = null;
+  void setCidade(String value) {
+    _cidade = value;
     notifyListeners();
-
-    try {
-      final cleanCpf = cpf.replaceAll(RegExp(r'[^\d]'), '');
-      _pesquisa = await inscricoesService.pesquisarCPF(_evento!.id!, cleanCpf);
-      _cpfBuscado = _pesquisa?.situacao != EnumSituacaoPesquisaPessoa.inscricaoRealizada;
-
-      // If inscription found, load data
-      if (_pesquisa!.pessoa != null) {
-        _nome = _pesquisa!.pessoa!.nome;
-        _email = _pesquisa!.pessoa!.email;
-        _celular = _pesquisa!.pessoa!.celular;
-        _dataNascimento = _pesquisa!.pessoa!.dataNascimento;
-        _dataNascimentoInformada = true;
-        _alergiaAlimentos = _pesquisa!.pessoa!.alergiaAlimentos;
-        _ehDiabetico = _pesquisa!.pessoa!.ehDiabetico;
-        _ehVegetariano = _pesquisa!.pessoa!.ehVegetariano;
-        _sexo = _pesquisa!.pessoa!.sexo;
-        _usaAdocanteDiariamente = _pesquisa!.pessoa!.usaAdocanteDiariamente;
-      }
-
-      _error = null;
-    } on Exception catch (e) {
-      _error = e.toString();
-      _pesquisa = null;
-    } catch (e) {
-      _error = 'Erro ao pesquisar CPF $e';
-      _pesquisa = null;
-    } finally {
-      _isLoading = false;
-      notifyListeners();
-    }
   }
 
-  // Calculate age
-  Future<void> calcularIdade(DateTime dataNascimento) async {
-    _isLoading = true;
-    _error = null;
+  void setUF(String value) {
+    _uf = value;
     notifyListeners();
+  }
 
-    try {
-      _idade = await eventoService.obterIdade(_evento!.id!, dataNascimento);
-      _error = null;
-    } on Exception catch (e) {
-      _error = e.toString();
-      _idade = null;
-    } catch (e) {
-      _error = 'Erro ao calcular idade $e';
-      _idade = null;
-    } finally {
-      _isLoading = false;
-      notifyListeners();
+  Future<void> processarCPF() async {
+    final cleanCpf = _cpf.replaceAll(RegExp(r'[^\d]'), '');
+    var pesquisa = await inscricoesService.pesquisarCPF(_evento!.id!, cleanCpf);
+
+    if (pesquisa.situacao == EnumSituacaoPesquisaPessoa.inscricaoRealizada) {
+      throw ExceptionCommand("A pessoa dona deste CPF já está inscrita no evento e não poderá fazer nova inscrição.");
     }
+
+    _pesquisa = pesquisa;
+    _cpfBuscado = true;
+    DTOPessoa? pessoa = null;
+
+    if (_pesquisa!.inscricao != null) {
+      pessoa = _pesquisa!.inscricao!.pessoa; 
+      _tipoInscricao = _pesquisa!.inscricao!.tipo;
+      _dormeEvento = _pesquisa!.inscricao!.dormeEvento;
+      _instituicoesEspiritasFrequenta = _pesquisa!.inscricao!.instituicoesEspiritasFrequenta;
+      _nomeCracha  = _pesquisa!.inscricao!.nomeCracha;
+      _observacoes = _pesquisa!.inscricao!.observacoes;
+      _cpfResponsavel1 = _pesquisa!.inscricao!.responsavel1?.cpf;
+      _nomeResponsavel1= _pesquisa!.inscricao!.responsavel1?.nome;
+      _cpfResponsavel2 = _pesquisa!.inscricao!.responsavel2?.cpf;
+      _nomeResponsavel2= _pesquisa!.inscricao!.responsavel2?.nome;
+    }
+    else {
+      pessoa = _pesquisa!.pessoa;
+    }     
+
+    if (pessoa != null) {
+      _nome = pessoa.nome;
+      _email = pessoa.email;
+      _celular = pessoa.celular;
+      _dataNascimento = pessoa.dataNascimento;
+      //_dataNascimentoInformada = true;
+      _alergiaAlimentos = pessoa.alergiaAlimentos;
+      _ehDiabetico = pessoa.ehDiabetico;
+      _ehVegetariano = pessoa.ehVegetariano;
+      _sexo = pessoa.sexo;
+      _usaAdocanteDiariamente = pessoa.usaAdocanteDiariamente;
+    }    
+
+    notifyListeners();
+  }
+
+  Future<void> processarDataNascimento() async {
+    if (_dataNascimento != null) {
+      _dataNascimentoInformada = true;
+
+      _idade = await eventoService.obterIdade(_evento!.id!, _dataNascimento!);
+    } else {
+      _dataNascimentoInformada = false;
+    }
+
+    notifyListeners();
   }
 
   // Save registration
@@ -311,10 +319,6 @@ class RegistrationViewModel extends ChangeNotifier {
   }
 
   void init(DTOEvento evento) {
-    if (_evento != null) {
-      throw Exception("RegistrationViewModel já iniciado!");
-    }
-
     _evento = evento;
     notifyListeners();
   }

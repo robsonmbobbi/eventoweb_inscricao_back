@@ -1,19 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:front2/views/viewmodels/registration_viewmodel.dart';
+import 'package:front2/models/dto_inscricao.dart';
+import 'package:front2/models/dto_resultado_pedido.dart';
+import 'package:front2/views/screens/payment_screen.dart';
+import 'package:front2/views/screens/payment_success_screen.dart';
+import 'package:front2/views/screens/registration_screen.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 
 import '../../common/widgets.dart';
+import '../../core/service_locator.dart';
 import '../../core/theme.dart';
-import '../../models/dto_inscricao.dart';
-import '../../models/enums/enum_tipo_inscricao.dart';
 import '../viewmodels/orders_viewmodel.dart';
+import '../widgets/inscription_card.dart';
 
-class OrdersScreen extends StatelessWidget {
+class OrdersScreen extends StatefulWidget {
+  final int idEvento;
 
   const OrdersScreen({
+    required this.idEvento,
     super.key,
   });
+
+  @override
+  State<StatefulWidget> createState() => _OrdersScreenState();
+}
+
+class _OrdersScreenState extends State<OrdersScreen> {
+
+  late OrdersViewModel _viewModel;
+
+  @override
+  void initState() {
+
+    _viewModel = OrdersViewModel(getIt());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _viewModel.init(widget.idEvento);
+    });
+    
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,18 +47,17 @@ class OrdersScreen extends StatelessWidget {
       onWillPop: () async {
         // Show confirmation dialog when trying to go back
         if (context.mounted &&
-            context.read<OrdersViewModel>().inscricoes.isNotEmpty) {
+            _viewModel.inscricoes.isNotEmpty) {
           showConfirmDialog(
             context,
             title: 'Descartar Inscrições?',
             message:
-                'Quaisquer inscrições ali feitas serão perdidas. Deseja continuar?',
+            'Quaisquer inscrições ali feitas serão perdidas. Deseja continuar?',
             confirmText: 'Sim, descartar',
             cancelText: 'Não, continuar',
             onConfirm: () {
-              context.read<OrdersViewModel>().reset();
-              context.read<RegistrationViewModel>().reset();
-              context.go('/');
+              _viewModel.reset();
+             context.pop();
             },
           );
           return false;
@@ -43,173 +66,156 @@ class OrdersScreen extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Meus Pedidos'),
+          title: const Text('Meus Pedidos'), /*ListenableBuilder(
+            listenable: _viewModel,
+            builder: (ctx, child) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Meus Pedidos'),
+                  Text(
+                      _viewModel.evento?.nome ?? 'Evento não encontrado',
+                    style: Theme.of(context).textTheme.labelSmall,
+                  )
+                ],
+              );
+            }
+          ),*/
           leading: BackButton(
             onPressed: () {
-              if (context.read<OrdersViewModel>().inscricoes.isNotEmpty) {
+              if (_viewModel.inscricoes.isNotEmpty) {
                 showConfirmDialog(
                   context,
                   title: 'Descartar Inscrições?',
                   message:
-                      'Quaisquer inscrições ali feitas serão perdidas. Deseja continuar?',
+                  'Quaisquer inscrições ali feitas serão perdidas. Deseja continuar?',
                   confirmText: 'Sim, descartar',
-                  cancelText: 'Não, continuar',
+                  cancelText: 'Não, permanecer aqui',
                   onConfirm: () {
-                    context.read<OrdersViewModel>().reset();
-                    context.go('/');
+                    context.pop();
                   },
                 );
               } else {
-                context.go('/');
+                context.pop();
               }
             },
           ),
         ),
         body: SafeArea(
-          child: Consumer<OrdersViewModel>(
-            builder: (context, viewModel, _) => SizedBox(
-                height: MediaQuery.of(context).size.height,
-                child: Column(
-                  children: [
-                    // Inscriptions list
-                    Expanded(
-                      child: viewModel.inscricoes.isEmpty
-                          ? Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Icon(
-                                    Icons.assignment,
-                                    size: 64,
-                                    color: AppColors.grey400,
-                                  ),
-                                  const SizedBox(height: 16),
-                                  Text(
-                                    'Nenhuma inscrição realizada',
-                                    style:
-                                        Theme.of(context).textTheme.titleLarge,
-                                  ),
-                                  const SizedBox(height: 16),
-                                  ElevatedButton.icon(
-                                    onPressed: () {
-                                      // Navigate to registration screen
-                                      context.pushNamed(
-                                        'registration',
-                                        extra: 0,
-                                      );
-                                    },
-                                    icon: const Icon(Icons.add),
-                                    label: const Text('Nova Inscrição'),
-                                  ),
-                                ],
-                              ),
-                            )
-                          : ListView.builder(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: isMobile ? 16 : 32,
-                                vertical: 16,
-                              ),
-                              itemCount: viewModel.inscricoes.length,
-                              itemBuilder: (context, index) {
-                                final inscricao = viewModel.inscricoes[index];
-                                return InscriptionCard(
-                                  inscricao: inscricao,
-                                  onRemove: () {
-                                    viewModel.removerInscricao(index);
-                                  },
-                                );
-                              },
-                            ),
-                    ),
-                    // Action buttons
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          top: BorderSide(
-                            color: AppColors.grey300,
-                          ),
-                        ),
-                      ),
+          child: ListenableBuilder(
+            listenable: _viewModel,
+            builder: (context, _) => SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: Column(
+                children: [
+                  // Inscriptions list
+                  Expanded(
+                    child: _viewModel.inscricoes.isEmpty
+                        ? Center(
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          const Icon(
+                            Icons.assignment,
+                            size: 64,
+                            color: AppColors.grey400,
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            'Nenhuma inscrição realizada',
+                            style:
+                            Theme.of(context).textTheme.titleLarge,
+                          ),
+                          const SizedBox(height: 16),
                           ElevatedButton.icon(
-                            onPressed: () {
-                              // Navigate to registration screen
-                              context.push(
-                                './registration'
-                              );
-                            },
+                            onPressed: _viewModel.evento == null ? null : _navigateRegistration,
                             icon: const Icon(Icons.add),
                             label: const Text('Nova Inscrição'),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.secondary,
-                            ),
-                          ),
-                          const SizedBox(height: 12),
-                          ElevatedButton.icon(
-                            onPressed: viewModel.inscricoes.isEmpty
-                                ? null
-                                : () {
-                                    // Navigate to payment screen
-                                    context.pushNamed('payment');
-                                  },
-                            icon: const Icon(Icons.payment),
-                            label: const Text('Realizar Pagamento'),
                           ),
                         ],
                       ),
+                    )
+                        : ListView.builder(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: isMobile ? 16 : 32,
+                        vertical: 16,
+                      ),
+                      itemCount: _viewModel.inscricoes.length,
+                      itemBuilder: (context, index) {
+                        final inscricao = _viewModel.inscricoes[index];
+                        return InscriptionCard(
+                          inscricao: inscricao,
+                          onRemove: () {
+                            _viewModel.removerInscricao(index);
+                          },
+                        );
+                      },
                     ),
-                  ],
-                ),
+                  ),
+                  // Action buttons
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        top: BorderSide(
+                          color: AppColors.grey300,
+                        ),
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        ElevatedButton.icon(
+                          onPressed: _viewModel.evento == null ? null : _navigateRegistration,
+                          icon: const Icon(Icons.add),
+                          label: const Text('Nova Inscrição'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.secondary,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        ElevatedButton.icon(
+                          onPressed: _viewModel.inscricoes.isEmpty
+                              ? null
+                              : () async {
+                            // Navigate to payment screen
+                            var resultado = await Navigator.push<DTOResultadoPedido?>(
+                              context,
+                              MaterialPageRoute(builder: (ctx) => PaymentScreen(inscricoes: _viewModel.inscricoes))
+                            );
+                            if (resultado != null) {
+                              await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (ctx) => PaymentSuccessScreen(resultado: resultado))
+                              );
+
+                              context.pop();
+                            }
+                          },
+                          icon: const Icon(Icons.payment),
+                          label: const Text('Realizar Pagamento'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
+            ),
           ),
         ),
       ),
     );
   }
-}
 
-class InscriptionCard extends StatelessWidget {
-  final DTOInscricao inscricao;
-  final VoidCallback onRemove;
-
-  const InscriptionCard({
-    Key? key,
-    required this.inscricao,
-    required this.onRemove,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final tipoLabel = inscricao.tipo == EnumTipoInscricao.infantil
-        ? 'Infantil'
-        : 'Participante';
-
-    return Card(
-      margin: const EdgeInsets.only(bottom: 12),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 12,
-        ),
-        title: Text(
-          inscricao.pessoa.nome,
-          style: Theme.of(context).textTheme.titleMedium,
-        ),
-        subtitle: Text(
-          tipoLabel,
-          style: Theme.of(context).textTheme.bodySmall,
-        ),
-        trailing: IconButton(
-          icon: const Icon(Icons.delete, color: AppColors.error),
-          onPressed: onRemove,
-        ),
-      ),
+  void _navigateRegistration() async {
+    var novaInscricao = await Navigator.push<DTOInscricao?>(
+      context,
+      MaterialPageRoute(builder: (ctx) => RegistrationScreen(evento: _viewModel.evento!))
     );
+
+    if (novaInscricao != null) {
+      _viewModel.adicionarInscricao(novaInscricao);
+    }
   }
 }

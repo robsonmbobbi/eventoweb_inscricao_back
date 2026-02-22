@@ -1,3 +1,4 @@
+import 'package:front2/services/formas_pagamento/formas_pagamento_service.dart';
 import 'package:get_it/get_it.dart';
 
 import '../services/base_api_service.dart';
@@ -17,7 +18,8 @@ class ServiceLocator {
      ..registerFactory<EventosService>(() => EventosService(getIt()))
      ..registerFactory<InscricoesService>(() => InscricoesService(getIt()))
      ..registerFactory<PedidosService>(() => PedidosService(getIt()))
-     ..registerFactory<PrecosService>(() => PrecosService(getIt()));
+     ..registerFactory<PrecosService>(() => PrecosService(getIt()))
+     ..registerFactory<FormasPagamentoService>(()=> FormasPagamentoService(getIt()));
 
     // More services can be registered here as needed
   }

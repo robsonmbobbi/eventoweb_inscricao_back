@@ -1,4 +1,5 @@
 using EventoWeb.Comum.Aplicacao.Eventos;
+using EventoWeb.Comum.Aplicacao.FormasPagamento;
 using EventoWeb.Comum.Aplicacao.Inscricoes;
 using EventoWeb.Comum.Aplicacao.Pedidos;
 using EventoWeb.Comum.Aplicacao.Precos;
@@ -79,7 +80,7 @@ builder.Services.AddSingleton<IDictionary<EnumIntegracaoExterna, IIntegracaoExte
     return dict;
 });
 
-builder.Services.AddScoped<ContextoNH>((provider) => {
+builder.Services.AddScoped((provider) => {
     var factory = provider.GetService<ISessionFactory>() ?? 
                   throw new ArgumentNullException(nameof(ISessionFactory));
     
@@ -87,14 +88,14 @@ builder.Services.AddScoped<ContextoNH>((provider) => {
 });
 
 builder.Services.AddScoped<IContexto>(p => p.GetRequiredService<ContextoNH>());
-builder.Services.AddScoped<IInscricoes>(p => p.GetRequiredService<ContextoNH>().Inscricoes);
-builder.Services.AddScoped<IPessoas>(p => p.GetRequiredService<ContextoNH>().Pessoas);
-builder.Services.AddScoped<IEventos>(p => p.GetRequiredService<ContextoNH>().Eventos);
-builder.Services.AddScoped<IPrecosInscricao>(p => p.GetRequiredService<ContextoNH>().PrecosInscricao);
-builder.Services.AddScoped<IPersistencia<Pedido>>(p => p.GetRequiredService<ContextoNH>().Pedidos);
-builder.Services.AddScoped<IPersistencia<FormaPagamento>>(p => p.GetRequiredService<ContextoNH>().FormasPagamento);
-builder.Services.AddScoped<IIntegracaoFinanceiraPorFormasPagamentos>(p => p.GetRequiredService<ContextoNH>().IntegracoesFinanceirasPorFormasPagamento);
-builder.Services.AddScoped<IPersistencia<RegistroIntegracaoFinanceira>>(p => p.GetRequiredService<ContextoNH>().RegistrosIntegracoesFinanceiras);
+builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().Inscricoes);
+builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().Pessoas);
+builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().Eventos);
+builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().PrecosInscricao);
+builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().Pedidos);
+builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().FormasPagamento);
+builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().IntegracoesFinanceirasPorFormasPagamento);
+builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().RegistrosIntegracoesFinanceiras);
 builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().ModelosMensagemNotificacao);
 builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().MensagensNotificacao);
 builder.Services.AddScoped<AppEventoListagem>();
@@ -106,6 +107,7 @@ builder.Services.AddScoped<AppInscricaoObtencao>();
 builder.Services.AddScoped<AppInscricaoPesquisaPessoa>();
 builder.Services.AddScoped<AppPrecoInscricaoObtencaoIdade>();
 builder.Services.AddScoped<AppPedidoInclusao>();
+builder.Services.AddScoped<AppFormasPagamentoListagem>();
 
 builder.Services.AddCors();
 

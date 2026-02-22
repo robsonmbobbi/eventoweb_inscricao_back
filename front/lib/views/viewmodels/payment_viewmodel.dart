@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:front2/models/dto_forma_pagamento.dart';
+import 'package:front2/models/dto_inscricao.dart';
+import 'package:front2/models/enums/enum_tipo_pagamento.dart';
+import 'package:front2/services/formas_pagamento/formas_pagamento_service.dart';
+import 'package:front2/utils/result.dart';
+import '../../models/dto_excecao.dart';
+import '../../models/dto_inscricao_valor.dart';
 import '../../models/dto_pedido.dart';
-import '../../models/dto_preco_inscricao.dart';
-import '../../models/dto_precos_inscricao_forma.dart';
 import '../../models/dto_resultado_pedido.dart';
 import '../../models/enums/enum_tipo_pedido.dart';
 import '../../services/pedidos/pedidos_service.dart';
@@ -9,276 +14,165 @@ import '../../services/precos/precos_service.dart';
 
 class PaymentViewModel extends ChangeNotifier {
 
-  PaymentViewModel({required this.precosService, required this.pedidosService});
+  PaymentViewModel({required this.precosService, required this.pedidosService, required this.formasPagamentoService}){
+    tipoPedido.addListener(_processarAlteracaoTipo);
+    formaPagamentoEscolhida.addListener(_processarAlteracaoFormaPagamento);
+  }
 
   final PrecosService precosService;
   final PedidosService pedidosService;
+  final FormasPagamentoService formasPagamentoService;
 
   // Payment form state
-  EnumTipoPedido _tipoPedido = EnumTipoPedido.debito;
-  int? _idFormaPagamento;
-  double _valorTotal = 0.0;
-  String _nomePagador = '';
-  String _cpfPagador = '';
-  String _celularPagador = '';
-  String _emailPagador = '';
-  String? _descricaoPedido;
+  List<DTOInscricaoValor> _inscricoes = [];
+  double? _valorTotal;
+  DTOExcecao? _erro;
+
+  final ValueNotifier<EnumTipoPedido> tipoPedido = ValueNotifier<EnumTipoPedido>(EnumTipoPedido.debito);
+  final ValueNotifier<String> nomePagador = ValueNotifier<String>('');
+  final ValueNotifier<String> cpfPagador = ValueNotifier<String>('');
+  final ValueNotifier<String> celularPagador = ValueNotifier<String>('');
+  final ValueNotifier<String> emailPagador = ValueNotifier<String>('');
 
   // Credit card fields (shown only if forma de pagamento is credit)
-  String _numeroCartao = '';
-  String _nomeImpressoCartao = '';
-  String _mesExpiracao = '';
-  String _anoExpiracao = '';
-  String _codigoSeguranca = '';
-  String _nomeTitular = '';
-  String _emailTitular = '';
-  String _cpfOuCnpjTitular = '';
-  String _cepTitular = '';
-  String _numeroEnderecoTitular = '';
-  String _telefoneTitular = '';
-  int _numeroParcelas = 1;
+  final ValueNotifier<String> numeroCartao = ValueNotifier<String>('');
+  final ValueNotifier<String> nomeImpressoCartao = ValueNotifier<String>('');
+  final ValueNotifier<String> mesExpiracao = ValueNotifier<String>('');
+  final ValueNotifier<String> anoExpiracao = ValueNotifier<String>('');
+  final ValueNotifier<String> codigoSeguranca = ValueNotifier<String>('');
+  final ValueNotifier<String> nomeTitular = ValueNotifier<String>('');
+  final ValueNotifier<String> emailTitular = ValueNotifier<String>('');
+  final ValueNotifier<String> cpfOuCnpjTitular = ValueNotifier<String>('');
+  final ValueNotifier<String> cepTitular = ValueNotifier<String>('');
+  final ValueNotifier<String> numeroEnderecoTitular = ValueNotifier<String>('');
+  final ValueNotifier<String> telefoneTitular = ValueNotifier<String>('');
+  final ValueNotifier<int?> numeroParcelas = ValueNotifier<int?>(null);
+
+  final ValueNotifier<String?> motivo = ValueNotifier<String?>(null);
 
   // State
-  DTOPrecoInscricao? _precoDisponivel;
-  List<DTOPrecosInscricaoForma>? _formasPagamento;
-  bool _isLoading = false;
-  String? _error;
-  DTOResultadoPedido? _resultado;
+  final ValueNotifier<List<DTOFormaPagamento>> formasPagamento = ValueNotifier<List<DTOFormaPagamento>>([]);
+  final ValueNotifier<DTOFormaPagamento?> formaPagamentoEscolhida = ValueNotifier<DTOFormaPagamento?>(null);
 
-  // Getters
-  EnumTipoPedido get tipoPedido => _tipoPedido;
-  int? get idFormaPagamento => _idFormaPagamento;
-  double get valorTotal => _valorTotal;
-  String get nomePagador => _nomePagador;
-  String get cpfPagador => _cpfPagador;
-  String get celularPagador => _celularPagador;
-  String get emailPagador => _emailPagador;
-  String? get descricaoPedido => _descricaoPedido;
 
-  String get numeroCartao => _numeroCartao;
-  String get nomeImpressoCartao => _nomeImpressoCartao;
-  String get mesExpiracao => _mesExpiracao;
-  String get anoExpiracao => _anoExpiracao;
-  String get codigoSeguranca => _codigoSeguranca;
-  String get nomeTitular => _nomeTitular;
-  String get emailTitular => _emailTitular;
-  String get cpfOuCnpjTitular => _cpfOuCnpjTitular;
-  String get cepTitular => _cepTitular;
-  String get numeroEnderecoTitular => _numeroEnderecoTitular;
-  String get telefoneTitular => _telefoneTitular;
-  int get numeroParcelas => _numeroParcelas;
+  List<DTOInscricaoValor> get inscricoes => _inscricoes;
+  double? get valorTotal  => _valorTotal;
+  DTOExcecao? get erro => _erro;
 
-  DTOPrecoInscricao? get precoDisponivel => _precoDisponivel;
-  List<DTOPrecosInscricaoForma>? get formasPagamento => _formasPagamento;
-  bool get isLoading => _isLoading;
-  String? get error => _error;
-  DTOResultadoPedido? get resultado => _resultado;
+  Result<void> carregarInscricoes(List<DTOInscricao> inscricoes) {
+    _inscricoes = inscricoes.map((e) => DTOInscricaoValor(inscricao: e, valor: null)).toList();
+    _valorTotal = null;
+    _erro = null;
 
-  // Setters
-  void setTipoPedido(EnumTipoPedido value) {
-    _tipoPedido = value;
     notifyListeners();
+
+    return Result.ok(null);
   }
 
-  void setIdFormaPagamento(int? value) {
-    _idFormaPagamento = value;
-    notifyListeners();
-  }
-
-  void setValorTotal(double value) {
-    _valorTotal = value;
-    notifyListeners();
-  }
-
-  void setNomePagador(String value) {
-    _nomePagador = value;
-    notifyListeners();
-  }
-
-  void setCpfPagador(String value) {
-    _cpfPagador = value.replaceAll(RegExp(r'[^\d]'), '');
-    notifyListeners();
-  }
-
-  void setCelularPagador(String value) {
-    _celularPagador = value.replaceAll(RegExp(r'[^\d]'), '');
-    notifyListeners();
-  }
-
-  void setEmailPagador(String value) {
-    _emailPagador = value;
-    notifyListeners();
-  }
-
-  void setDescricaoPedido(String? value) {
-    _descricaoPedido = value;
-    notifyListeners();
-  }
-
-  void setNumeroCartao(String value) {
-    _numeroCartao = value.replaceAll(RegExp(r'[^\d]'), '');
-    notifyListeners();
-  }
-
-  void setNomeImpressoCartao(String value) {
-    _nomeImpressoCartao = value;
-    notifyListeners();
-  }
-
-  void setMesExpiracao(String value) {
-    _mesExpiracao = value.replaceAll(RegExp(r'[^\d]'), '');
-    notifyListeners();
-  }
-
-  void setAnoExpiracao(String value) {
-    _anoExpiracao = value.replaceAll(RegExp(r'[^\d]'), '');
-    notifyListeners();
-  }
-
-  void setCodigoSeguranca(String value) {
-    _codigoSeguranca = value.replaceAll(RegExp(r'[^\d]'), '');
-    notifyListeners();
-  }
-
-  void setNomeTitular(String value) {
-    _nomeTitular = value;
-    notifyListeners();
-  }
-
-  void setEmailTitular(String value) {
-    _emailTitular = value;
-    notifyListeners();
-  }
-
-  void setCpfOuCnpjTitular(String value) {
-    _cpfOuCnpjTitular = value.replaceAll(RegExp(r'[^\d]'), '');
-    notifyListeners();
-  }
-
-  void setCepTitular(String value) {
-    _cepTitular = value.replaceAll(RegExp(r'[^\d]'), '');
-    notifyListeners();
-  }
-
-  void setNumeroEnderecoTitular(String value) {
-    _numeroEnderecoTitular = value;
-    notifyListeners();
-  }
-
-  void setTelefoneTitular(String value) {
-    _telefoneTitular = value.replaceAll(RegExp(r'[^\d]'), '');
-    notifyListeners();
-  }
-
-  void setNumeroParcelas(int value) {
-    _numeroParcelas = value;
-    notifyListeners();
-  }
-
-  // Load payment forms for a given date of birth
-  Future<void> carregarFormasPagamento(int idEvento, DateTime dataNascimento) async {
-    _isLoading = true;
-    _error = null;
-    notifyListeners();
-
-    try {
-      _precoDisponivel = await precosService.obterPrecosInscricao(idEvento, dataNascimento);
-      _formasPagamento = _precoDisponivel?.valores;
-      _error = null;
-    } on Exception catch (e) {
-      _error = e.toString();
-      _precoDisponivel = null;
-      _formasPagamento = null;
-    } catch (e) {
-      _error = 'Erro ao carregar formas de pagamento';
-      _precoDisponivel = null;
-      _formasPagamento = null;
-    } finally {
-      _isLoading = false;
+  void _processarAlteracaoTipo() async {
+    if (tipoPedido.value == EnumTipoPedido.debito){
+      try {
+        formasPagamento.value = await formasPagamentoService.listar();
+      } on Exception catch (e) {
+        _erro = DTOExcecao(descricao: 'Alteração do tipo de pedido', excecao: e);
+        notifyListeners();
+      } catch(e) {
+        _erro = DTOExcecao(descricao: 'Alteração do tipo de pedido', excecao: Exception(e.toString()));
+        notifyListeners();
+      }
+    }
+    else {
+      _inscricoes = _inscricoes.map((e) => DTOInscricaoValor(inscricao: e.inscricao, valor: null)).toList();
+      _valorTotal = null;
+      _erro = null;
       notifyListeners();
+    }
+  }
+
+  void _processarAlteracaoFormaPagamento() async {
+    if (formaPagamentoEscolhida.value == null) {
+      _inscricoes = _inscricoes.map((e) => DTOInscricaoValor(inscricao: e.inscricao, valor: null)).toList();
+      _valorTotal = null;
+      _erro = null;
+      notifyListeners();
+    }
+    else {
+      var lista = <DTOInscricaoValor>[];
+      double? total = 0.0;
+
+      try {
+        for (var inscricaoValor in _inscricoes) {
+          var preco = await precosService.obterPrecosInscricao(
+              inscricaoValor.inscricao.idEvento,
+              inscricaoValor.inscricao.pessoa.dataNascimento!);
+          if (preco == null) {
+            total = null;
+            lista.add(DTOInscricaoValor(
+                inscricao: inscricaoValor.inscricao, valor: null));
+          }
+          else {
+            var valor = preco.valores
+                .where((e) => e.forma.id == formaPagamentoEscolhida.value!.id)
+                .firstOrNull;
+            if (valor == null) {
+              lista.add(DTOInscricaoValor(
+                  inscricao: inscricaoValor.inscricao, valor: null));
+            }
+            else {
+              lista.add(DTOInscricaoValor(
+                  inscricao: inscricaoValor.inscricao, valor: valor.valor));
+              if (total != null) {
+                total += valor.valor;
+              }
+            }
+          }
+        }
+        _inscricoes = lista;
+        _valorTotal = total;
+        _erro = null;
+        notifyListeners();
+      }
+      on Exception catch(e) {
+        _erro = DTOExcecao(descricao: 'Alteração de forma de pagamento', excecao: e);
+        notifyListeners();
+      }
     }
   }
 
   // Submit payment order
-  Future<bool> finalizarPedido(List<int> idsInscricoes) async {
-    _isLoading = true;
-    _error = null;
-    notifyListeners();
-
+  Future<Result<DTOResultadoPedido>> finalizarPedido() async {
     try {
       final pedido = DTOPedido(
-        idsInscricoes: idsInscricoes,
-        idForma: _idFormaPagamento ?? 0,
-        valor: _valorTotal,
-        tipo: _tipoPedido,
-        descricao: _descricaoPedido,
-        dadosCartao: _tipoPedido == EnumTipoPedido.debito && (_idFormaPagamento != null)
+        idsInscricoes: _inscricoes.map((e) => e.inscricao.id!).toList(),
+        idFormaPagamento: formaPagamentoEscolhida.value?.id,
+        valor: _valorTotal ?? 0.0,
+        tipo: tipoPedido.value,
+        celularPagador: celularPagador.value,
+        cpfPagador: cpfPagador.value,
+        emailPagador: emailPagador.value,
+        nomePagador: nomePagador.value,
+        motivo: motivo.value,
+        dadosCartao: tipoPedido.value == EnumTipoPedido.debito && (formaPagamentoEscolhida.value!.tipo == EnumTipoPagamento.credito)
             ? DadosCartaoCredito(
-                numeroCartao: _numeroCartao,
-                nomeImpressoCartao: _nomeImpressoCartao,
-                mesExpiracao: _mesExpiracao,
-                anoExpiracao: _anoExpiracao,
-                codigoSeguranca: _codigoSeguranca,
-                nomeTitular: _nomeTitular,
-                emailTitular: _emailTitular,
-                cpfouCnpjTitular: _cpfOuCnpjTitular,
-                cepTitular: _cepTitular,
-                numeroEnderecoTitular: _numeroEnderecoTitular,
-                telefoneTitular: _telefoneTitular,
-                numeroParcelas: _numeroParcelas,
-              )
+          numeroCartao: numeroCartao.value,
+          nomeImpressoCartao: nomeImpressoCartao.value,
+          mesExpiracao: mesExpiracao.value,
+          anoExpiracao: anoExpiracao.value,
+          codigoSeguranca: codigoSeguranca.value,
+          nomeTitular: nomeTitular.value,
+          emailTitular: emailTitular.value,
+          cpfouCnpjTitular: cpfOuCnpjTitular.value,
+          cepTitular: cepTitular.value,
+          numeroEnderecoTitular: numeroEnderecoTitular.value,
+          telefoneTitular: telefoneTitular.value,
+          numeroParcelas: numeroParcelas.value,
+        )
             : null,
       );
 
-      _resultado = await pedidosService.incluirPedido(pedido);
-      _error = null;
-      return true;
+      return Result.ok(await pedidosService.incluirPedido(pedido));
     } on Exception catch (e) {
-      _error = e.toString();
-      _resultado = null;
-      return false;
-    } catch (e) {
-      _error = 'Erro ao finalizar pedido';
-      _resultado = null;
-      return false;
-    } finally {
-      _isLoading = false;
-      notifyListeners();
+      return Result.error(e);
     }
-  }
-
-  // Clear error
-  void clearError() {
-    _error = null;
-    notifyListeners();
-  }
-
-  // Reset form
-  void reset() {
-    _tipoPedido = EnumTipoPedido.debito;
-    _idFormaPagamento = null;
-    _valorTotal = 0.0;
-    _nomePagador = '';
-    _cpfPagador = '';
-    _celularPagador = '';
-    _emailPagador = '';
-    _descricaoPedido = null;
-    _numeroCartao = '';
-    _nomeImpressoCartao = '';
-    _mesExpiracao = '';
-    _anoExpiracao = '';
-    _codigoSeguranca = '';
-    _nomeTitular = '';
-    _emailTitular = '';
-    _cpfOuCnpjTitular = '';
-    _cepTitular = '';
-    _numeroEnderecoTitular = '';
-    _telefoneTitular = '';
-    _numeroParcelas = 1;
-    _precoDisponivel = null;
-    _formasPagamento = null;
-    _error = null;
-    _resultado = null;
-    notifyListeners();
   }
 }

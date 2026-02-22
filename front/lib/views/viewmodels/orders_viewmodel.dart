@@ -5,6 +5,10 @@ import '../../models/dto_inscricao.dart';
 import '../../services/pedidos/pedidos_service.dart';
 
 class OrdersViewModel extends ChangeNotifier {
+  final EventosService _eventosService;
+
+  OrdersViewModel(this._eventosService);
+
   DTOEvento? _evento;
 
   List<DTOInscricao> _inscricoes = [];
@@ -31,13 +35,17 @@ class OrdersViewModel extends ChangeNotifier {
     }
   }
 
-  void init(DTOEvento evento) async {
+  Future<void> init(int idEvento) async {
 
     if (_evento != null) {
       throw Exception("OrdersViewModel já iniciado!");
     }
 
-    _evento = evento;
+    _evento = await _eventosService.obter(idEvento);
+    if (_evento == null) {
+      _error = "Evento não encontrado com o id $idEvento";
+    }
+
     notifyListeners();
   }
 

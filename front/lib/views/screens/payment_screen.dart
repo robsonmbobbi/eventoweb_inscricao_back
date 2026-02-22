@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:front2/models/dto_forma_pagamento.dart';
+import 'package:front2/models/dto_inscricao.dart';
+import 'package:front2/models/dto_resultado_pedido.dart';
+import 'package:front2/models/enums/enum_tipo_pagamento.dart';
+import 'package:front2/utils/result.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -7,13 +12,13 @@ import '../../common/widgets.dart';
 import '../../core/service_locator.dart';
 import '../../models/enums/enum_tipo_inscricao.dart';
 import '../../models/enums/enum_tipo_pedido.dart';
-import '../../services/pedidos/pedidos_service.dart';
-import '../../services/precos/precos_service.dart';
 import '../viewmodels/orders_viewmodel.dart';
 import '../viewmodels/payment_viewmodel.dart';
 
 class PaymentScreen extends StatefulWidget {
-  const PaymentScreen({super.key});
+  final List<DTOInscricao> inscricoes;
+
+  const PaymentScreen({required this.inscricoes, super.key});
 
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
@@ -26,280 +31,410 @@ class _PaymentScreenState extends State<PaymentScreen> {
   @override
   void initState() {
     super.initState();
-    _viewModel = PaymentViewModel(precosService: getIt<PrecosService>(), pedidosService: getIt<PedidosService>());
+
+    _viewModel = PaymentViewModel(precosService: getIt(), pedidosService: getIt(), formasPagamentoService: getIt());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _viewModel.carregarInscricoes(widget.inscricoes);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     final isMobile = MediaQuery.of(context).size.width < 768;
-    final ordersVM = context.watch<OrdersViewModel>();
 
     return WillPopScope(
       onWillPop: () async {
-        context.go('/orders');
+        Navigator.pop(context);
         return false;
       },
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Pagamento'),
           leading: BackButton(
-            onPressed: () => context.go('/orders'),
+            onPressed: () => Navigator.pop(context),
           ),
         ),
         body: SafeArea(
-          child: ChangeNotifierProvider.value(
-            value: _viewModel,
-            child: Consumer<PaymentViewModel>(
-              builder: (context, viewModel, _) {
-                if (viewModel.error != null) {
+          child: ListenableBuilder(
+            listenable: _viewModel,
+            builder: (context, _) {
+                if (_viewModel.erro != null) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     showErrorDialog(
                       context,
-                      message: viewModel.error!,
+                      message: _viewModel.erro!.excecao.toString(),
                       onClose: () {
-                        viewModel.clearError();
+                        //_viewModel.clearError();
                       },
                     );
                   });
                 }
 
-                return LoadingOverlay(
-                  isLoading: viewModel.isLoading,
-                  message: 'Processando pagamento...',
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: isMobile ? 16 : 32,
-                        vertical: 24,
-                      ),
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            // Inscriptions Summary
-                            Text(
-                              'Resumo das Inscrições',
-                              style: Theme.of(context).textTheme.headlineSmall,
-                            ),
-                            const SizedBox(height: 16),
-                            Card(
-                              child: Padding(
-                                padding: const EdgeInsets.all(16),
-                                child: Column(
-                                  children: [
-                                    ...ordersVM.inscricoes
-                                        .asMap()
-                                        .entries
-                                        .map((e) => Padding(
-                                        padding: const EdgeInsets.only(bottom: 12),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Expanded(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    e.value.pessoa.nome,
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodyMedium,
-                                                  ),
-                                                  Text(
-                                                    e.value.tipo ==
-                                                            EnumTipoInscricao
-                                                                .infantil
-                                                        ? 'Infantil'
-                                                        : 'Participante',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodySmall,
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Text(
-                                              'R\$ 0,00',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium,
-                                            ),
-                                          ],
-                                        ),
-                                      )).toList(),
-                                    const Divider(),
-                                    Row(
+                return SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: isMobile ? 16 : 32,
+                      vertical: 24,
+                    ),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          // Inscriptions Summary
+                          Text(
+                            'Resumo das Inscrições',
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
+                          const SizedBox(height: 16),
+                          Card(
+                            child: Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: Column(
+                                children: [
+                                  ..._viewModel.inscricoes
+                                      .asMap()
+                                      .entries
+                                      .map((e) => Padding(
+                                    padding: const EdgeInsets.only(bottom: 12),
+                                    child: Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          'Total',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleMedium,
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                e.value.inscricao.pessoa.nome,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
+                                              ),
+                                              Text(
+                                                e.value.inscricao.tipo == EnumTipoInscricao.infantil
+                                                    ? 'Infantil'
+                                                    : 'Participante',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodySmall,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                         Text(
-                                          'R\$ ${viewModel.valorTotal.toStringAsFixed(2)}',
+                                          'R\$ ${_viewModel.valorTotal ?? 'Sem informações de valor'}',
                                           style: Theme.of(context)
                                               .textTheme
-                                              .titleMedium,
+                                              .bodyMedium,
                                         ),
                                       ],
                                     ),
-                                  ],
-                                ),
+                                  )).toList(),
+                                  const Divider(),
+                                  Row(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Total',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                      ),
+                                      Text(
+                                        'R\$ ${_viewModel.valorTotal?.toStringAsFixed(2) ?? 'Sem valor informado'}',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
-                            const SizedBox(height: 24),
+                          ),
+                          const SizedBox(height: 24),
 
-                            // Payment Type
-                            Text(
-                              'Tipo de Pagamento',
-                              style: Theme.of(context).textTheme.headlineSmall,
-                            ),
-                            const SizedBox(height: 16),
-                            SegmentedButton<EnumTipoPedido>(
-                              segments: const [
-                                ButtonSegment(
-                                  value: EnumTipoPedido.debito,
-                                  label: Text('Débito'),
-                                  icon: Icon(Icons.credit_card),
-                                ),
-                                ButtonSegment(
-                                  value: EnumTipoPedido.desconto,
-                                  label: Text('Desconto'),
-                                  icon: Icon(Icons.discount),
-                                ),
-                                ButtonSegment(
-                                  value: EnumTipoPedido.isencao,
-                                  label: Text('Isenção'),
-                                  icon: Icon(Icons.free_cancellation),
-                                ),
-                              ],
-                              selected: {viewModel.tipoPedido},
-                              onSelectionChanged: (selected) {
-                                viewModel.setTipoPedido(selected.first);
-                              },
-                            ),
-                            const SizedBox(height: 24),
-
-                            // Payer Information
-                            Text(
-                              'Dados do Pagador',
-                              style: Theme.of(context).textTheme.headlineSmall,
-                            ),
-                            const SizedBox(height: 16),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                labelText: 'Nome *',
-                                prefixIcon: Icon(Icons.person),
+                          // Payment Type
+                          Text(
+                            'Tipo de Pagamento',
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
+                          const SizedBox(height: 16),
+                          SegmentedButton<EnumTipoPedido>(
+                            segments: const [
+                              ButtonSegment(
+                                value: EnumTipoPedido.debito,
+                                label: Text('Débito'),
+                                icon: Icon(Icons.credit_card),
                               ),
-                              validator: (value) => InputValidators
-                                  .validateRequired(value, 'Nome'),
-                              onChanged: viewModel.setNomePagador,
-                              maxLength: 200,
-                            ),
-                            const SizedBox(height: 16),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                labelText: 'CPF *',
-                                prefixIcon: Icon(Icons.badge),
+                              ButtonSegment(
+                                value: EnumTipoPedido.desconto,
+                                label: Text('Desconto'),
+                                icon: Icon(Icons.discount),
                               ),
-                              inputFormatters: [
-                                InputFormatters.cpfFormatter
-                              ],
-                              validator: InputValidators.validateCPF,
-                              onChanged: viewModel.setCpfPagador,
-                            ),
-                            const SizedBox(height: 16),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                labelText: 'Celular *',
-                                prefixIcon: Icon(Icons.phone),
+                              ButtonSegment(
+                                value: EnumTipoPedido.isencao,
+                                label: Text('Isenção'),
+                                icon: Icon(Icons.free_cancellation),
                               ),
-                              inputFormatters: [
-                                InputFormatters.celularFormatter
-                              ],
-                              validator: InputValidators.validateCelular,
-                              onChanged: viewModel.setCelularPagador,
-                            ),
-                            const SizedBox(height: 16),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                labelText: 'Email *',
-                                prefixIcon: Icon(Icons.email),
-                              ),
-                              keyboardType: TextInputType.emailAddress,
-                              validator: InputValidators.validateEmail,
-                              onChanged: viewModel.setEmailPagador,
-                              maxLength: 100,
-                            ),
-                            const SizedBox(height: 24),
-
-                            // Conditional fields based on payment type
-                            if (viewModel.tipoPedido == EnumTipoPedido.debito) ...[
-                              Text(
-                                'Forma de Pagamento',
-                                style:
-                                    Theme.of(context).textTheme.headlineSmall,
-                              ),
-                              const SizedBox(height: 16),
-                              // Payment forms dropdown will be populated here
-                              const SizedBox(height: 24),
-                              // Credit card fields if needed
-                              const SizedBox(height: 24),
-                            ] else if (viewModel.tipoPedido ==
-                                EnumTipoPedido.desconto ||
-                                viewModel.tipoPedido ==
-                                    EnumTipoPedido.isencao) ...[
-                              TextFormField(
-                                decoration: const InputDecoration(
-                                  labelText: 'Descrição do Pedido *',
-                                  hintText:
-                                      'Digite o motivo do desconto ou isenção',
-                                  prefixIcon: Icon(Icons.description),
-                                ),
-                                maxLines: 4,
-                                validator: (value) =>
-                                    InputValidators.validateRequired(
-                                        value, 'Descrição'),
-                                onChanged: viewModel.setDescricaoPedido,
-                              ),
-                              const SizedBox(height: 24),
                             ],
+                            selected: {_viewModel.tipoPedido.value},
+                            onSelectionChanged: (selected) {
+                              _viewModel.tipoPedido.value = selected.first;
+                            },
+                          ),
+                          const SizedBox(height: 24),
 
-                            // Action buttons
-                            ElevatedButton(
-                              onPressed: viewModel.isLoading
-                                  ? null
-                                  : () async {
-                                      if (_formKey.currentState!.validate()) {
-                                        final success =
-                                            await viewModel.finalizarPedido(
-                                          ordersVM.inscricoes
-                                              .map((i) => i.id ?? 0)
-                                              .toList(),
-                                        );
-                                        if (context.mounted && success) {
-                                          await context.pushNamed(
-                                            'paymentSuccess',
-                                            extra: viewModel.resultado,
+                          // Payer Information
+                          Text(
+                            'Dados do Pagador',
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
+                          const SizedBox(height: 16),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              labelText: 'Nome *',
+                              prefixIcon: Icon(Icons.person),
+                            ),
+                            validator: (value) => InputValidators.validateRequired(value, 'Nome'),
+                            onChanged: (value) => _viewModel.nomePagador.value = value,
+                            maxLength: 200,
+                          ),
+                          const SizedBox(height: 16),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              labelText: 'CPF *',
+                              prefixIcon: Icon(Icons.badge),
+                            ),
+                            inputFormatters: [
+                              InputFormatters.cpfFormatter
+                            ],
+                            validator: InputValidators.validateCPF,
+                            onChanged: (value) => _viewModel.cpfPagador.value = value,
+                          ),
+                          const SizedBox(height: 16),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              labelText: 'Celular *',
+                              prefixIcon: Icon(Icons.phone),
+                            ),
+                            inputFormatters: [
+                              InputFormatters.celularFormatter
+                            ],
+                            validator: InputValidators.validateCelular,
+                            onChanged: (value) => _viewModel.celularPagador.value = value,
+                          ),
+                          const SizedBox(height: 16),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              labelText: 'Email *',
+                              prefixIcon: Icon(Icons.email),
+                            ),
+                            keyboardType: TextInputType.emailAddress,
+                            validator: InputValidators.validateEmail,
+                            onChanged:(value) => _viewModel.emailPagador.value = value,
+                            maxLength: 100,
+                          ),
+                          const SizedBox(height: 24),
+
+                          ValueListenableBuilder(
+                            valueListenable: _viewModel.tipoPedido,
+                            builder: (ctx, value, child) {
+                              if (value == EnumTipoPedido.debito) {
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  children: [
+                                    DropdownMenuFormField<DTOFormaPagamento>(
+                                      dropdownMenuEntries: _viewModel.formasPagamento.value.map((e) => DropdownMenuEntry(value: e, label: e.nome)).toList(),
+                                      initialSelection: _viewModel.formaPagamentoEscolhida.value,
+                                      onSelected: (value) => _viewModel.formaPagamentoEscolhida.value = value,
+                                      enableFilter: false,
+                                      enableSearch: false,
+                                      validator: (value) {
+                                        if (value == null) {
+                                          return "Você não escolheu uma forma de pagamento";
+                                        }
+
+                                        return null;
+                                      },
+                                    ),
+                                    ValueListenableBuilder(
+                                      valueListenable: _viewModel.formaPagamentoEscolhida,
+                                      builder: (ctx2, value, child) {
+                                        if (value?.tipo == EnumTipoPagamento.credito) {
+                                          return Column(
+                                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                                            children: [
+                                              Text(
+                                                'Dados Cartão de Crédito',
+                                                style: Theme.of(context).textTheme.headlineSmall,
+                                              ),
+                                              const SizedBox(height: 16),
+                                              TextFormField(
+                                                decoration: const InputDecoration(
+                                                  labelText: 'Número Cartão *',
+                                                  prefixIcon: Icon(Icons.credit_card),
+                                                ),
+                                                inputFormatters: [
+                                                  InputFormatters.creditCardFormatter
+                                                ],
+                                                validator: (value) => InputValidators.validateRequired(value, "Número Cartão"),
+                                                onChanged: (value) => _viewModel.numeroCartao.value = value,
+                                              ),
+                                              const SizedBox(height: 16),
+                                              TextFormField(
+                                                decoration: const InputDecoration(
+                                                  labelText: 'Nome Impresso Cartão *',
+                                                  prefixIcon: Icon(Icons.credit_card),
+                                                ),
+                                                validator: (value) => InputValidators.validateRequired(value, "Nome Impresso Cartão"),
+                                                onChanged: (value) => _viewModel.nomeImpressoCartao.value = value,
+                                              ),
+                                              const SizedBox(height: 16),
+                                              TextFormField(
+                                                decoration: const InputDecoration(
+                                                  labelText: 'Mês validade *',
+                                                  prefixIcon: Icon(Icons.credit_card),
+                                                ),
+                                                keyboardType: TextInputType.number,
+                                                validator: (value) => InputValidators.validateRequired(value, "Mês validade"),
+                                                onChanged: (value) => _viewModel.mesExpiracao.value = value,
+                                              ),
+                                              const SizedBox(height: 16),
+                                              TextFormField(
+                                                decoration: const InputDecoration(
+                                                  labelText: 'Ano Validade *',
+                                                  prefixIcon: Icon(Icons.credit_card),
+                                                ),
+                                                keyboardType: TextInputType.number,
+                                                validator: (value) => InputValidators.validateRequired(value, "Ano Validade"),
+                                                onChanged: (value) => _viewModel.anoExpiracao.value = value,
+                                              ),
+                                              const SizedBox(height: 16),
+                                              TextFormField(
+                                                decoration: const InputDecoration(
+                                                  labelText: 'Código Segurança *',
+                                                  prefixIcon: Icon(Icons.credit_card),
+                                                ),
+                                                keyboardType: TextInputType.number,
+                                                validator: (value) => InputValidators.validateRequired(value, "Código Segurança"),
+                                                onChanged: (value) => _viewModel.codigoSeguranca.value = value,
+                                              ),
+                                              const SizedBox(height: 16),
+                                              TextFormField(
+                                                decoration: const InputDecoration(
+                                                  labelText: 'Nome Titular *',
+                                                  prefixIcon: Icon(Icons.credit_card),
+                                                ),
+                                                validator: (value) => InputValidators.validateRequired(value, "Nome Titular"),
+                                                onChanged: (value) => _viewModel.nomeTitular.value = value,
+                                              ),
+                                              const SizedBox(height: 16),
+                                              TextFormField(
+                                                decoration: const InputDecoration(
+                                                  labelText: 'Email titular *',
+                                                  prefixIcon: Icon(Icons.email),
+                                                ),
+                                                keyboardType: TextInputType.emailAddress,
+                                                validator: InputValidators.validateEmail,
+                                                onChanged: (value) => _viewModel.emailTitular.value = value,
+                                              ),
+                                              const SizedBox(height: 16),
+                                              TextFormField(
+                                                decoration: const InputDecoration(
+                                                  labelText: 'CPF ou CNPJ Titular *',
+                                                  prefixIcon: Icon(Icons.corporate_fare),
+                                                ),
+                                                validator: (value) => InputValidators.validateRequired(value, "CPF ou CNPJ Titular"),
+                                                onChanged: (value) => _viewModel.cpfOuCnpjTitular.value = value,
+                                              ),
+                                              const SizedBox(height: 16),
+                                              TextFormField(
+                                                decoration: const InputDecoration(
+                                                  labelText: 'CEP Titular *',
+                                                  prefixIcon: Icon(Icons.signpost),
+                                                ),
+                                                inputFormatters: [
+                                                  InputFormatters.cepFormatter
+                                                ],
+                                                validator: (value) => InputValidators.validateRequired(value, "CEP Titular"),
+                                                onChanged: (value) => _viewModel.cepTitular.value = value,
+                                              ),
+                                              const SizedBox(height: 16),
+                                              TextFormField(
+                                                decoration: const InputDecoration(
+                                                  labelText: 'Número Logradouro Titular *',
+                                                  prefixIcon: Icon(Icons.streetview),
+                                                ),
+                                                validator: (value) => InputValidators.validateRequired(value, "Número Logradouro Titular"),
+                                                onChanged: (value) => _viewModel.numeroEnderecoTitular.value = value,
+                                              ),
+                                              const SizedBox(height: 16),
+                                              TextFormField(
+                                                decoration: const InputDecoration(
+                                                  labelText: 'Telefone Titular *',
+                                                  prefixIcon: Icon(Icons.phone),
+                                                ),
+                                                inputFormatters: [
+                                                  InputFormatters.celularFormatter
+                                                ],
+                                                validator: (value) => InputValidators.validateRequired(value, "Telefone Titular"),
+                                                onChanged: (value) => _viewModel.telefoneTitular.value = value,
+                                              ),
+                                              if (value!.nrParcelasMaxima > 1) ...[
+                                                const SizedBox(height: 16),
+                                                TextFormField(
+                                                  decoration: const InputDecoration(
+                                                    labelText: 'Número Parcelas *',
+                                                    prefixIcon: Icon(Icons.shopping_bag),
+                                                  ),
+                                                  keyboardType: TextInputType.number,
+                                                  validator: (value) => InputValidators.validateRequired(value, "Número Parcelas"),
+                                                  onChanged: (value) => _viewModel.numeroParcelas.value = int.parse(value),
+                                                ),
+                                              ],
+                                            ],
                                           );
                                         }
+
+                                        return const SizedBox(height: 0);
                                       }
-                                    },
-                              child: const Text('Finalizar Pedido'),
-                            ),
-                            const SizedBox(height: 12),
-                            OutlinedButton(
-                              onPressed: () => context.go('/orders'),
-                              child: const Text('Voltar'),
-                            ),
-                          ],
-                        ),
+                                    )
+                                  ],
+                                );
+                              }
+                              else {
+                                return TextFormField(
+                                  decoration: const InputDecoration(
+                                    labelText: 'Motivo *',
+                                    hintText: 'Descreva o motivo para o pedido',
+                                    prefixIcon: Icon(Icons.description),
+                                  ),
+                                  maxLines: 4,
+                                  validator: (value) => InputValidators.validateRequired(value, 'Motivo'),
+                                  onChanged: (value) => _viewModel.motivo.value = value,
+                                );
+                              }
+                            }
+                          ),
+                          const SizedBox(height: 24),
+                          // Action buttons
+                          ElevatedButton(
+                            onPressed: () async {
+                              if (_formKey.currentState!.validate()) {
+                                final result = await _viewModel.finalizarPedido();
+                                if (context.mounted && result is OkCommand) {
+                                  var resultadoProcesso = result as OkCommand<DTOResultadoPedido>;
+                                  Navigator.pop(context, resultadoProcesso.value);
+                                }
+                              }
+                            },
+                            child: const Text('Finalizar Pedido'),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -308,7 +443,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }

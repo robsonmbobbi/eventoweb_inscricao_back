@@ -7,7 +7,7 @@ class PrecosService {
   final BaseApiService _apiService;
   
   /// Obter preços de inscrição para um evento específico
-  Future<DTOPrecoInscricao> obterPrecosInscricao(int idEvento, DateTime dataNascimento) async {
+  Future<DTOPrecoInscricao?> obterPrecosInscricao(int idEvento, DateTime dataNascimento) async {
     var response = await _apiService.get(
       '/precosinscricao/evento/$idEvento/obter/nascimento/${dataNascimento.toIso8601String()}');
 

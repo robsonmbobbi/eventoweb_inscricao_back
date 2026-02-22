@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 
 import '../../common/widgets.dart';
+import '../../core/service_locator.dart';
 import '../../core/theme.dart';
 import '../viewmodels/events_viewmodel.dart';
 
@@ -15,12 +15,16 @@ class EventsScreen extends StatefulWidget {
 }
 
 class _EventsScreenState extends State<EventsScreen> {
+  late EventsViewModel _viewModel;
+
   @override
   void initState() {
     super.initState();
-    // Load events when screen initializes
+
+    _viewModel = EventsViewModel(apiService: getIt());
+
     Future.microtask(() {
-      context.read<EventsViewModel>().loadEventos();
+      _viewModel.loadEventos();
     });
   }
 
@@ -34,25 +38,26 @@ class _EventsScreenState extends State<EventsScreen> {
         elevation: 0,
       ),
       body: SafeArea(
-        child: Consumer<EventsViewModel>(
-          builder: (context, viewModel, _) {
+        child: ListenableBuilder(
+          listenable: _viewModel,
+          builder: (context, _) {
             // Show error dialog if there's an error
-            if (viewModel.error != null && viewModel.error!.isNotEmpty) {
+            if (_viewModel.error != null && _viewModel.error!.isNotEmpty) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 showErrorDialog(
                   context,
-                  message: viewModel.error!,
+                  message: _viewModel.error!,
                   onClose: () {
-                    viewModel.clearError();
+                    _viewModel.clearError();
                   },
                 );
               });
             }
 
             return LoadingOverlay(
-              isLoading: viewModel.isLoading,
+              isLoading: _viewModel.isLoading,
               message: 'Carregando eventos...',
-              child: viewModel.eventos.isEmpty
+              child: _viewModel.eventos.isEmpty
                   ? Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -64,7 +69,7 @@ class _EventsScreenState extends State<EventsScreen> {
                           ),
                           const SizedBox(height: 16),
                           Text(
-                            viewModel.isLoading
+                            _viewModel.isLoading
                                 ? 'Carregando eventos...'
                                 : 'Nenhum evento disponível',
                             style: Theme.of(context).textTheme.titleLarge,
@@ -72,7 +77,7 @@ class _EventsScreenState extends State<EventsScreen> {
                           const SizedBox(height: 16),
                           ElevatedButton.icon(
                             onPressed: () {
-                              viewModel.loadEventos();
+                              _viewModel.loadEventos();
                             },
                             icon: const Icon(Icons.refresh),
                             label: const Text('Tentar Novamente'),
@@ -85,15 +90,15 @@ class _EventsScreenState extends State<EventsScreen> {
                         horizontal: isMobile ? 16 : 32,
                         vertical: 16,
                       ),
-                      itemCount: viewModel.eventos.length,
+                      itemCount: _viewModel.eventos.length,
                       itemBuilder: (context, index) {
-                        final evento = viewModel.eventos[index];
+                        final evento = _viewModel.eventos[index];
                         return EventCard(
                           evento: evento,
                           isMobile: isMobile,
                           onInscribClick: () {
                             // Navigate to orders screen
-                            context.pushNamed('orders', extra: evento);
+                            context.go('/orders/${evento.id}');
                           },
                         );
                       },
@@ -109,8 +114,8 @@ class _EventsScreenState extends State<EventsScreen> {
 class EventCard extends StatelessWidget {
 
   const EventCard({
-    required this.evento, required this.isMobile, required this.onInscribClick, Key? key,
-  }) : super(key: key);
+    required this.evento, required this.isMobile, required this.onInscribClick, super.key,
+  });
   
   final dynamic evento;
   final bool isMobile;
@@ -208,11 +213,11 @@ class _InfoRow extends StatelessWidget {
   final String value;
 
   const _InfoRow({
-    Key? key,
     required this.icon,
     required this.label,
     required this.value,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) => Row(

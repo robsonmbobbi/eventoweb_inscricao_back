@@ -32,31 +32,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => EventsViewModel(
-            apiService: getIt<EventosService>()
-          )
-        ),
-        ChangeNotifierProvider(
-          create: (_) => OrdersViewModel(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => RegistrationViewModel(
-            eventoService: getIt(),
-            inscricoesService: getIt()
-          ),
-        ),
-      ],
-      child: MaterialApp.router(
-        title: 'EventoWeb Inscrições',
-        theme: AppTheme.lightTheme(),
-        darkTheme: AppTheme.darkTheme(),
-        themeMode: ThemeMode.light,
-        routerConfig: appRouter,
-        debugShowCheckedModeBanner: false,
-      ),
+    return MaterialApp.router(
+      title: 'EventoWeb Inscrições',
+      theme: AppTheme.lightTheme(),
+      darkTheme: AppTheme.darkTheme(),
+      themeMode: ThemeMode.light,
+      routerConfig: appRouter,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

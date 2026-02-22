@@ -12,6 +12,8 @@ class DTOPessoa {
   final String email;
   final EnumSexo? sexo;
   final bool usaAdocanteDiariamente;
+  final String? uf;
+  final String? cidade ;
 
   DTOPessoa({
     required this.nome,
@@ -24,6 +26,8 @@ class DTOPessoa {
     this.ehVegetariano = false,
     this.sexo,
     this.usaAdocanteDiariamente = false,
+    this.cidade,
+    this.uf
   });
 
   factory DTOPessoa.fromJson(Map<String, dynamic> json) => DTOPessoa(
@@ -37,6 +41,8 @@ class DTOPessoa {
       email: json['email'],
       sexo: json['sexo'] != null ? EnumSexo.values[json['sexo']] : null,
       usaAdocanteDiariamente: json['usaAdocanteDiariamente'] ?? false,
+      cidade: json['cidade'],
+      uf: json['uf']
     );
 
   Map<String, dynamic> toJson() => {
@@ -50,29 +56,7 @@ class DTOPessoa {
       'email': email,
       'sexo': sexo?.index,
       'usaAdocanteDiariamente': usaAdocanteDiariamente,
+      'uf': uf,
+      'cidade': cidade
     };
-
-  DTOPessoa copyWith({
-    String? nome,
-    DateTime? dataNascimento,
-    String? cpf,
-    String? alergiaAlimentos,
-    String? celular,
-    bool? ehDiabetico,
-    bool? ehVegetariano,
-    String? email,
-    EnumSexo? sexo,
-    bool? usaAdocanteDiariamente,
-  }) => DTOPessoa(
-      nome: nome ?? this.nome,
-      dataNascimento: dataNascimento ?? this.dataNascimento,
-      cpf: cpf ?? this.cpf,
-      alergiaAlimentos: alergiaAlimentos ?? this.alergiaAlimentos,
-      celular: celular ?? this.celular,
-      ehDiabetico: ehDiabetico ?? this.ehDiabetico,
-      ehVegetariano: ehVegetariano ?? this.ehVegetariano,
-      email: email ?? this.email,
-      sexo: sexo ?? this.sexo,
-      usaAdocanteDiariamente: usaAdocanteDiariamente ?? this.usaAdocanteDiariamente,
-    );
 }

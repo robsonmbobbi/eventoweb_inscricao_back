@@ -1,32 +1,29 @@
-import 'enums/enum_tipo_integracao.dart';
+import 'enums/enum_tipo_pagamento.dart';
 
 /// Representa uma forma de pagamento
 class DTOFormaPagamento {
 
   DTOFormaPagamento({
-    this.id,
+    required this.id,
     required this.nome,
     required this.nrParcelasMinima,
     required this.nrParcelasMaxima,
     required this.tipo,
   });
 
-  final int? id;
+  final int id;
   final String nome;
   final int nrParcelasMinima;
   final int nrParcelasMaxima;
-  final EnumTipoIntegracao tipo;
+  final EnumTipoPagamento tipo;
 
   
   factory DTOFormaPagamento.fromJson(Map<String, dynamic> json) => DTOFormaPagamento(
-      id: json['Id'],
-      nome: json['Nome'],
-      nrParcelasMinima: json['NrParcelasMinima'],
-      nrParcelasMaxima: json['NrParcelasMaxima'],
-      tipo: EnumTipoIntegracao.values.firstWhere(
-        (e) => e.toString().split('.').last == json['Tipo'],
-        orElse: () => EnumTipoIntegracao.creditoVista, // Valor padrão
-      ),
+      id: json['id'],
+      nome: json['nome'],
+      nrParcelasMinima: json['nrParcelasMinima'],
+      nrParcelasMaxima: json['nrParcelasMaxima'],
+      tipo: EnumTipoPagamento.values[json['tipo']]
     );
 
   Map<String, dynamic> toJson() => {

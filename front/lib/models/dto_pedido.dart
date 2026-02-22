@@ -3,38 +3,55 @@ import 'enums/enums.dart';
 /// Representa um pedido/pagamento a ser enviado para o servidor
 class DTOPedido {
   final List<int> idsInscricoes;
-  final int idForma;
   final double valor;
   final EnumTipoPedido tipo;
-  final String? descricao;
+  final int? idFormaPagamento;
+  final String nomePagador;
+  final String cpfPagador;
+  final String celularPagador;
+  final String emailPagador;
   final DadosCartaoCredito? dadosCartao;
+  final String? motivo;
 
   DTOPedido({
     required this.idsInscricoes,
-    required this.idForma,
     required this.valor,
     required this.tipo,
-    this.descricao,
+    required this.nomePagador,
+    required this.cpfPagador,
+    required this.celularPagador,
+    required this.emailPagador,
+    this.idFormaPagamento,
     this.dadosCartao,
+    this.motivo
   });
 
   factory DTOPedido.fromJson(Map<String, dynamic> json) => DTOPedido(
-      idsInscricoes: json['idInscricao'],
-      idForma: json['idForma'],
-      valor: (json['valor'] as num).toDouble(),
-      tipo: EnumTipoPedido.values[json['tipo']],
-      descricao: json['descricao'],
-      dadosCartao: json['dadosCartao'] != null
+
+    idsInscricoes: json['idsInscricoes'],
+    idFormaPagamento: json['idFormaPagamento'],
+    valor: (json['valor'] as num).toDouble(),
+    tipo: EnumTipoPedido.values[json['tipo']],
+    nomePagador: json['nomePagador'],
+    cpfPagador: json['cpfPagador'],
+    celularPagador: json['celularPagador'],
+    emailPagador: json['emailPagador'],
+    motivo: json['motivo'],
+    dadosCartao: json['dadosCartao'] != null
           ? DadosCartaoCredito.fromJson(json['dadosCartao'])
           : null,
     );
 
   Map<String, dynamic> toJson() => {
-      'idInscricao': idsInscricoes,
-      'idForma': idForma,
+      'idsInscricoes': idsInscricoes,
+      'idFormaPagamento': idFormaPagamento,
       'valor': valor,
       'tipo': tipo.index,
-      'descricao': descricao,
+      'nomePagador': nomePagador,
+      'cpfPagador': cpfPagador,
+      'celularPagador': celularPagador,
+      'emailPagador': emailPagador,
+      'motivo': motivo,
       'dadosCartao': dadosCartao?.toJson(),
     };
 }
