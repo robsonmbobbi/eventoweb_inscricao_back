@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:front2/views/viewmodels/orders_viewmodel.dart';
 import 'package:front2/views/viewmodels/registration_viewmodel.dart';
@@ -33,6 +34,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp.router(
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: const [Locale('pt', 'BR')],
       title: 'EventoWeb Inscrições',
       theme: AppTheme.lightTheme(),
       darkTheme: AppTheme.darkTheme(),

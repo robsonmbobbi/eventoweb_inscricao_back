@@ -3040,3 +3040,584 @@
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
    at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-02-22 15:07:45.125 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-22 15:07:45.153 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-22 15:07:45.927 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-22 15:07:45.933 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-22 15:07:45.936 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-22 15:07:46.039 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-22 15:07:47.437 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-22 15:07:47.531 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-22 15:07:47.534 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-22 15:07:47.634 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-22 15:07:47.637 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-22 15:07:47.640 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-22 15:22:39.253 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:22:39.338 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:22:49.302 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:22:49.333 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:23:01.627 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-22 15:23:01.659 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-22 15:23:02.226 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-22 15:23:02.231 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-22 15:23:02.234 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-22 15:23:02.302 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-22 15:23:02.337 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-22 15:23:02.363 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-22 15:23:02.392 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-22 15:23:02.424 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-22 15:23:02.426 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-22 15:23:02.428 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-22 15:23:24.766 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:23:24.834 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:23:27.304 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:23:27.332 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:23:28.604 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:23:28.634 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:24:18.357 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:24:18.393 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:24:20.159 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:24:20.186 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:24:20.588 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:24:20.623 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:24:20.763 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:24:20.791 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:24:20.917 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:24:20.942 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:24:21.052 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:24:21.080 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:25:23.745 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:25:23.783 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:25:26.052 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:25:26.083 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:29:28.626 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-22 15:29:28.648 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-22 15:29:29.227 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-22 15:29:29.233 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-22 15:29:29.256 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-22 15:29:29.325 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-22 15:29:29.355 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-22 15:29:29.391 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-22 15:29:29.394 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-22 15:29:29.459 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-22 15:29:29.462 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-22 15:29:29.464 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-22 15:29:36.407 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:29:36.487 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:29:37.729 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:29:37.768 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:29:38.024 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:29:38.052 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:32:03.484 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:33:20.492 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:36:19.539 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-22 15:36:19.563 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-22 15:36:20.089 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-22 15:36:20.093 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-22 15:36:20.095 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-22 15:36:20.167 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-22 15:36:20.191 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-22 15:36:20.247 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-22 15:36:20.249 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-22 15:36:20.337 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-22 15:36:20.341 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-22 15:36:20.345 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-22 15:36:27.090 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:36:27.183 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:36:35.722 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:36:35.751 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:37:48.040 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:37:48.067 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:37:50.552 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:37:50.606 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:41:47.982 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-22 15:41:48.002 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-22 15:41:48.574 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-22 15:41:48.578 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-22 15:41:48.581 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-22 15:41:48.629 [Warning] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware - The WebRootPath was not found: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\wwwroot. Static files may be unavailable.
+2026-02-22 15:41:48.664 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-22 15:41:48.688 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-22 15:41:48.741 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-22 15:41:48.743 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-22 15:41:48.774 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-22 15:41:48.776 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-22 15:41:48.803 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-22 15:41:55.100 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:41:55.186 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:41:58.010 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:41:58.037 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:41:58.510 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:41:58.540 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:41:58.719 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:41:58.746 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:03.715 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:03.755 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:04.350 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:04.376 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:04.732 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:04.761 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:04.937 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:04.964 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:05.094 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:05.126 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:05.230 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:05.265 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:05.389 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:05.415 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:05.531 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:05.555 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:33.773 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:33.824 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:35.389 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:35.422 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:35.558 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:35.592 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:35.719 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:43:35.746 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:44:25.474 [Information] Microsoft.Hosting.Lifetime - Application is shutting down...
+2026-02-22 15:46:52.584 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-22 15:46:52.605 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-22 15:46:53.139 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-22 15:46:53.143 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-22 15:46:53.146 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-22 15:46:53.191 [Warning] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware - The WebRootPath was not found: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\wwwroot. Static files may be unavailable.
+2026-02-22 15:46:53.228 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-22 15:46:53.254 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-22 15:46:53.282 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-22 15:46:53.284 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-22 15:46:53.376 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-22 15:46:53.381 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-22 15:46:53.385 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-22 15:49:00.009 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:49:00.106 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:49:02.217 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:49:02.243 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:49:02.728 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:49:02.763 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:49:02.999 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:49:03.031 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:52:20.323 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-22 15:52:20.347 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-22 15:52:20.853 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-22 15:52:20.858 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-22 15:52:20.894 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-22 15:52:20.939 [Warning] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware - The WebRootPath was not found: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\wwwroot. Static files may be unavailable.
+2026-02-22 15:52:20.976 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-22 15:52:21.001 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-22 15:52:21.028 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-22 15:52:21.030 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-22 15:52:21.090 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-22 15:52:21.092 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-22 15:52:21.116 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-22 15:52:24.581 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:52:24.659 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:52:26.725 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:52:26.753 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:52:27.164 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:52:27.194 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:53:40.977 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:53:41.011 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:53:41.515 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:53:41.544 [Error] Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:54:27.491 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Beginning Transaction
+2026-02-22 15:54:27.514 [Information] FluentMigrator.Runner.Processors.MySql.MySql5Processor - Rolling back transaction
+2026-02-22 15:54:28.071 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BlazorWasmHotReloadMiddleware - Middleware loaded
+2026-02-22 15:54:28.076 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16523 B).
+2026-02-22 15:54:28.078 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-02-22 15:54:28.130 [Warning] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware - The WebRootPath was not found: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao\wwwroot. Static files may be unavailable.
+2026-02-22 15:54:28.167 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-02-22 15:54:28.191 [Warning] Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer - The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-02-22 15:54:28.217 [Information] Microsoft.Hosting.Lifetime - Now listening on: https://localhost:7248
+2026-02-22 15:54:28.219 [Information] Microsoft.Hosting.Lifetime - Now listening on: http://localhost:5020
+2026-02-22 15:54:28.257 [Information] Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2026-02-22 15:54:28.259 [Information] Microsoft.Hosting.Lifetime - Hosting environment: Development
+2026-02-22 15:54:28.262 [Information] Microsoft.Hosting.Lifetime - Content root path: C:\Users\desen\Documents\EventoWeb\eventoweb_inscricao_back\EventoWeb.Inscricao\EventoWeb.Inscricao
+2026-02-22 15:54:32.929 [Error] Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-02-22 15:54:32.968 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Response markup is scheduled to include browser refresh script injection.
+2026-02-22 15:54:32.978 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware - Response markup was updated to include browser refresh script injection.
+2026-02-22 15:54:33.041 [Debug] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserScriptMiddleware - Script injected: /_framework/aspnetcore-browser-refresh.js
+2026-02-22 15:54:33.335 [Error] Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request. System.InvalidOperationException: The SPA default page middleware could not return the default page '/index.html' because it was not found, and no other middleware handled the request.
+
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__1(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.SpaServices.SpaDefaultPageMiddleware.<>c__DisplayClass0_0.<Attach>b__0(HttpContext context, RequestDelegate next)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.TryServeStaticFile(HttpContext context, String contentType, PathString subPath)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)

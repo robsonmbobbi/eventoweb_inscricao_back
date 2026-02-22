@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 import 'package:front2/services/formas_pagamento/formas_pagamento_service.dart';
 import 'package:get_it/get_it.dart';
 
@@ -11,7 +14,10 @@ final getIt = GetIt.instance;
 
 class ServiceLocator {
   static Future<void> setup() async {
-    var baseUrl = 'http://localhost:5020/api';
+
+    var json = jsonDecode(await rootBundle.loadString('assets/config.json'));
+
+    var baseUrl = json["urlApi"];
 
     getIt
      .. registerFactory(()=> BaseApiService(baseUrl))

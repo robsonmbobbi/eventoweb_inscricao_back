@@ -3,8 +3,6 @@ using EventoWeb.Comum.Aplicacao.FormasPagamento;
 using EventoWeb.Comum.Aplicacao.Inscricoes;
 using EventoWeb.Comum.Aplicacao.Pedidos;
 using EventoWeb.Comum.Aplicacao.Precos;
-using EventoWeb.Comum.Negocio.Entidades;
-using EventoWeb.Comum.Negocio.Entidades.Financeiro;
 using EventoWeb.Comum.Negocio.Entidades.IntegracaoFinanceira;
 using EventoWeb.Comum.Negocio.Repositorios;
 using EventoWeb.Comum.Negocio.Servicos;
@@ -19,7 +17,14 @@ using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Mapping.ByCode;
 
-var builder = WebApplication.CreateBuilder(args);
+//var builder = WebApplication.CreateBuilder(args);
+
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    ContentRootPath = AppContext.BaseDirectory,
+    Args = args,
+    ApplicationName = System.Diagnostics.Process.GetCurrentProcess().ProcessName
+});
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -111,7 +116,16 @@ builder.Services.AddScoped<AppFormasPagamentoListagem>();
 
 builder.Services.AddCors();
 
+builder.Services.AddSpaStaticFiles(configuration =>
+{
+    configuration.RootPath = "ClientApp";
+});
+
+
 var app = builder.Build();
+
+app.UseStaticFiles();
+app.UseSpaStaticFiles();
 
 using (var scope = app.Services.CreateScope())
 {
@@ -136,7 +150,12 @@ app.UseCors(builder => builder
 
 //app.UseHttpsRedirection();
 app.MapControllers();
-app.ConfigureExceptionHandler();
+//app.ConfigureExceptionHandler();
+
+app.UseSpa(spa =>
+{
+    spa.Options.SourcePath = "/ClientApp";
+});
 
 app.Run();
 

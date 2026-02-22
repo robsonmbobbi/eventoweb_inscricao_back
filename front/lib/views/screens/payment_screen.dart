@@ -330,6 +330,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                                 keyboardType: TextInputType.number,
                                                 validator: (value) => InputValidators.validateRequired(value, "Código Segurança"),
                                                 onChanged: (value) => _viewModel.codigoSeguranca.value = value,
+                                                maxLength: 3,
                                               ),
                                               const SizedBox(height: 16),
                                               TextFormField(
@@ -394,14 +395,18 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                               ),
                                               if (value!.nrParcelasMaxima > 1) ...[
                                                 const SizedBox(height: 16),
-                                                TextFormField(
-                                                  decoration: const InputDecoration(
-                                                    labelText: 'Número Parcelas *',
-                                                    prefixIcon: Icon(Icons.shopping_bag),
-                                                  ),
-                                                  keyboardType: TextInputType.number,
-                                                  validator: (value) => InputValidators.validateRequired(value, "Número Parcelas"),
-                                                  onChanged: (value) => _viewModel.numeroParcelas.value = int.parse(value),
+                                                DropdownMenuFormField<int>(
+                                                  dropdownMenuEntries: GerarEntradas(value.nrParcelasMinima, value.nrParcelasMaxima),
+                                                  label: const Text("Número Parcelas *"),
+                                                  leadingIcon: Icon(Icons.shopping_bag),
+                                                  validator: (value)  {
+                                                    if (value == null) {
+                                                      return "Informe o número de parcelas";
+                                                    }
+
+                                                    return null;
+                                                  },
+                                                  onSelected: (value) => _viewModel.numeroParcelas.value = value,
                                                 ),
                                               ],
                                             ],
@@ -452,5 +457,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
           ),
         ),
       );
+  }
+
+  List<DropdownMenuEntry<int>> GerarEntradas(int nrParcelasMinima, int nrParcelasMaxima) {
+    List<DropdownMenuEntry<int>> lista = [];
+    for(var parcela = nrParcelasMinima; parcela <= nrParcelasMaxima; parcela++) {
+      lista.add(DropdownMenuEntry<int>(value: parcela, label: "$parcela X"));
+    }
+
+    return lista;
   }
 }
