@@ -15,14 +15,14 @@ class DTODebitoPedido {
   });
 
   factory DTODebitoPedido.fromJson(Map<String, dynamic> json) => DTODebitoPedido(
-      tipoIntegracao: EnumTipoPagamento.values[json['tipoIntegracao']],
+      tipoIntegracao: EnumTipoPagamento.values[json['tipoTransacao']],
       status: EnumStatusTransacao.values[json['status']],
       imagemQRCodePixBase64: json['imagemQRCodePixBase64'],
       pixCopiaECola: json['pixCopiaECola'],
     );
 
   Map<String, dynamic> toJson() => {
-      'tipoIntegracao': tipoIntegracao.index,
+      'tipoTransacao': tipoIntegracao.index,
       'status': status.index,
       'imagemQRCodePixBase64': imagemQRCodePixBase64,
       'pixCopiaECola': pixCopiaECola,

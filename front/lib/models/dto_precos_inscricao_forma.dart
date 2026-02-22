@@ -12,11 +12,11 @@ class DTOPrecosInscricaoForma {
 
   factory DTOPrecosInscricaoForma.fromJson(Map<String, dynamic> json) => DTOPrecosInscricaoForma(
       forma: DTOFormaPagamento.fromJson(json['forma']),
-      valor: (json['valor'] as num).toDouble()
+      valor: (json['preco'] as num).toDouble()
     );
 
   Map<String, dynamic> toJson() => {
       'forma': forma.toJson(),
-      'valor': valor
+      'preco': valor
     };
 }

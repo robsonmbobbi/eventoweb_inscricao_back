@@ -124,7 +124,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                           ),
                                         ),
                                         Text(
-                                          'R\$ ${_viewModel.valorTotal ?? 'Sem informações de valor'}',
+                                          'R\$ ${_viewModel.valorTotal?.toStringAsFixed(2) ?? 'Sem informações de valor'}',
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyMedium,
@@ -163,27 +163,32 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             style: Theme.of(context).textTheme.headlineSmall,
                           ),
                           const SizedBox(height: 16),
-                          SegmentedButton<EnumTipoPedido>(
-                            segments: const [
-                              ButtonSegment(
-                                value: EnumTipoPedido.debito,
-                                label: Text('Débito'),
-                                icon: Icon(Icons.credit_card),
-                              ),
-                              ButtonSegment(
-                                value: EnumTipoPedido.desconto,
-                                label: Text('Desconto'),
-                                icon: Icon(Icons.discount),
-                              ),
-                              ButtonSegment(
-                                value: EnumTipoPedido.isencao,
-                                label: Text('Isenção'),
-                                icon: Icon(Icons.free_cancellation),
-                              ),
-                            ],
-                            selected: {_viewModel.tipoPedido.value},
-                            onSelectionChanged: (selected) {
-                              _viewModel.tipoPedido.value = selected.first;
+                          ValueListenableBuilder<EnumTipoPedido>(
+                            valueListenable: _viewModel.tipoPedido,
+                            builder: (ctx, value, child){
+                              return SegmentedButton<EnumTipoPedido>(
+                                segments: const [
+                                  ButtonSegment(
+                                    value: EnumTipoPedido.debito,
+                                    label: Text('Débito'),
+                                    icon: Icon(Icons.credit_card),
+                                  ),
+                                  ButtonSegment(
+                                    value: EnumTipoPedido.desconto,
+                                    label: Text('Desconto'),
+                                    icon: Icon(Icons.discount),
+                                  ),
+                                  ButtonSegment(
+                                    value: EnumTipoPedido.isencao,
+                                    label: Text('Isenção'),
+                                    icon: Icon(Icons.free_cancellation),
+                                  ),
+                                ],
+                                selected: {_viewModel.tipoPedido.value},
+                                onSelectionChanged: (selected) {
+                                  _viewModel.tipoPedido.value = selected.first;
+                                },
+                              );
                             },
                           ),
                           const SizedBox(height: 24),
@@ -253,6 +258,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                       onSelected: (value) => _viewModel.formaPagamentoEscolhida.value = value,
                                       enableFilter: false,
                                       enableSearch: false,
+                                      label: const Text("Forma de pagamento *"),
                                       validator: (value) {
                                         if (value == null) {
                                           return "Você não escolheu uma forma de pagamento";
@@ -261,6 +267,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                         return null;
                                       },
                                     ),
+                                    const SizedBox(height: 16),
+
                                     ValueListenableBuilder(
                                       valueListenable: _viewModel.formaPagamentoEscolhida,
                                       builder: (ctx2, value, child) {
@@ -269,7 +277,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                             crossAxisAlignment: CrossAxisAlignment.stretch,
                                             children: [
                                               Text(
-                                                'Dados Cartão de Crédito',
+                                                'Dados de Cartão de Crédito',
                                                 style: Theme.of(context).textTheme.headlineSmall,
                                               ),
                                               const SizedBox(height: 16),

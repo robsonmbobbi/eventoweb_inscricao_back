@@ -20,7 +20,7 @@ class DTOResultadoPedido {
   factory DTOResultadoPedido.fromJson(Map<String, dynamic> json) => DTOResultadoPedido(
       idPedido: json['idPedido'],
       valor: json['valor'],
-      tipo: EnumTipoPedido.values[json['tipoPedido']],
+      tipo: EnumTipoPedido.values[json['tipo']],
       idFormaPagamento: json['idFormaPagamento'],
       debito: json['debito'] != null
           ? DTODebitoPedido.fromJson(json['debito'])
@@ -30,7 +30,7 @@ class DTOResultadoPedido {
   Map<String, dynamic> toJson() => {
       'idPedido': idPedido,
       'valor': valor,
-      'tipoPedido': tipo.index,
+      'tipo': tipo.index,
       'idFormaPagamento': idFormaPagamento,
       'debito': debito?.toJson(),
     };

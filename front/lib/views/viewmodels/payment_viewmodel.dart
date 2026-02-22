@@ -60,19 +60,30 @@ class PaymentViewModel extends ChangeNotifier {
   DTOExcecao? get erro => _erro;
 
   Result<void> carregarInscricoes(List<DTOInscricao> inscricoes) {
-    _inscricoes = inscricoes.map((e) => DTOInscricaoValor(inscricao: e, valor: null)).toList();
-    _valorTotal = null;
-    _erro = null;
+    try {
+      _inscricoes =
+          inscricoes
+              .map((e) => DTOInscricaoValor(inscricao: e, valor: null))
+              .toList();
+      _valorTotal = null;
+      _erro = null;
 
-    notifyListeners();
+      notifyListeners();
 
-    return Result.ok(null);
+      _processarAlteracaoTipo();
+
+      return Result.ok(null);
+    }
+    catch (e) {
+      return Result.error(Exception(e.toString()));
+    }
   }
 
   void _processarAlteracaoTipo() async {
     if (tipoPedido.value == EnumTipoPedido.debito){
       try {
         formasPagamento.value = await formasPagamentoService.listar();
+        notifyListeners();
       } on Exception catch (e) {
         _erro = DTOExcecao(descricao: 'Alteração do tipo de pedido', excecao: e);
         notifyListeners();
@@ -87,6 +98,8 @@ class PaymentViewModel extends ChangeNotifier {
       _erro = null;
       notifyListeners();
     }
+
+    formaPagamentoEscolhida.value = null;
   }
 
   void _processarAlteracaoFormaPagamento() async {
@@ -147,21 +160,21 @@ class PaymentViewModel extends ChangeNotifier {
         idFormaPagamento: formaPagamentoEscolhida.value?.id,
         valor: _valorTotal ?? 0.0,
         tipo: tipoPedido.value,
-        celularPagador: celularPagador.value,
-        cpfPagador: cpfPagador.value,
+        celularPagador: celularPagador.value.replaceAll(RegExp(r'[^\d]'), ''),
+        cpfPagador: cpfPagador.value.replaceAll(RegExp(r'[^\d]'), ''),
         emailPagador: emailPagador.value,
         nomePagador: nomePagador.value,
         motivo: motivo.value,
         dadosCartao: tipoPedido.value == EnumTipoPedido.debito && (formaPagamentoEscolhida.value!.tipo == EnumTipoPagamento.credito)
             ? DadosCartaoCredito(
-          numeroCartao: numeroCartao.value,
+          numeroCartao: numeroCartao.value.replaceAll(RegExp(r'[^\d]'), ''),
           nomeImpressoCartao: nomeImpressoCartao.value,
           mesExpiracao: mesExpiracao.value,
           anoExpiracao: anoExpiracao.value,
           codigoSeguranca: codigoSeguranca.value,
           nomeTitular: nomeTitular.value,
           emailTitular: emailTitular.value,
-          cpfouCnpjTitular: cpfOuCnpjTitular.value,
+          cpfouCnpjTitular: cpfOuCnpjTitular.value.replaceAll(RegExp(r'[^\d]'), ''),
           cepTitular: cepTitular.value,
           numeroEnderecoTitular: numeroEnderecoTitular.value,
           telefoneTitular: telefoneTitular.value,

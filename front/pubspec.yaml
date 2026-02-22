@@ -63,6 +63,8 @@ dependencies:
   # Validation
   validators: ^3.0.0
 
+  flutter_html: ^3.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front2/utils/result.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +23,10 @@ class FormRegistrationWidget extends StatefulWidget {
 class _FormRegistrationWidgetState extends State<FormRegistrationWidget> {
 
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _txtCPFResponsavel1 = TextEditingController(text: "");
+  final TextEditingController _txtNomeResponsavel1 = TextEditingController(text: "");
+  final TextEditingController _txtCPFResponsavel2 = TextEditingController(text: "");
+  final TextEditingController _txtNomeResponsavel2 = TextEditingController(text: "");
 
   @override
   Widget build(BuildContext context) {
@@ -282,52 +287,180 @@ class _FormRegistrationWidgetState extends State<FormRegistrationWidget> {
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   const SizedBox(height: 16),
-                  TextFormField(
-                    initialValue: widget.viewModel.cpfResponsavel1,
-                    decoration: const InputDecoration(
-                      labelText: 'CPF Responsável 1 *',
-                      hintText: 'CPF do responsável 1',
-                      prefixIcon: Icon(Icons.person),
-                    ),
-                    inputFormatters: [InputFormatters.cpfFormatter],
-                    validator: (value) =>
-                        InputValidators.validateRequired(value, 'CPF Responsável 1'),
-                    onChanged: widget.viewModel.setCpfResponsavel1,
+                  ListenableBuilder(
+                    listenable: widget.viewModel.buscarResponsavel1,
+                    builder: (ctx, child) {
+                      if (widget.viewModel.buscarResponsavel1.error) {
+                        var error = widget.viewModel.buscarResponsavel1.result as ErrorCommand;
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          showErrorDialog(
+                            context,
+                            message: error.error.toString(),
+                            onClose: () {
+                              widget.viewModel.buscarResponsavel1.clearResult();
+                            },
+                          );
+                        });
+                      }
+
+                      if (widget.viewModel.buscarResponsavel1.completed) {
+                        var resposta = widget.viewModel.buscarResponsavel1.result as OkCommand<bool>;
+                        if (!resposta.value) {
+                          _txtNomeResponsavel1.clear();
+                          WidgetsBinding.instance.addPostFrameCallback((_) {
+                            showErrorDialog(
+                              context,
+                              message: "Não encontramos nenhuma inscrição com esse CPF para ser o responsável!",
+                              onClose: () {
+                                widget.viewModel.buscarResponsavel1.clearResult();
+                              },
+                            );
+                          });
+                        }
+                      }
+
+                      _txtNomeResponsavel1.text = widget.viewModel.responsavel1?.nome ?? "";
+                      _txtCPFResponsavel1.text = widget.viewModel.responsavel1?.cpf ?? "";
+
+                      return LoadingOverlay(
+                        isLoading: widget.viewModel.buscarResponsavel1.running,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: TextFormField(
+                                    decoration: const InputDecoration(
+                                      labelText: 'CPF Responsável 1 *',
+                                      hintText: 'CPF do responsável 1',
+                                      prefixIcon: Icon(Icons.person),
+                                    ),
+                                    controller: _txtCPFResponsavel1,
+                                    inputFormatters: [InputFormatters.cpfFormatter],
+                                    validator: (value) =>
+                                        InputValidators.validateRequired(value, 'CPF Responsável 1'),
+                                    enabled: widget.viewModel.responsavel1 == null,
+                                  )
+                                ),
+                                const SizedBox(width: 6),
+                                IconButton(
+                                  onPressed: () {
+                                    if (widget.viewModel.responsavel1 != null) {
+                                      widget.viewModel.setResponsavel1(null);
+                                      _txtCPFResponsavel1.clear();
+                                    }
+                                    else {
+                                      widget.viewModel.buscarResponsavel1.execute(_txtCPFResponsavel1.text);
+                                    }
+                                  },
+                                  icon: Icon(widget.viewModel.responsavel1 != null ? Icons.clear : Icons.arrow_right_alt)
+                                )
+                              ],
+                            ),
+                            const SizedBox(height: 16),
+                            TextFormField(
+                              controller: _txtNomeResponsavel1,
+                              decoration: const InputDecoration(
+                                labelText: 'Nome Responsável 1 *',
+                                hintText: 'Nome do responsável 1',
+                                prefixIcon: Icon(Icons.person_outline),
+                              ),
+                              enabled: false,
+                              maxLength: 200,
+                            )
+                          ],
+                        )
+                      );
+                    },
                   ),
                   const SizedBox(height: 16),
-                  TextFormField(
-                    initialValue: widget.viewModel.nomeResponsavel1,
-                    decoration: const InputDecoration(
-                      labelText: 'Nome Responsável 1 *',
-                      hintText: 'Nome do responsável 1',
-                      prefixIcon: Icon(Icons.person_outline),
-                    ),
-                    validator: (value) => InputValidators.validateRequired(
-                        value, 'Nome Responsável 1'),
-                    onChanged: widget.viewModel.setNomeResponsavel1,
-                    maxLength: 200,
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    initialValue: widget.viewModel.cpfResponsavel2,
-                    decoration: const InputDecoration(
-                      labelText: 'CPF Responsável 2',
-                      hintText: 'CPF do responsável 2 (opcional)',
-                      prefixIcon: Icon(Icons.person),
-                    ),
-                    inputFormatters: [InputFormatters.cpfFormatter],
-                    onChanged: widget.viewModel.setCpfResponsavel2,
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    initialValue: widget.viewModel.nomeResponsavel2,
-                    decoration: const InputDecoration(
-                      labelText: 'Nome Responsável 2',
-                      hintText: 'Nome do responsável 2 (opcional)',
-                      prefixIcon: Icon(Icons.person_outline),
-                    ),
-                    onChanged: widget.viewModel.setNomeResponsavel2,
-                    maxLength: 200,
+                  ListenableBuilder(
+                    listenable: widget.viewModel.buscarResponsavel2,
+                    builder: (ctx, child) {
+                      if (widget.viewModel.buscarResponsavel2.error) {
+                        var error = widget.viewModel.buscarResponsavel2.result as ErrorCommand;
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          showErrorDialog(
+                            context,
+                            message: error.error.toString(),
+                            onClose: () {
+                              widget.viewModel.buscarResponsavel2.clearResult();
+                            },
+                          );
+                        });
+                      }
+
+                      if (widget.viewModel.buscarResponsavel2.completed) {
+                        var resposta = widget.viewModel.buscarResponsavel2.result as OkCommand<bool>;
+                        if (!resposta.value) {
+                          _txtNomeResponsavel2.clear();
+                          WidgetsBinding.instance.addPostFrameCallback((_) {
+                            showErrorDialog(
+                              context,
+                              message: "Não encontramos nenhuma inscrição com esse CPF para ser o responsável!",
+                              onClose: () {
+                                widget.viewModel.buscarResponsavel2.clearResult();
+                              },
+                            );
+                          });
+                        }
+                      }
+
+                      _txtCPFResponsavel2.text = widget.viewModel.responsavel2?.cpf ?? "";
+                      _txtNomeResponsavel2.text = widget.viewModel.responsavel2?.nome ?? "";
+
+                      return LoadingOverlay(
+                          isLoading: widget.viewModel.buscarResponsavel2.running,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child:  TextFormField(
+                                      controller: _txtCPFResponsavel2,
+                                      decoration: const InputDecoration(
+                                        labelText: 'CPF Responsável 2 *',
+                                        hintText: 'CPF do responsável 2',
+                                        prefixIcon: Icon(Icons.person),
+                                      ),
+                                      inputFormatters: [InputFormatters.cpfFormatter],
+                                      enabled: widget.viewModel.responsavel2 == null,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 6),
+                                  IconButton(
+                                      onPressed: () {
+                                        if (widget.viewModel.responsavel2 != null) {
+                                          widget.viewModel.setResponsavel2(null);
+                                          _txtCPFResponsavel2.clear();
+                                        }
+                                        else {
+                                          widget.viewModel.buscarResponsavel2.execute(_txtCPFResponsavel2.text);
+                                        }
+                                      },
+                                      icon: Icon(widget.viewModel.responsavel2 != null ? Icons.clear : Icons.arrow_right_alt)
+                                  )
+                                ],
+                              ),
+                              const SizedBox(height: 16),
+                              TextFormField(
+                                controller: _txtNomeResponsavel2,
+                                decoration: const InputDecoration(
+                                  labelText: 'Nome Responsável 2 *',
+                                  hintText: 'Nome do responsável 2',
+                                  prefixIcon: Icon(Icons.person_outline),
+                                ),
+                                enabled: false,
+                                maxLength: 200,
+                              )
+                            ],
+                          )
+                      );
+                    },
                   ),
                   const SizedBox(height: 16),
                 ],

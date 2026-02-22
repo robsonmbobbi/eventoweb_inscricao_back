@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front2/models/dto_evento.dart';
+import 'package:front2/utils/command.dart';
 import '../../common/ExceptionCommand.dart';
 import '../../models/dto_inscricao.dart';
 import '../../models/dto_inscricao_pesquisa_pessoa.dart';
@@ -10,10 +11,13 @@ import '../../models/enums/enum_situacao_pesquisa_pessoa.dart';
 import '../../models/enums/enum_tipo_inscricao.dart';
 import '../../services/eventos/eventos_service.dart';
 import '../../services/inscricoes/inscricoes_service.dart';
+import '../../utils/result.dart';
 
 class RegistrationViewModel extends ChangeNotifier {
   final EventosService eventoService;
   final InscricoesService inscricoesService;
+  late final Command1<bool, String> buscarResponsavel1;
+  late final Command1<bool, String> buscarResponsavel2;
 
   DTOEvento? _evento;
 
@@ -32,12 +36,10 @@ class RegistrationViewModel extends ChangeNotifier {
   bool _dormeEvento = true;
   String? _nomeCracha;
   String? _observacoes;
-  String? _cpfResponsavel1;
-  String? _nomeResponsavel1;
-  String? _cpfResponsavel2;
-  String? _nomeResponsavel2;
   String _cidade = '';
   String _uf = '';
+  DTOResponsavel? _responsavel1;
+  DTOResponsavel? _responsavel2;
 
   // State
   DTOInscricaoPesquisaPessoa? _pesquisa;
@@ -54,7 +56,10 @@ class RegistrationViewModel extends ChangeNotifier {
   RegistrationViewModel({
     required this.eventoService,
     required this.inscricoesService
-  });
+  }) {
+    buscarResponsavel1 = Command1<bool, String>(_buscarResponsavel1);
+    buscarResponsavel2 = Command1<bool, String>(_buscarResponsavel2);
+  }
 
   // Getters
   String get cpf => _cpf;
@@ -71,10 +76,8 @@ class RegistrationViewModel extends ChangeNotifier {
   bool get dormeEvento => _dormeEvento;
   String? get nomeCracha => _nomeCracha;
   String? get observacoes => _observacoes;
-  String? get cpfResponsavel1 => _cpfResponsavel1;
-  String? get nomeResponsavel1 => _nomeResponsavel1;
-  String? get cpfResponsavel2 => _cpfResponsavel2;
-  String? get nomeResponsavel2 => _nomeResponsavel2;
+  DTOResponsavel? get responsavel1 => _responsavel1;
+  DTOResponsavel? get responsavel2 => _responsavel2;
   String get cidade => _cidade;
   String get uf => _uf;
 
@@ -165,23 +168,13 @@ class RegistrationViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setCpfResponsavel1(String? value) {
-    _cpfResponsavel1 = value?.replaceAll(RegExp(r'[^\d]'), '');
+  void setResponsavel1(DTOResponsavel? value) {
+    _responsavel1 = value;
     notifyListeners();
   }
 
-  void setNomeResponsavel1(String? value) {
-    _nomeResponsavel1 = value;
-    notifyListeners();
-  }
-
-  void setCpfResponsavel2(String? value) {
-    _cpfResponsavel2 = value?.replaceAll(RegExp(r'[^\d]'), '');
-    notifyListeners();
-  }
-
-  void setNomeResponsavel2(String? value) {
-    _nomeResponsavel2 = value;
+  void setResponsavel2(DTOResponsavel? value) {
+    _responsavel2 = value;
     notifyListeners();
   }
 
@@ -214,10 +207,8 @@ class RegistrationViewModel extends ChangeNotifier {
       _instituicoesEspiritasFrequenta = _pesquisa!.inscricao!.instituicoesEspiritasFrequenta;
       _nomeCracha  = _pesquisa!.inscricao!.nomeCracha;
       _observacoes = _pesquisa!.inscricao!.observacoes;
-      _cpfResponsavel1 = _pesquisa!.inscricao!.responsavel1?.cpf;
-      _nomeResponsavel1= _pesquisa!.inscricao!.responsavel1?.nome;
-      _cpfResponsavel2 = _pesquisa!.inscricao!.responsavel2?.cpf;
-      _nomeResponsavel2= _pesquisa!.inscricao!.responsavel2?.nome;
+      _responsavel1 = _pesquisa!.inscricao!.responsavel1;
+      _responsavel2 = _pesquisa!.inscricao!.responsavel2;
     }
     else {
       pessoa = _pesquisa!.pessoa;
@@ -234,6 +225,8 @@ class RegistrationViewModel extends ChangeNotifier {
       _ehVegetariano = pessoa.ehVegetariano;
       _sexo = pessoa.sexo;
       _usaAdocanteDiariamente = pessoa.usaAdocanteDiariamente;
+      _cidade = pessoa.cidade ?? "";
+      _uf = pessoa.uf ?? "";
     }    
 
     notifyListeners();
@@ -244,11 +237,59 @@ class RegistrationViewModel extends ChangeNotifier {
       _dataNascimentoInformada = true;
 
       _idade = await eventoService.obterIdade(_evento!.id!, _dataNascimento!);
+
+      _tipoInscricao = EnumTipoInscricao.adulto;
+      if ((_idade ?? 0) < evento!.idadeMinimaAdulto) {
+        _tipoInscricao = EnumTipoInscricao.infantil;
+      }
     } else {
       _dataNascimentoInformada = false;
     }
 
     notifyListeners();
+  }
+
+  Future<Result<bool>>_buscarResponsavel1(String cpf) async {
+    try {
+      var pesquisa = await inscricoesService.pesquisarCPF(evento!.id!, cpf.replaceAll(RegExp(r'[^\d]'), ''));
+      if (pesquisa.situacao == EnumSituacaoPesquisaPessoa.inscricaoRealizada &&
+          pesquisa.inscricao!.tipo == EnumTipoInscricao.adulto) {
+        _responsavel1 = DTOResponsavel(
+          idInscricao: pesquisa.inscricao!.id!,
+          cpf: pesquisa.inscricao!.pessoa.cpf,
+          nome: pesquisa.inscricao!.pessoa.nome
+        );
+
+        return Result<bool>.ok(true);
+      }
+
+      return Result<bool>.ok(false);
+    }
+    on Exception catch(e) {
+      return Result<bool>.error(e);
+    }
+  }
+
+  Future<Result<bool>>_buscarResponsavel2(String cpf) async {
+    try {
+      var pesquisa = await inscricoesService.pesquisarCPF(evento!.id!, cpf.replaceAll(RegExp(r'[^\d]'), ''));
+      if (pesquisa.situacao == EnumSituacaoPesquisaPessoa.inscricaoRealizada &&
+          pesquisa.inscricao!.tipo == EnumTipoInscricao.adulto) {
+        _responsavel2 = DTOResponsavel(
+            idInscricao: pesquisa.inscricao!.id!,
+            cpf: pesquisa.inscricao!.pessoa.cpf,
+            nome: pesquisa.inscricao!.pessoa.nome
+        );
+        notifyListeners();
+
+        return Result<bool>.ok(true);
+      }
+
+      return Result<bool>.ok(false);
+    }
+    on Exception catch(e) {
+      return Result<bool>.error(e);
+    }
   }
 
   // Save registration
@@ -269,6 +310,8 @@ class RegistrationViewModel extends ChangeNotifier {
         email: _email,
         sexo: _sexo,
         usaAdocanteDiariamente: _usaAdocanteDiariamente,
+        cidade: _cidade,
+        uf: _uf
       );
 
       final inscricao = DTOInscricao(
@@ -280,20 +323,8 @@ class RegistrationViewModel extends ChangeNotifier {
         nomeCracha: _nomeCracha,
         observacoes: _observacoes,
         pessoa: pessoa,
-        responsavel1: _tipoInscricao == EnumTipoInscricao.infantil && _cpfResponsavel1 != null
-            ? DTOResponsavel(
-                idInscricao: 0,
-                cpf: _cpfResponsavel1,
-                nome: _nomeResponsavel1,
-              )
-            : null,
-        responsavel2: _tipoInscricao == EnumTipoInscricao.infantil && _cpfResponsavel2 != null
-            ? DTOResponsavel(
-                idInscricao: 0,
-                cpf: _cpfResponsavel2,
-                nome: _nomeResponsavel2,
-              )
-            : null,
+        responsavel1: _responsavel1,
+        responsavel2: _responsavel2,
       );
 
       DTOInscricao resultado;
@@ -363,10 +394,8 @@ class RegistrationViewModel extends ChangeNotifier {
     _dormeEvento = true;
     _nomeCracha = null;
     _observacoes = null;
-    _cpfResponsavel1 = null;
-    _nomeResponsavel1 = null;
-    _cpfResponsavel2 = null;
-    _nomeResponsavel2 = null;
+    _responsavel1 = null;
+    _responsavel2 = null;
     _tipoInscricao = null;
     _pesquisa = null;
     _isLoading = false;

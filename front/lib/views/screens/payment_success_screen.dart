@@ -147,12 +147,6 @@ class PaymentSuccessScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 8),
                               ],
-                              Text(
-                                'Status: ${resultado!.debito!.status.toString().split('.')[1]}',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall,
-                              ),
                             ],
                           ] else if (resultado!.tipo ==
                               EnumTipoPedido.desconto ||
