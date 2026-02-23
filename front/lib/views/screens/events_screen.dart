@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
@@ -146,8 +148,8 @@ class EventCard extends StatelessWidget {
               color: AppColors.grey200,
               image: evento.logotipo != null
                   ? DecorationImage(
-                      image: NetworkImage(evento.logotipo!),
-                      fit: BoxFit.cover,
+                      image: MemoryImage(base64Decode(evento.logotipo!)),
+                      fit: BoxFit.contain,
                     )
                   : null,
             ),

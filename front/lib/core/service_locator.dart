@@ -15,7 +15,7 @@ final getIt = GetIt.instance;
 class ServiceLocator {
   static Future<void> setup() async {
 
-    var json = jsonDecode(await rootBundle.loadString('assets/config.json'));
+    var json = jsonDecode(await rootBundle.loadString('config.json'));
 
     var baseUrl = json["urlApi"];
 
