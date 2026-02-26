@@ -252,7 +252,7 @@ class RegistrationViewModel extends ChangeNotifier {
   Future<Result<bool>>_buscarResponsavel1(String cpf) async {
     try {
       var pesquisa = await inscricoesService.pesquisarCPF(evento!.id!, cpf.replaceAll(RegExp(r'[^\d]'), ''));
-      if (pesquisa.situacao == EnumSituacaoPesquisaPessoa.inscricaoRealizada &&
+      if (pesquisa.situacao != EnumSituacaoPesquisaPessoa.inscricaoNaoExiste &&
           pesquisa.inscricao!.tipo == EnumTipoInscricao.adulto) {
         _responsavel1 = DTOResponsavel(
           idInscricao: pesquisa.inscricao!.id!,

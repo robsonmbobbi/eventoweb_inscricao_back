@@ -30,7 +30,7 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
-builder.Services.AddLettuceEncrypt();
+//builder.Services.AddLettuceEncrypt();
 
 var databaseSection = builder.Configuration.GetSection("Database");
 var connectionString = databaseSection.GetValue<string>("ConnectionString")
@@ -148,7 +148,7 @@ app.UseCors(builder => builder
     .AllowCredentials()
 );
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.MapControllers();
 app.ConfigureExceptionHandler();
 

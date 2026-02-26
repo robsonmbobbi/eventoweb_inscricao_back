@@ -3,6 +3,7 @@ import 'package:front2/models/dto_forma_pagamento.dart';
 import 'package:front2/models/dto_inscricao.dart';
 import 'package:front2/models/enums/enum_tipo_pagamento.dart';
 import 'package:front2/services/formas_pagamento/formas_pagamento_service.dart';
+import 'package:front2/utils/command.dart';
 import 'package:front2/utils/result.dart';
 import '../../models/dto_excecao.dart';
 import '../../models/dto_inscricao_valor.dart';
@@ -17,6 +18,9 @@ class PaymentViewModel extends ChangeNotifier {
   PaymentViewModel({required this.precosService, required this.pedidosService, required this.formasPagamentoService}){
     tipoPedido.addListener(_processarAlteracaoTipo);
     formaPagamentoEscolhida.addListener(_processarAlteracaoFormaPagamento);
+
+    comandoCarregamentoInscricoes = Command1<void, List<DTOInscricao>>(_carregarInscricoes);
+    comandoFinalizacaoPedido = Command0<DTOResultadoPedido>(_finalizarPedido);
   }
 
   final PrecosService precosService;
@@ -59,7 +63,10 @@ class PaymentViewModel extends ChangeNotifier {
   double? get valorTotal  => _valorTotal;
   DTOExcecao? get erro => _erro;
 
-  Result<void> carregarInscricoes(List<DTOInscricao> inscricoes) {
+  late final Command1<void, List<DTOInscricao>> comandoCarregamentoInscricoes;
+  late final Command0<DTOResultadoPedido> comandoFinalizacaoPedido;
+
+  Future<Result<void>> _carregarInscricoes(List<DTOInscricao> inscricoes) async {
     try {
       _inscricoes =
           inscricoes
@@ -153,7 +160,7 @@ class PaymentViewModel extends ChangeNotifier {
   }
 
   // Submit payment order
-  Future<Result<DTOResultadoPedido>> finalizarPedido() async {
+  Future<Result<DTOResultadoPedido>> _finalizarPedido() async {
     try {
       final pedido = DTOPedido(
         idsInscricoes: _inscricoes.map((e) => e.inscricao.id!).toList(),
