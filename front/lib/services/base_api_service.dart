@@ -18,7 +18,16 @@ final class BaseApiService {
   Future<Response<T>> get<T>(String endpoint) async {
     try {
       return await httpClient.get('$baseUrl$endpoint');
-    } catch (e) {
+    } on DioException catch (ex) {
+      if (ex.response != null &&
+          ex.response?.data != null &&
+          ex.response?.data.MensagemErro != null) {
+        var error = ex.response?.data;
+        throw error['exception'];
+      }
+
+      rethrow;
+    } catch (ex) {
       rethrow;
     }
   }
@@ -30,7 +39,16 @@ final class BaseApiService {
         '$baseUrl$endpoint',
         data: body,
       );
-    } catch (e) {
+    } on DioException catch (ex) {
+      if (ex.response != null &&
+          ex.response?.data != null &&
+          ex.response?.data.exception != null) {
+        var error = ex.response?.data;
+        throw error['mensagemErro'];
+      }
+
+      rethrow;
+    } catch (ex) {
       rethrow;
     }
   }
@@ -41,7 +59,16 @@ final class BaseApiService {
         '$baseUrl$endpoint',
         data: body,
       );
-    } catch (e) {
+    } on DioException catch (ex) {
+      if (ex.response != null &&
+          ex.response?.data != null &&
+          ex.response?.data.exception != null) {
+        var error = ex.response?.data;
+        throw error['exception'];
+      }
+
+      rethrow;
+    } catch (ex) {
       rethrow;
     }
   }
