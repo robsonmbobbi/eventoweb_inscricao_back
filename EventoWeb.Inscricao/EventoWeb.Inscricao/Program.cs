@@ -3,15 +3,18 @@ using EventoWeb.Comum.Aplicacao.FormasPagamento;
 using EventoWeb.Comum.Aplicacao.Inscricoes;
 using EventoWeb.Comum.Aplicacao.Pedidos;
 using EventoWeb.Comum.Aplicacao.Precos;
+using EventoWeb.Comum.Negocio.Entidades;
 using EventoWeb.Comum.Negocio.Entidades.IntegracaoFinanceira;
 using EventoWeb.Comum.Negocio.Repositorios;
 using EventoWeb.Comum.Negocio.Servicos;
+using EventoWeb.Comum.Negocio.Servicos.Notificacoes;
 using EventoWeb.Comum.Persistencia.Integracoes.Asaas;
 using EventoWeb.Comum.Persistencia.Mapeamentos;
 using EventoWeb.Comum.Persistencia.MigracoesBD;
 using EventoWeb.Comum.Persistencia.Repositorios;
 using EventoWeb.Inscricao;
 using EventoWeb.Inscricao.Logging;
+using EventoWeb.Inscricao.Notificacoes;
 using FluentMigrator.Runner;
 using NHibernate;
 using NHibernate.Cfg;
@@ -39,6 +42,18 @@ var nhDialect = databaseSection.GetValue<string>("Dialect")
                ?? "NHibernate.Dialect.MySQL5Dialect";
 var nhDriver = databaseSection.GetValue<string>("Driver")
               ?? "NHibernate.Driver.MySqlDataDriver";
+
+var rabbitMqSection = builder.Configuration.GetSection("RabbitMq");
+var configuracaoRabbitMq = new ConfiguracaoRabbitMqNotificacao
+{
+    HostName = rabbitMqSection.GetValue<string>("HostName") ?? "localhost",
+    Port = rabbitMqSection.GetValue<int?>("Port") ?? 5672,
+    UserName = rabbitMqSection.GetValue<string>("UserName") ?? "guest",
+    Password = rabbitMqSection.GetValue<string>("Password") ?? "guest",
+    VirtualHost = rabbitMqSection.GetValue<string>("VirtualHost") ?? "/",
+    RequestQueueName = rabbitMqSection.GetValue<string>("RequestQueueName") ?? "notificacoes.enviar",
+    ResponseQueueName = rabbitMqSection.GetValue<string>("ResponseQueueName") ?? "notificacoes.retorno"
+};
 
 var logFilePath = builder.Configuration["Logging:File:Path"];
 if (!string.IsNullOrWhiteSpace(logFilePath))
@@ -85,6 +100,12 @@ builder.Services.AddSingleton<IDictionary<EnumIntegracaoExterna, IIntegracaoExte
     return dict;
 });
 
+builder.Services.AddSingleton(configuracaoRabbitMq);
+builder.Services.AddSingleton<IEnvioNotificacao, EnvioNotificacaoRabbitMq>();
+
+builder.Services.AddSingleton<NotificacaoRespostaListenerService>();
+builder.Services.AddHostedService(provider => provider.GetRequiredService<NotificacaoRespostaListenerService>());
+
 builder.Services.AddScoped((provider) => {
     var factory = provider.GetService<ISessionFactory>() ?? 
                   throw new ArgumentNullException(nameof(ISessionFactory));
@@ -103,10 +124,11 @@ builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().IntegracoesFi
 builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().RegistrosIntegracoesFinanceiras);
 builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().ModelosMensagemNotificacao);
 builder.Services.AddScoped(p => p.GetRequiredService<ContextoNH>().MensagensNotificacao);
+builder.Services.AddScoped(p => new List<IValidacao<Inscricao>> { new ValidacaoInscricaoPeriodoInscricaoOnLine() });
 builder.Services.AddScoped<AppEventoListagem>();
 builder.Services.AddScoped<AppEventoCalcularIdade>();
 builder.Services.AddScoped<AppEventoObtencao>();
-builder.Services.AddScoped<AppInscricaoInclusaoOnLine>();
+builder.Services.AddScoped<AppInscricaoInclusao>();
 builder.Services.AddScoped<AppInscricaoAtualizacao>();
 builder.Services.AddScoped<AppInscricaoObtencao>();
 builder.Services.AddScoped<AppInscricaoPesquisaPessoa>();

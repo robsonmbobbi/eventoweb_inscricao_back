@@ -7,10 +7,10 @@ namespace EventoWeb.Inscricao.Controllers
     [ApiController]
     public class FormasPagamento (AppFormasPagamentoListagem appListagem) : ControllerBase
     {
-        [HttpGet("listar")]
-        public IEnumerable<DTOFormaPagamento> Listar()
+        [HttpGet("listar/{idEvento}")]
+        public IEnumerable<DTOFormaPagamento> Listar(int idEvento)
         {
-            return appListagem.ListarTodas();
+            return appListagem.ListarTodas(idEvento);
         }
 
     }

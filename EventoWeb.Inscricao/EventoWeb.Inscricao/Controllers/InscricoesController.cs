@@ -6,7 +6,7 @@ namespace EventoWeb.Inscricao.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 public class InscricoesController(
-    AppInscricaoInclusaoOnLine appInclusao,
+    AppInscricaoInclusao appInclusao,
     AppInscricaoAtualizacao appAtualizacao,
     AppInscricaoObtencao appObtencao,
     AppInscricaoPesquisaPessoa appPesquisa) : ControllerBase
