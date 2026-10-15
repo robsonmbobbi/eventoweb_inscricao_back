@@ -10,6 +10,7 @@ public class PedidosController(AppPedidoInclusao appInclusao) : ControllerBase
     [HttpPost("incluir")]
     public DTOResultadoPedido Incluir([FromBody] DTOPedidoInclusao dto)
     {
-        return appInclusao.Incluir(dto);
+        var ipRemoto = HttpContext.Connection.RemoteIpAddress?.MapToIPv4().ToString();
+        return appInclusao.Incluir(dto, ipRemoto);
     }
 }

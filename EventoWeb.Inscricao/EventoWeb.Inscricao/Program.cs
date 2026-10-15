@@ -16,6 +16,7 @@ using EventoWeb.Inscricao;
 using EventoWeb.Inscricao.Logging;
 using EventoWeb.Inscricao.Notificacoes;
 using FluentMigrator.Runner;
+using Microsoft.AspNetCore.HttpOverrides;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Mapping.ByCode;
@@ -138,6 +139,14 @@ builder.Services.AddScoped<AppFormasPagamentoListagem>();
 
 builder.Services.AddCors();
 
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    // O IP do pagador é exigido pelo Asaas no pagamento com cartão; a aplicação roda atrás de proxy reverso.
+    options.KnownIPNetworks.Clear();
+    options.KnownProxies.Clear();
+});
+
 builder.Services.AddSpaStaticFiles(configuration =>
 {
     configuration.RootPath = "ClientApp";
@@ -145,6 +154,8 @@ builder.Services.AddSpaStaticFiles(configuration =>
 
 
 var app = builder.Build();
+
+app.UseForwardedHeaders();
 
 app.UseStaticFiles();
 app.UseSpaStaticFiles();
