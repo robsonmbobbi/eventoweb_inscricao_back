@@ -2,6 +2,7 @@ using EventoWeb.Comum.Aplicacao.Eventos;
 using EventoWeb.Comum.Aplicacao.FormasPagamento;
 using EventoWeb.Comum.Aplicacao.Inscricoes;
 using EventoWeb.Comum.Aplicacao.Pedidos;
+using EventoWeb.Comum.Aplicacao.Pessoas;
 using EventoWeb.Comum.Aplicacao.Precos;
 using EventoWeb.Comum.Negocio.Entidades;
 using EventoWeb.Comum.Negocio.Entidades.IntegracaoFinanceira;
@@ -15,8 +16,8 @@ using EventoWeb.Comum.Persistencia.Repositorios;
 using EventoWeb.Inscricao;
 using EventoWeb.Inscricao.Logging;
 using EventoWeb.Inscricao.Notificacoes;
+using EventoWeb.Inscricao.Seguranca;
 using FluentMigrator.Runner;
-using Microsoft.AspNetCore.HttpOverrides;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Mapping.ByCode;
@@ -131,21 +132,13 @@ builder.Services.AddScoped<AppEventoCalcularIdade>();
 builder.Services.AddScoped<AppEventoObtencao>();
 builder.Services.AddScoped<AppInscricaoInclusao>();
 builder.Services.AddScoped<AppInscricaoAtualizacao>();
-builder.Services.AddScoped<AppInscricaoObtencao>();
 builder.Services.AddScoped<AppInscricaoPesquisaPessoa>();
 builder.Services.AddScoped<AppPrecoInscricaoObtencaoIdade>();
 builder.Services.AddScoped<AppPedidoInclusao>();
 builder.Services.AddScoped<AppFormasPagamentoListagem>();
+builder.Services.AddScoped<AppPessoaPesquisaCPF>();
 
-builder.Services.AddCors();
-
-builder.Services.Configure<ForwardedHeadersOptions>(options =>
-{
-    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-    // O IP do pagador é exigido pelo Asaas no pagamento com cartão; a aplicação roda atrás de proxy reverso.
-    options.KnownIPNetworks.Clear();
-    options.KnownProxies.Clear();
-});
+builder.Services.AdicionarSeguranca(builder.Configuration);
 
 builder.Services.AddSpaStaticFiles(configuration =>
 {
@@ -156,6 +149,7 @@ builder.Services.AddSpaStaticFiles(configuration =>
 var app = builder.Build();
 
 app.UseForwardedHeaders();
+app.UsarSeguranca();
 
 app.UseStaticFiles();
 app.UseSpaStaticFiles();
@@ -173,13 +167,6 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-
-app.UseCors(builder => builder
-    .AllowAnyHeader()
-    .AllowAnyMethod()
-    .SetIsOriginAllowed(_ => true)
-    .AllowCredentials()
-);
 
 //app.UseHttpsRedirection();
 app.MapControllers();
