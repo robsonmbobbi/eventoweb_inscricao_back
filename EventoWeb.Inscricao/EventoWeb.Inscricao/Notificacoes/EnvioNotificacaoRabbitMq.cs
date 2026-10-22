@@ -1,5 +1,6 @@
 using System.Text.Json;
 using System.Threading;
+using EventoWeb.Comum.Negocio.Entidades;
 using EventoWeb.Comum.Negocio.Entidades.Notificacoes;
 using EventoWeb.Comum.Negocio.Servicos.Notificacoes;
 using RabbitMQ.Client;
@@ -26,15 +27,7 @@ public class EnvioNotificacaoRabbitMq : IEnvioNotificacao, IAsyncDisposable
 
         var canal = await ObterCanalAsync().ConfigureAwait(false);
 
-        var request = new NotificacaoRequest
-        {
-            Id = Guid.NewGuid(),
-            Meio = mensagem.Modelo.Meio,
-            Destinatario = mensagem.Destinatario.Valor,
-            TemplateAssunto = mensagem.Modelo.Assunto?.Valor,
-            TemplateConteudo = mensagem.Modelo.Mensagem.Valor,
-            DadosJson = mensagem.VariaveisJson?.Valor
-        };
+        var request = CriarRequest(mensagem);
 
         var props = new BasicProperties
         {
@@ -51,6 +44,49 @@ public class EnvioNotificacaoRabbitMq : IEnvioNotificacao, IAsyncDisposable
         // mensagem.Situacao numa sessão própria — desacoplado da requisição HTTP atual.
         await PublicarAsync(canal, props, body).ConfigureAwait(false);
     }
+
+    private static NotificacaoRequest CriarRequest(MensagemNotificacao mensagem)
+    {
+        var modelo = mensagem.Modelo;
+        var request = new NotificacaoRequest
+        {
+            Id = Guid.NewGuid(),
+            Meio = modelo.Meio,
+            Destinatario = mensagem.Destinatario.Valor,
+            DadosJson = mensagem.VariaveisJson?.Valor,
+            Anexos = modelo.Anexos.Select(anexo => new NotificacaoAnexo
+            {
+                NomeArquivo = anexo.NomeArquivo.Valor,
+                MimeType = ObterMimeType(anexo.Arquivo.Tipo),
+                Conteudo = anexo.Arquivo.Arquivo
+            }).ToList()
+        };
+
+        switch (modelo)
+        {
+            case ModeloMensagemEmail email:
+                request.TemplateAssunto = email.Assunto.Valor;
+                request.TemplateConteudo = email.Mensagem.Valor;
+                break;
+            case ModeloMensagemWhatsapp whatsapp:
+                // O texto vive no template aprovado na Meta; o worker ignora TemplateConteudo.
+                request.TemplateWhatsapp = whatsapp.NomeTemplate.Valor;
+                request.IdiomaTemplateWhatsapp = whatsapp.IdiomaTemplate.Valor;
+                break;
+            default:
+                throw new NotSupportedException($"Modelo de mensagem não suportado: {modelo.GetType().Name}");
+        }
+
+        return request;
+    }
+
+    private static string ObterMimeType(EnumTipoArquivoBinario tipo) => tipo switch
+    {
+        EnumTipoArquivoBinario.PDF => "application/pdf",
+        EnumTipoArquivoBinario.ImagemPNG => "image/png",
+        EnumTipoArquivoBinario.ImagemJPEG => "image/jpeg",
+        _ => "application/octet-stream"
+    };
 
     private async Task PublicarAsync(IChannel canal, BasicProperties props, byte[] body)
     {
