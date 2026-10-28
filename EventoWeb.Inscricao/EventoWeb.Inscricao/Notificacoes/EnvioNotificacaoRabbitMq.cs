@@ -25,8 +25,9 @@ public class EnvioNotificacaoRabbitMq : IEnvioNotificacao, IAsyncDisposable
     {
         ArgumentNullException.ThrowIfNull(mensagem);
 
-        var canal = await ObterCanalAsync().ConfigureAwait(false);
-
+        // Toda leitura das entidades (incl. lazy load de Modelo.Anexos) precisa ocorrer antes do
+        // primeiro await: o chamador não aguarda esta Task e a sessão NHibernate pode já estar
+        // fechada (ou em uso por outra thread) quando a continuação rodar.
         var request = CriarRequest(mensagem);
 
         var props = new BasicProperties
@@ -38,6 +39,8 @@ public class EnvioNotificacaoRabbitMq : IEnvioNotificacao, IAsyncDisposable
             ReplyTo = m_Configuracao.ResponseQueueName
         };
         var body = JsonSerializer.SerializeToUtf8Bytes(request);
+
+        var canal = await ObterCanalAsync().ConfigureAwait(false);
 
         // Publica e retorna: o resultado (sucesso/erro) chega de forma assíncrona na fila de
         // retorno e é processado pelo NotificacaoRespostaListenerService, que atualiza
@@ -54,12 +57,12 @@ public class EnvioNotificacaoRabbitMq : IEnvioNotificacao, IAsyncDisposable
             Meio = modelo.Meio,
             Destinatario = mensagem.Destinatario.Valor,
             DadosJson = mensagem.VariaveisJson?.Valor,
-            Anexos = modelo.Anexos.Select(anexo => new NotificacaoAnexo
+            Anexos = [.. modelo.Anexos.Select(anexo => new NotificacaoAnexo
             {
                 NomeArquivo = anexo.NomeArquivo.Valor,
                 MimeType = ObterMimeType(anexo.Arquivo.Tipo),
                 Conteudo = anexo.Arquivo.Arquivo
-            }).ToList()
+            })]
         };
 
         switch (modelo)
@@ -72,6 +75,7 @@ public class EnvioNotificacaoRabbitMq : IEnvioNotificacao, IAsyncDisposable
                 // O texto vive no template aprovado na Meta; o worker ignora TemplateConteudo.
                 request.TemplateWhatsapp = whatsapp.NomeTemplate.Valor;
                 request.IdiomaTemplateWhatsapp = whatsapp.IdiomaTemplate.Valor;
+                request.Destinatario = "55" + request.Destinatario;
                 break;
             default:
                 throw new NotSupportedException($"Modelo de mensagem não suportado: {modelo.GetType().Name}");
