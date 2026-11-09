@@ -44,7 +44,7 @@ jobs:
           elif git ls-remote --exit-code --heads "https://github.com/$FRONT_REPO.git" "refs/heads/$BRANCH" > /dev/null; then
             ref="$BRANCH"
           else
-            ref="develop"
+            ref="main"
           fi
           echo "ref=$ref" >> "$GITHUB_OUTPUT"
           echo "Front: $ref"
