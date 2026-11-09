@@ -13,3 +13,5 @@ EventoWeb.Inscricao.Testes/bin/
 /EventoWeb.Inscricao/EventoWeb.Inscricao/Properties/PublishProfiles
 /EventoWeb.Inscricao/EventoWeb.Inscricao/dotnet-tools.json
 EventoWeb.Inscricao/EventoWeb.Inscricao/bin/
+/EventoWeb.Inscricao/EventoWeb.Inscricao/appsettings.json
+/EventoWeb.Inscricao/EventoWeb.Inscricao/appsettings.Development.json

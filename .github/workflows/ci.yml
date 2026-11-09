@@ -1,0 +1,157 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  repository_dispatch:
+    types: [front-main-atualizada]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  FRONT_REPO: robsonmbobbi/eventoweb_inscricao_front
+  CSPROJ: EventoWeb.Inscricao/EventoWeb.Inscricao/EventoWeb.Inscricao.csproj
+  CSPROJ_TESTES: EventoWeb.Inscricao/external/eventoweb_comum_back/EventoWeb.Comum.Testes/EventoWeb.Comum.Testes.csproj
+  DIR_COMUM: EventoWeb.Inscricao/external/eventoweb_comum_back
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      rotulo: ${{ steps.versoes.outputs.rotulo }}
+      artifact: ${{ steps.versoes.outputs.artifact }}
+      sha_front: ${{ steps.versoes.outputs.sha_front }}
+      sha_comum: ${{ steps.versoes.outputs.sha_comum }}
+      versao_back: ${{ steps.versoes.outputs.versao_back }}
+      versao_front: ${{ steps.versoes.outputs.versao_front }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Resolver a versão do front
+        id: front
+        env:
+          SHA_DISPARO: ${{ github.event.client_payload.sha }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          if [ -n "$SHA_DISPARO" ]; then
+            ref="$SHA_DISPARO"
+          elif [ "$BRANCH" = "main" ]; then
+            ref="main"
+          elif git ls-remote --exit-code --heads "https://github.com/$FRONT_REPO.git" "refs/heads/$BRANCH" > /dev/null; then
+            ref="$BRANCH"
+          else
+            ref="develop"
+          fi
+          echo "ref=$ref" >> "$GITHUB_OUTPUT"
+          echo "Front: $ref"
+
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ env.FRONT_REPO }}
+          ref: ${{ steps.front.outputs.ref }}
+          path: _front
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: _front/package-lock.json
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Build do front
+        working-directory: _front
+        env:
+          VITE_API_BASE_URL: /api
+        run: |
+          npm ci
+          npm run build
+
+      - name: Testes
+        run: dotnet test "$CSPROJ_TESTES" -c Release
+
+      - name: Publicar o back
+        run: dotnet publish "$CSPROJ" -c Release -r linux-x64 --self-contained true -o saida
+
+      - name: Montar o pacote
+        run: |
+          cp -R _front/dist saida/ClientApp
+          rm -f saida/appsettings*.json
+          test -f saida/ClientApp/index.html
+          test -f saida/EventoWeb.Inscricao
+
+      - name: Calcular versões e rótulo
+        id: versoes
+        run: |
+          versao_back="$(dotnet msbuild "$CSPROJ" -getProperty:Version)"
+          versao_front="$(node -p "require('./_front/package.json').version")"
+          {
+            echo "versao_back=$versao_back"
+            echo "versao_front=$versao_front"
+            echo "rotulo=back-${versao_back}_front-${versao_front}-b${GITHUB_RUN_NUMBER}"
+            echo "artifact=eventoweb-inscricao-${GITHUB_SHA::7}"
+            echo "sha_front=$(git -C _front rev-parse HEAD)"
+            echo "sha_comum=$(git -C "$DIR_COMUM" rev-parse HEAD)"
+          } >> "$GITHUB_OUTPUT"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.versoes.outputs.artifact }}
+          path: saida/
+          if-no-files-found: error
+
+  release:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: release
+      cancel-in-progress: false
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.build.outputs.artifact }}
+          path: saida
+
+      - name: Criar a release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ROTULO: ${{ needs.build.outputs.rotulo }}
+          VERSAO_BACK: ${{ needs.build.outputs.versao_back }}
+          VERSAO_FRONT: ${{ needs.build.outputs.versao_front }}
+          SHA_FRONT: ${{ needs.build.outputs.sha_front }}
+          SHA_COMUM: ${{ needs.build.outputs.sha_comum }}
+        run: |
+          if gh release view "$ROTULO" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            echo "A release $ROTULO já existe; nada a fazer."
+            exit 0
+          fi
+
+          # O artifact não preserva o bit de execução.
+          chmod +x saida/EventoWeb.Inscricao
+
+          pacote="eventoweb-inscricao_${ROTULO}_linux-x64.zip"
+          (cd saida && zip -r "../$pacote" .)
+
+          cat > notas.md <<EOF
+          | Componente | Versão | Commit |
+          | --- | --- | --- |
+          | Back (C#) | $VERSAO_BACK | $GITHUB_SHA |
+          | Front (React) | $VERSAO_FRONT | $SHA_FRONT |
+          | EventoWeb.Comum | - | $SHA_COMUM |
+          EOF
+
+          gh release create "$ROTULO" "$pacote" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "$ROTULO" \
+            --notes-file notas.md \
+            --generate-notes
