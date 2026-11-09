@@ -1,0 +1,31 @@
+using EventoWeb.Comum.Aplicacao.Eventos;
+using EventoWeb.Comum.Negocio.Repositorios;
+using Microsoft.AspNetCore.Mvc;
+
+namespace EventoWeb.Inscricao.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class EventosController(AppEventoObtencao appEventoObtencao, AppEventoListagem appListagem, AppEventoCalcularIdade appCalculaIdade) : ControllerBase
+{
+    [HttpGet("listar")]
+    public IList<DTOEvento> Listar()
+    {
+        return appListagem.Listar(EnumFiltroListagemEventos.EmPeriodoInscricao);
+    }
+
+    [HttpGet("obter/{id}")]
+    public DTOEvento? Obter(int id)
+    {
+        return appEventoObtencao.Obter(id);
+    }
+
+    [HttpGet("{idEvento}/obter-idade/{dataNascimento}")]
+    public Object ObterIdade(int idEvento, DateTime dataNascimento)
+    {
+        return new
+        {
+            idade = appCalculaIdade.CalcularIdade(idEvento, dataNascimento)
+        };
+    }
+}
