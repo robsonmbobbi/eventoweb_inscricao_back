@@ -77,7 +77,12 @@ jobs:
         run: dotnet test "$CSPROJ_TESTES" -c Release
 
       - name: Publicar o back
-        run: dotnet publish "$CSPROJ" -c Release -r linux-x64 --self-contained true -o saida
+        run: >
+          dotnet publish "$CSPROJ" -c Release -r linux-x64 --self-contained true -o saida
+          -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          -p:EnableCompressionInSingleFile=true
+          -p:DebugType=None
 
       - name: Montar o pacote
         run: |
